@@ -1,12 +1,12 @@
 --- 
 title: "STAT 720 - Design of Experiments"
 author: "Josefina Lacasa"
-date: Summer 2025 #"`r Sys.Date()`"
+date: Summer 2026 #"`r Sys.Date()`"
 site: bookdown::bookdown_site
 ---
 
 # Welcome to STAT 720!  
-June 9th, 2025  
+June 1st, 2026  
 
 ## About this course:  
 
