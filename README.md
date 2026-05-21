@@ -14,7 +14,7 @@ Kansas State University
 
 **Instructor:** Dr. Josefina Lacasa  
 
-**Time:** Mon-Tue-Wed-Thu-Fri 9:10 am - 10.10 am   
+**Time:** Mon-Tue-Wed-Thu-Fri 10:20 am - 11.20 am   
 
 **Course Description:**  This course introduces students to the design and analysis of experiments.
 The statistical modeling in this course will focus on statistical thinking (more on statistical thinking [here](https://errorstatistics.com/wp-content/uploads/2016/01/brown-and-kass_what-is-statistics-with-discussion.pdf)). 
