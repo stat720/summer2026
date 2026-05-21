@@ -2,28 +2,27 @@
 title: Treatment Structure of a Designed Experiment
 ---
 
-June 16
+June 8
 : Treatment structure
-  : [html](https://stat720.github.io/summer2025/notes/the-treatment-structure.html)
+  : [](https://stat720.github.io/summer2026/notes/the-treatment-structure.html)
 : [](#)
   : Chapter 4 in Milliken and Johnson. 
 
-June 17
+June 9
 : Treatment structure II
-  : [html](https://stat720.github.io/summer2025/notes/what-you-ask-of-a-designed-experiment.html) | [in-class R code](../scripts/06172025_trt_inclass.Rmd) 
+  : [](https://stat720.github.io/summer2026/notes/what-you-ask-of-a-designed-experiment.html) | [in-class R code](../scripts/06172025_trt_inclass.Rmd) 
 : [](#)
   : Chapter 4 in Milliken and Johnson. 
 
-June 18
+June 10
 : Applied examples  
-  : [html](https://stat720.github.io/summer2025/notes/applied-examples.html) | [in-class R code](../scripts/06182025_trt_inclass.Rmd)
+  : [](https://stat720.github.io/summer2026/notes/applied-examples.html) | [in-class R code](../scripts/06182025_trt_inclass.Rmd)
 
-June 19
-: Juneteenth (Observed Holiday)  
+June 11
+: No class
 
-June 20
-: Kahoot!
-  : [html ](https://stat720.github.io/summer2025/notes/review.html)
+June 12
+: No class
   : **HW 1 due**{: .label .label-red }
   : **HW 2**{: .label .label-green }
   

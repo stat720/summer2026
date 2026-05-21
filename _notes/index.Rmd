@@ -13,7 +13,7 @@ June 9th, 2025
 - [About me](https://jlacasa.github.io/) 
 - About you: 
 
-```{r message=F, warning=FALSE}
+```{r eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
 library(tidyverse)
 read.csv("../../students_STAT_720_C.csv") %>% 
   ggplot(aes(x = degreeProgram))+
