@@ -12,7 +12,7 @@ The following guides are solved homeworks, indicating what was expected from eac
 
 | Homework  | Link 1  |Link 2       |Link 3       |
 | --------- | ------- | ----------- | ----------- |
-| HW1       |  [solved pdf](https://stat720.github.io/summer2025/assignments/Assignment1_Solved.pdf)  |   [solved Rmd](https://stat720.github.io/summer2025/assignments/Assignment1_Solved.Rmd)  |             |
+| HW1       |  [](https://stat720.github.io/summer2025/assignments/Assignment1_Solved.pdf)  |   [](https://stat720.github.io/summer2025/assignments/Assignment1_Solved.Rmd)  |             |
 | HW2       |             |             |             |
 | HW3       |             |             |             |
 | HW4       |             |             |             |

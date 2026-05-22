@@ -8,6 +8,6 @@ nav_order: 10
   
 # Final project  
   
-More information about the final project can be found [here](https://stat720.github.io/summer2025/notes/semester-project.html).
+More information about the final project can be found [here](https://stat720.github.io/summer2026/notes/semester-project.html).
   
   
