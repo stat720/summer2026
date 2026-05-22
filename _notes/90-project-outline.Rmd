@@ -11,11 +11,11 @@ Broadly, projects are expected to **identify a research problem** and **develop 
 
 ## Partial deadlines
 
-### Project proposal - Due Friday June 20 at 2pm CT
+### Project proposal - Due Friday June 12 at 2pm CT
 Write a page-long project proposal that states your research problem and the objective of your project. An example of an appropriate project proposal can be found [here](https://stat720.github.io/summer2025/assignments/proposal_example.pdf).
 
-### Written report - Due Wednesday July 23 at 2pm CT for peer review 
-Submit a manuscript including:
+### Written report - Due Wednesday July 1 at 2pm CT for peer review 
+Send a manuscript to one of your peers, including:
 
 - Introduction (background \& justification of the problem) 
 - Methods, including: 
@@ -25,7 +25,7 @@ Submit a manuscript including:
 - Expected results 
 - Discussion of strengths and weaknesses of the experiment design (e.g., compare an RCBD with a split-plot design)
 
-### Oral presentation - Somewhere between July 21 - August 1 
+### Oral presentation - Somewhere between July 8 - July 14 
 Prepare a 15 minute presentation of the core aspects of your project. 
 Presentations should include at least: 
 
@@ -33,6 +33,8 @@ Presentations should include at least:
 - Methods, including a clear and complete description of the statistical model and code
 - Discussion of strengths and weaknesses
 
+### FINAL written report - Due Wednesday July 16 at 11:59pm CT  
+Submit your reviewed manuscript on CANVAS, including your peer's and the instructor's feedback.
 
 ### Practical reads  
 

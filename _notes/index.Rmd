@@ -13,9 +13,9 @@ June 1st, 2026
 - [About me](https://jlacasa.github.io/) 
 - About you: 
 
-```{r eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
+```{r message=FALSE, warning=FALSE, include=FALSE}
 library(tidyverse)
-read.csv("../../students_STAT_720_C.csv") %>% 
+read.csv("../../students_STAT_720_A.csv") %>% 
   ggplot(aes(x = degreeProgram))+
   geom_bar(fill = "#B388EB")+
   theme_bw()+

@@ -9,7 +9,7 @@ seo:
 ---
 
 # STAT 720 - Design of Experiments  
-Summer 2025   
+Summer 2026   
 Kansas State University
 
 **Instructor:** Dr. Josefina Lacasa  
