@@ -16,7 +16,7 @@ June 3
 
 June 4
 : Design structures & Applications in R
-  : [](https://stat720.github.io/summer2026/notes/linear-models-anova-shells-applied-to-the-more-basic-experiment-designs.html) | [in-class R code](../scripts/06122025_rcbd.Rmd)
+  : [](https://stat720.github.io/summer2026/notes/linear-models-anova-shells-applied-to-the-more-basic-experiment-designs.html) | [](../scripts/06122025_rcbd.Rmd)
 
 June 5
 : Kahoot! & Review, organizing data and other helpful tips  
