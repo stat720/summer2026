@@ -29,11 +29,11 @@ read.csv("../../students_STAT_720_A.csv") %>%
 
 ### Logistics  
 
-- [Website](https://stat720.github.io/summer2025)
+- [Website](https://stat720.github.io/summer2026)
 - Syllabus
 - Statistical programming requirements  
 - Rough mindmap of the course (on whiteboard)  
-- [Semester project - design your own experiment.](https://stat720.github.io/2025summer/summer2025/notes/semester-project.html)   
+- [Semester project - design your own experiment.](https://stat720.github.io/summer2026/notes/semester-project.html)   
 - Grades: A (100-89.999999999(!!!)), B (89.99-79.99), C (79.99-69.99), D (69.99-59.99), F (<59.99).
 - Attendance policies   
 - Semester projects 
