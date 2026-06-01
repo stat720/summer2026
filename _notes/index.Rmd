@@ -27,6 +27,11 @@ read.csv("../../students_STAT_720_A.csv") %>%
 
 - In rounds: What's your major, what do you expect to learn?  
 
+- From 2025 TEVALs: "What advice would you give to future students of this course?" 
+  - Come to class ready to learn and engage in lecture to get the most out of it. The summer goes by fast, so use the 1 on 1 time too. 
+  - Engage. Ask and answer questions. Don't be afraid to speak up. Dr. Lacasa is great about making it a safe environment for you to get things wrong. That's how you learn. 
+  - I would advise future students to actively participate by discussing ideas positively and asking thoughtful questions during class. This approach helps connect the course material to real-world problems in experimental design and deepens understanding. 
+
 ### Logistics  
 
 - [Website](https://stat720.github.io/summer2026)
