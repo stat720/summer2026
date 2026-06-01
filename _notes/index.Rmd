@@ -100,3 +100,4 @@ knitr::include_graphics("../figures/fisher_diagram.jpg")
 ## For tomorrow    
 
 - Install R and RStudio. 
+- Answer [this short survey](https://forms.gle/Cr6Nc3ZThJjqqtM36) to figure out if we need to move 1-1.5 weeks of class to Zoom. 
