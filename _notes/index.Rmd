@@ -35,12 +35,13 @@ read.csv("../../students_STAT_720_A.csv") %>%
 - Rough mindmap of the course (on whiteboard)  
 - [Semester project - design your own experiment.](https://stat720.github.io/2025summer/summer2025/notes/semester-project.html)   
 - Grades: A (100-89.999999999(!!!)), B (89.99-79.99), C (79.99-69.99), D (69.99-59.99), F (<59.99).
-- Attendance policies  
-- Semester projects
+- Attendance policies   
+- Semester projects 
 
 ## Learning goals   
 
 By the end of this course, you should be able to:  
+
 - Be able to identify the treatment design, experiment design, experimental unit and observational unit.  
 - Be able to write the statistical model that corresponds to (simple) designed experiments.  
 - Be able to write the Materials and Methods section in a paper (or thesis) that describes the designed experiment.  
@@ -86,6 +87,11 @@ How can we estimate the cookie diameter
 - Randomization  
 - Replication  
 - Local control  
+
+
+```{r blueprint, echo=FALSE, fig.cap="Fisher’s diagram ‘The Principles of Field Experimentation’. Figure 1 in [Preece (1990)](https://doi.org/10.2307/2532438).", out.width = '70%'}
+knitr::include_graphics("../figures/fisher_diagram.jpg")
+```
 
 ## Other concepts in designed experiments  
 - Experimental unit: smallest unit to which a treatment is independently assigned/applied. 

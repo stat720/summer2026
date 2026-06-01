@@ -22,7 +22,7 @@ There are several ways to carry out an experiment.
 The way we carry out an experiment is important because it will establish the blueprint for how the data are generated. 
 This means that the design will determine **what observations are similar to each other**. 
 
-```{r blueprint, echo=FALSE, fig.cap="A blueprint is to a building what the experimental design is to the data. [Source](https://www.roomsketcher.com/blog/how-to-draw-a-blueprint/)", out.width = '70%'}
+```{r , echo=FALSE, fig.cap="A blueprint is to a building what the experimental design is to the data. [Source](https://www.roomsketcher.com/blog/how-to-draw-a-blueprint/)", out.width = '70%'}
 knitr::include_graphics("../figures/blueprint.jpg")
 ```
 
