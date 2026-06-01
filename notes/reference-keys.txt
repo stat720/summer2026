@@ -1,9 +1,9 @@
 fig:blueprint
-fig:unnamed-chunk-2
+fig:unnamed-chunk-3
 fig:crd
 fig:rcbd
 fig:ibd
-tab:unnamed-chunk-3
+tab:unnamed-chunk-4
 welcome-to-stat-720
 about-this-course
 logistics
