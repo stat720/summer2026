@@ -12,12 +12,12 @@ The following guides are solved homeworks, indicating what was expected from eac
 
 | Homework  | Link 1  |Link 2       |Link 3       |
 | --------- | ------- | ----------- | ----------- |
-| HW1       |  [](https://stat720.github.io/summer2025/assignments/Assignment1_Solved.pdf)  |   [](https://stat720.github.io/summer2025/assignments/Assignment1_Solved.Rmd)  |             |
+| HW1       |  [](https://stat720.github.io/summer2026/assignments/Assignment1_Solved.pdf)  |   [](https://stat720.github.io/summer2026/assignments/Assignment1_Solved.Rmd)  |             |
 | HW2       |             |             |             |
 | HW3       |             |             |             |
 | HW4       |             |             |             |
-|Project proposal | [pdf legume example](https://stat720.github.io/summer2025/assignments/proposal_example.pdf) |   [pdf muffins example](https://stat720.github.io/summer2025/assignments/proposal_example_muffins.pdf)    |             |
-|Project report |             |    [pdf muffins report example](https://stat720.github.io/summer2025/assignments/report_example_muffins.pdf)    |             |
+|Project proposal | [pdf legume example](https://stat720.github.io/summer2026/assignments/proposal_example.pdf) |   [pdf muffins example](https://stat720.github.io/summer2026/assignments/proposal_example_muffins.pdf)    |             |
+|Project report |             |    [pdf muffins report example](https://stat720.github.io/summer2026/assignments/report_example_muffins.pdf)    |             |
 |Project R code |             |             |             |
 
 
