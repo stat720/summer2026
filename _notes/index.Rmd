@@ -87,21 +87,6 @@ How can we estimate the cookie diameter
 > Group discussion: which is preferrable?  
 
 
-## The golden rules of designed experiments  
-
-- Randomization  
-- Replication  
-- Local control  
-
-
-```{r blueprint, echo=FALSE, fig.cap="Fisher’s diagram ‘The Principles of Field Experimentation’. Figure 1 in [Preece (1990)](https://doi.org/10.2307/2532438).", out.width = '70%'}
-knitr::include_graphics("../figures/fisher_diagram.jpg")
-```
-
-## Other concepts in designed experiments  
-- Experimental unit: smallest unit to which a treatment is independently assigned/applied. 
-- Observational unit: smallest unit on which observations are made. 
-
 ## For tomorrow    
 
 - Install R and RStudio. 

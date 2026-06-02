@@ -1,9 +1,9 @@
 fig:blueprint
-fig:unnamed-chunk-3
+fig:unnamed-chunk-2
 fig:crd
 fig:rcbd
 fig:ibd
-tab:unnamed-chunk-4
+tab:unnamed-chunk-3
 welcome-to-stat-720
 about-this-course
 logistics
@@ -11,12 +11,11 @@ learning-goals
 on-notation
 why-do-designed-experiments-exist
 example
-the-golden-rules-of-designed-experiments
-other-concepts-in-designed-experiments
 for-tomorrow
 basic-types-of-designed-experiments
 announcements
-review
+the-golden-rules-of-designed-experiments
+other-concepts-in-designed-experiments
 types-of-designs---the-basics
 completely-randomized-design-crd
 randomized-complete-block-design-rcbd
