@@ -4,6 +4,9 @@ fig:crd
 fig:rcbd
 fig:ibd
 tab:unnamed-chunk-3
+fig:unnamed-chunk-4
+fig:unnamed-chunk-5
+tab:unnamed-chunk-6
 welcome-to-stat-720
 about-this-course
 logistics
@@ -23,6 +26,16 @@ incomplete-block-design-ibd
 skeleton-anova-tables
 practice-examples
 homeworks
+basic-types-of-designed-experiments-1
+review
+types-of-designs
+completely-randomized-design-crd-1
+randomized-complete-block-design-rcbd-1
+building-an-anova-skeleton-using-design-aka-topographical-and-treatment-elements
+linear-model-good-old-friend
+the-most-common-assumptions-behind-most-software
+some-practice
+to-do
 semester-project
 learning-objectives
 partial-deadlines

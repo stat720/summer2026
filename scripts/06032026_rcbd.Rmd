@@ -1,7 +1,7 @@
 ---
-title: "Class 06/11 - R Demo"
+title: "Class 06/03 - R Demo"
 author: "J Lacasa"
-date: "2025-06-10"
+date: "2026-06-03"
 output: html_document
 ---
 
