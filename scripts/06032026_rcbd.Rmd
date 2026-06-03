@@ -20,7 +20,7 @@ Fit models
 ```{r}
 # load data
 data("omer.sorghum")
-df <- omer.sorghum %>% filter(env == "E3")
+df <- omer.sorghum |> filter(env == "E3")
 
 # find out how many levels for trt factor "genotype"
 n_distinct(df$gen)
@@ -63,7 +63,7 @@ emmeans::emmeans(m, ~gen)
 
 
 ```{r}
-df2 <- df %>% filter(rep %in% c("R1", "R4"))
+df2 <- df |> filter(rep %in% c("R1", "R4"))
 
 # find out how many levels for trt factor "genotype"
 n_distinct(df2$gen)
