@@ -1,5 +1,12 @@
 # Linear models, ANOVA shells applied to the more basic experiment designs         
-June 12th, 2025  
+June 4th, 2026  
+
+## Announcements  
+
+- Start reading: 
+  - Chapter 4 in Messy Data Vol1 (Milliken & Johnson) OR   
+  - Chapter 2 in GLMM (Stroup, 1st ed) - 1st edition of the GLMM book, until "Complication"   
+
 
 ## Review  
 

@@ -1,12 +1,12 @@
 fig:blueprint
-fig:unnamed-chunk-20
+fig:unnamed-chunk-2
 fig:crd
 fig:rcbd
 fig:ibd
-tab:unnamed-chunk-21
-fig:unnamed-chunk-22
-fig:unnamed-chunk-23
-tab:unnamed-chunk-24
+tab:unnamed-chunk-3
+fig:unnamed-chunk-4
+fig:unnamed-chunk-5
+tab:unnamed-chunk-6
 welcome-to-stat-720
 about-this-course
 logistics
@@ -37,6 +37,7 @@ the-most-common-assumptions-behind-most-software
 some-practice
 to-do
 linear-models-anova-shells-applied-to-the-more-basic-experiment-designs
+announcements-1
 review-1
 linear-models
 the-most-common-model---assumptions
