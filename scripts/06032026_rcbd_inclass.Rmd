@@ -57,8 +57,24 @@ car::qqPlot(m)
 
 ```{r}
 car::Anova(m, type = 2)
+```
+
+```{r}
+aov(yield ~ 1 + gen + Error(rep), data= df)
+```
+
+```{r}
+#get sigma hat
+sqrt(1306996/51)
+
+sigma(m)
+```
+
+
+```{r}
 emmeans::emmeans(m, ~gen)
 ```
+
 
 ```{r}
 m2 <- lm(yield ~ 1 + gen, data= df)
