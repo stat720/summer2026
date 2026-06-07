@@ -7,6 +7,11 @@ tab:unnamed-chunk-3
 fig:unnamed-chunk-4
 fig:unnamed-chunk-5
 tab:unnamed-chunk-6
+fig:unnamed-chunk-10
+fig:unnamed-chunk-11
+fig:unnamed-chunk-12
+fig:unnamed-chunk-13
+fig:unnamed-chunk-14
 welcome-to-stat-720
 about-this-course
 logistics
@@ -50,6 +55,13 @@ review-organizing-data-and-other-helpful-tips
 kahoot-as-review
 organizing-data
 homework
+the-treatment-structure
+announcements-2
+review-2
+treatment-structure
+types-of-treatment-structures
+where-is-the-treatment-structure-connected-to-the-statistical-model
+tomorrow-1
 semester-project
 learning-objectives
 partial-deadlines
