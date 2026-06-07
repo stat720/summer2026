@@ -16,7 +16,7 @@ June 9
 
 June 10
 : Applied examples  
-  : [](https://stat720.github.io/summer2026/notes/applied-examples.html)  [](../scripts/06182025_trt_inclass.Rmd)
+  : [html](https://stat720.github.io/summer2026/notes/applied-examples.html)  [](../scripts/06182025_trt_inclass.Rmd)
 
 June 11
 : No class
