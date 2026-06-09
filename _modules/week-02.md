@@ -4,13 +4,13 @@ title: Treatment Structure of a Designed Experiment
 
 June 8
 : Treatment structure
-  : [](https://stat720.github.io/summer2026/notes/the-treatment-structure.html)
+  : [html](https://stat720.github.io/summer2026/notes/the-treatment-structure.html)
 : [](#)
   : Chapter 4 in Milliken and Johnson. 
 
 June 9
 : Treatment structure II
-  : [](https://stat720.github.io/summer2026/notes/what-you-ask-of-a-designed-experiment.html)  [](../scripts/06172025_trt_inclass.Rmd) 
+  : [html](https://stat720.github.io/summer2026/notes/what-you-ask-of-a-designed-experiment.html)  [](../scripts/06172025_trt_inclass.Rmd) 
 : [](#)
   : Chapter 4 in Milliken and Johnson. 
 
