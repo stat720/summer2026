@@ -12,6 +12,10 @@ fig:unnamed-chunk-11
 fig:unnamed-chunk-12
 fig:unnamed-chunk-13
 fig:unnamed-chunk-14
+fig:unnamed-chunk-15
+tab:unnamed-chunk-16
+tab:unnamed-chunk-17
+tab:unnamed-chunk-18
 welcome-to-stat-720
 about-this-course
 logistics
@@ -62,6 +66,15 @@ treatment-structure
 types-of-treatment-structures
 where-is-the-treatment-structure-connected-to-the-statistical-model
 tomorrow-1
+what-you-ask-of-a-designed-experiment
+announcements-3
+review-3
+anova
+in-case-you-were-wondering-anova-and-types-of-sums-of-squares
+setting-the-stage-estimated-marginal-means-aka-least-squares-means
+example-1
+discussion
+tomorrow-2
 semester-project
 learning-objectives
 partial-deadlines
