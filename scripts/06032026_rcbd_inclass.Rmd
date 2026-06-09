@@ -33,11 +33,32 @@ m <- lm(yield ~ 1 + gen + rep, data= df)
 # inspect X
 model.matrix(m)
 
+coef(m)
+
 nrow(df) - 3 -17 -1
 # these options will affect the baseline for the estimation of the effects 
 # options(contrasts = c("contr.sum", "contr.poly"))
 # options(contrasts = c("contr.treatment", "contr.poly"))
 ```
+
+```{r}
+
+options(contrasts = c("contr.sum", "contr.poly"))
+
+m3 <- lm(yield ~ 1 + gen + rep, data= df)
+
+# inspect X
+model.matrix(m3)
+
+coef(m3)
+
+nrow(df) - 3 -17 -1
+# these options will affect the baseline for the estimation of the effects 
+# 
+# options(contrasts = c("contr.treatment", "contr.poly"))
+```
+
+
 
 ```{r}
 # check for constant variance 
