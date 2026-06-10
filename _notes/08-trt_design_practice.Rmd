@@ -1,0 +1,43 @@
+# Applied examples    
+June 10th, 2026  
+
+## Announcements 
+
+- Homework due this Friday  
+- Project proposal due this Friday  
+
+## Applied example for today 
+
+[R script](../scripts/06102026_trt.Rmd)
+
+### Discussion 
+
+- What is the risk of making inference over a single treatment factor when the estimated interaction seemed to be relevant to explain variability in the data? 
+- Where do the degrees of freedom come from?  
+
+## Some topics that will arise today 
+
+Consider the general linear model for a specific case of an experiment with a two-wat factorial in a CRD: 
+
+$$y_{ijk} \sim N(\mu_{ijk}, \sigma^2), \\ \mu_{ijk} = \mu + A_i +C_j + AC_{ij},$$
+
+where $A_i$ is the effect of the $i$th level of $A$, $C_j$ is the effect of the $j$th level of $C$, and $AC_{ij}$ is the interaction between the $i$th level of $A$ and the $j$th level of $C$. 
+
+Oftentimes, the objective of our study is to make mean comparisons: essentially, we're interested in the **mean difference** as much (or more) as the treatment mean estimate. We can consider the mean difference is $\mu_i - \mu_{i'}$, where $i \neq i'$. We could find different approaches to comparing said means:
+
+- Evaluate the mean difference $\mu_i - \mu_{i'}$ and its 95% confidence interval. 
+- Do a hypothesis test where $H_0: \mu_i - \mu_{i'} = 0$ and $H_a: \mu_i - \mu_{i'} \neq 0$ 
+
+
+The objective of our study can also justo be obtaining treatment mean estimates. To describe them, we probably want to have point estimates and 95% confidence intervals. 
+
+Considering all the above:
+
+- How to obtain a confidence interval: $CI_{\hat{\theta}, 95\%} = \hat{\theta} \pm se(\hat{\theta}) \cdot t_{\frac{\alpha}{2}, dfe}$. 
+- Let's discuss what that $dfe$ may be. 
+
+## Tomorrow & Friday 
+
+- No class. 
+- Submit proposal and homework. 
+

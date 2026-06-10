@@ -16,4 +16,5 @@ Keep in mid that all the code to generate this website and the class notes can b
 
 ## Treatment structure (week 2) 
 
-- Days 7-8 -- 06/09 and 06/10 [[get R code](scripts/06092026_trt.Rmd)]
+- Day 7 -- 06/09 [[get R code](scripts/06092026_trt_inclass.Rmd)]
+- Day 8 -- 06/10 [[get R code](scripts/06102026_trt_inclass.Rmd)]

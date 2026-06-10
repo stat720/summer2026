@@ -1,7 +1,7 @@
 ---
-title: "Day 7"
+title: "Day 8"
 author: "J Lacasa"
-date: "2026-06-09"
+date: "2026-06-10"
 output: html_document
 ---
 
@@ -28,8 +28,7 @@ df_pigs %>%
 ```
 # Fit CRD model to the data 
 
-$$y_{ijk} = \mu + T_j + D_k + (TD)_{jk} + \varepsilon_{ijk}, \ \varepsilon_{ijk} \ \text{iid} \ N(0, 
-\sigma^2) $$ 
+$$y_{ijk} = \mu + T_j + D_k + (TD)_{jk} + \varepsilon_{ijk}, \ \varepsilon_{ijk} \ \text{iid}\sim \ N(0, \sigma^2) $$ 
 
 ```{r}
 model1 <- lm(Serum_haptoglobin_mg.dL ~ Trt * Day, data = df_pigs)
@@ -60,5 +59,11 @@ cld(means_all)
 ```{r}
 means_38 <- emmeans(model1, ~ Trt:Day, at = list(Day = "38"))
 cld(means_38)
+```
+
+# What if we ignore the possibility of an interaction 
+
+```{r}
+model2 <- lm(Serum_haptoglobin_mg.dL ~ Trt + Day, data = df_pigs)
 ```
 
