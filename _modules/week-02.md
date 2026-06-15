@@ -24,5 +24,4 @@ June 11
 June 12
 : No class
   : **HW 1 due**{: .label .label-red }
-  : **HW 2**{: .label .label-green }
   
