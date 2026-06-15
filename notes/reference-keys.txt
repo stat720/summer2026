@@ -16,6 +16,8 @@ fig:unnamed-chunk-15
 tab:unnamed-chunk-16
 tab:unnamed-chunk-17
 tab:unnamed-chunk-18
+fig:unnamed-chunk-20
+fig:unnamed-chunk-21
 welcome-to-stat-720
 about-this-course
 logistics
@@ -81,6 +83,14 @@ applied-example-for-today
 discussion-1
 some-topics-that-will-arise-today
 tomorrow-friday
+applied-linear-mixed-models-i
+announcements-5
+applied-linear-mixed-models
+review-random-variables
+demo-normally-distributed-random-variable
+review-variance-covariance
+review-designs
+split-plot-designs
 semester-project
 learning-objectives
 partial-deadlines
