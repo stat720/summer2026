@@ -1,0 +1,29 @@
+---
+title: "In class 06/15/2026"
+author: "J Lacasa"
+date: "2026-06-15"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Random vars
+
+```{r}
+# take a distribution
+y <- rnorm(10^6, mean = 0, sd = sqrt(100))
+b <- rnorm(4, mean = 0, sd = sqrt(100))
+data.frame(y = y) |> 
+  ggplot(aes(y))+
+  geom_histogram()+
+  geom_point(aes(y = 0, x = b), data = data.frame(b=b), color ="tomato")
+```
+
+
+
+
+
+
+
