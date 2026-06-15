@@ -4,6 +4,9 @@ June 15th, 2026
 ## Announcements 
 
 - Homeworks review 
+  - "An RCBD is an experimental design used to reduce variability among experimental units" 
+  - 
+
 - Initiating a hybrid approach in the next few weeks 
 
 ## Applied Linear Mixed Models  
