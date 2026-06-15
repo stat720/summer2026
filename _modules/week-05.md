@@ -2,16 +2,16 @@
 title: More Practice/Power analysis 
 ---
 
-June 29 (Online)
-: Power analysis I 
+June 29 
+: ((Online)) Power analysis I 
   : [](https://stat720.github.io/summer2025/notes/power-analysis.html)
 
 June 30 
 : Power analysis II 
   : [](https://stat720.github.io/summer2025/notes/power-analysis-ii.html)
 
-July 1 (Online)
-: Analysis and inference for the split plot analysis    
+July 1 
+: ((Online)) Analysis and inference for the split plot analysis    
   : [](https://stat720.github.io/summer2025/notes/analysis-and-inference-for-a-split-plot-design.html)  [](../scripts/07032025_muffin_analysis.Rmd)
 
 July 2 
