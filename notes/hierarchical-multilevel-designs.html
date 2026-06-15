@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Day 9 Applied Linear Mixed Models I | STAT 720 - Design of Experiments</title>
-  <meta name="description" content="Day 9 Applied Linear Mixed Models I | STAT 720 - Design of Experiments" />
+  <title>Day 10 Hierarchical (Multilevel) Designs | STAT 720 - Design of Experiments</title>
+  <meta name="description" content="Day 10 Hierarchical (Multilevel) Designs | STAT 720 - Design of Experiments" />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Day 9 Applied Linear Mixed Models I | STAT 720 - Design of Experiments" />
+  <meta property="og:title" content="Day 10 Hierarchical (Multilevel) Designs | STAT 720 - Design of Experiments" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Day 9 Applied Linear Mixed Models I | STAT 720 - Design of Experiments" />
+  <meta name="twitter:title" content="Day 10 Hierarchical (Multilevel) Designs | STAT 720 - Design of Experiments" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="applied-examples.html"/>
-<link rel="next" href="hierarchical-multilevel-designs.html"/>
+<link rel="prev" href="applied-linear-mixed-models-i.html"/>
+<link rel="next" href="semester-project.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -296,99 +296,230 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="applied-linear-mixed-models-i" class="section level1 hasAnchor" number="9">
-<h1><span class="header-section-number">Day 9</span> Applied Linear Mixed Models I<a href="applied-linear-mixed-models-i.html#applied-linear-mixed-models-i" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>June 15th, 2026</p>
-<div id="announcements-5" class="section level2 hasAnchor" number="9.1">
-<h2><span class="header-section-number">9.1</span> Announcements<a href="applied-linear-mixed-models-i.html#announcements-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="hierarchical-multilevel-designs" class="section level1 hasAnchor" number="10">
+<h1><span class="header-section-number">Day 10</span> Hierarchical (Multilevel) Designs<a href="hierarchical-multilevel-designs.html#hierarchical-multilevel-designs" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>June 15th, 2025</p>
+<div id="announcements-6" class="section level2 hasAnchor" number="10.1">
+<h2><span class="header-section-number">10.1</span> Announcements<a href="hierarchical-multilevel-designs.html#announcements-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
-<li>Homeworks review
-<ul>
-<li>“An RCBD is an experimental design used to reduce variability among experimental units”</li>
-</ul></li>
-<li>Initiating a hybrid approach in the next few weeks</li>
+<li>ONLINE class tomorrow (Wednesday 06-17)</li>
 </ul>
 </div>
-<div id="applied-linear-mixed-models" class="section level2 hasAnchor" number="9.2">
-<h2><span class="header-section-number">9.2</span> Applied Linear Mixed Models<a href="applied-linear-mixed-models-i.html#applied-linear-mixed-models" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Today and Thursday, we’ll focus on the models behind most models for analyzing designed experiments.</p>
-<div id="review-random-variables" class="section level3 hasAnchor" number="9.2.1">
-<h3><span class="header-section-number">9.2.1</span> Review: random variables<a href="applied-linear-mixed-models-i.html#review-random-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Data are typically considered a random variable (e.g., <span class="math inline">\(y\sim N(\mu, \sigma^2)\)</span>.
-Random variables are usually described with their properties like the expected value and variance.
-The expected value and variance are the first and second central moments of a distribution, respectively.
-Regardless of the distribution of a random variable <span class="math inline">\(y\)</span>, we could calculate its expected value <span class="math inline">\(E(y)\)</span> and variance <span class="math inline">\(Var(y)\)</span>.
-The expected value measures the average outcome of <span class="math inline">\(y\)</span>.
-The variance measures the dispersion of <span class="math inline">\(y\)</span>, i.e. how far the possible outcomes are spread out from their average.</p>
-<div id="demo-normally-distributed-random-variable" class="section level4 hasAnchor" number="9.2.1.1">
-<h4><span class="header-section-number">9.2.1.1</span> Demo: normally distributed random variable<a href="applied-linear-mixed-models-i.html#demo-normally-distributed-random-variable" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-</div>
-<div id="review-variance-covariance" class="section level4 hasAnchor" number="9.2.1.2">
-<h4><span class="header-section-number">9.2.1.2</span> Review: variance-covariance<a href="applied-linear-mixed-models-i.html#review-variance-covariance" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>The variance of a random variable can be conceived as the level of dispersion in a variable.
-The covariance between two random variables means how the two random variables behave relative to each other.
-Essentially, it quantifies the relationship between their joint variability.
-For example, the covariance between two variables <span class="math inline">\(y_1\)</span> and <span class="math inline">\(y_2\)</span> will make<br />
-Note that the variance of a random variable is the covariance of a random variable with itself.
-Consider two variables <span class="math inline">\(y_1\)</span> and <span class="math inline">\(y_2\)</span> each with a variance of 1 and a covariance of 0.6.
-Using the notation we’ve been using in class, that can be written as</p>
-<p><span class="math display">\[\mathbf{y} \sim N (\boldsymbol{\mu}, \mathbf{V}),\]</span></p>
-<p>where <span class="math inline">\(\mathbf{y}\)</span> is the vector containing the variables <span class="math inline">\(y_1\)</span> and <span class="math inline">\(y_2\)</span>, <span class="math inline">\(\mathbf{y} \equiv [y_1, y_2]&#39;\)</span>,
-<span class="math inline">\(\boldsymbol{\mu}\)</span> is the mean vector, <span class="math inline">\(\boldsymbol{\mu} \equiv [0,0]&#39;\)</span>, and
-<span class="math inline">\(\mathbf{V}\)</span> is the variance-covariance matrix. We can say that <span class="math inline">\(\mathbf{V} = \begin{bmatrix} 1 &amp; 0.6 \\ 0.6 &amp; 1\end{bmatrix}\)</span>.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="applied-linear-mixed-models-i.html#cb15-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">43</span>)</span>
-<span id="cb15-2"><a href="applied-linear-mixed-models-i.html#cb15-2" tabindex="-1"></a><span class="co"># some covariance</span></span>
-<span id="cb15-3"><a href="applied-linear-mixed-models-i.html#cb15-3" tabindex="-1"></a>mgcv<span class="sc">::</span><span class="fu">rmvn</span>(<span class="dv">1</span>, <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>), <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, .<span class="dv">6</span>, .<span class="dv">6</span>, <span class="dv">1</span>), <span class="at">nrow=</span><span class="dv">2</span>, <span class="at">ncol=</span><span class="dv">2</span>))</span></code></pre></div>
-<pre><code>## [1] -0.03751376 -1.28219179</code></pre>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="applied-linear-mixed-models-i.html#cb17-1" tabindex="-1"></a>mgcv<span class="sc">::</span><span class="fu">rmvn</span>(<span class="dv">1</span>, <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>), <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, .<span class="dv">6</span>, .<span class="dv">6</span>, <span class="dv">1</span>), <span class="at">nrow=</span><span class="dv">2</span>, <span class="at">ncol=</span><span class="dv">2</span>))</span></code></pre></div>
-<pre><code>## [1] -0.48596752  0.08056847</code></pre>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="applied-linear-mixed-models-i.html#cb19-1" tabindex="-1"></a>mgcv<span class="sc">::</span><span class="fu">rmvn</span>(<span class="dv">1</span>, <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>), <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, .<span class="dv">6</span>, .<span class="dv">6</span>, <span class="dv">1</span>), <span class="at">nrow=</span><span class="dv">2</span>, <span class="at">ncol=</span><span class="dv">2</span>))</span></code></pre></div>
-<pre><code>## [1] -0.9040981 -0.7644051</code></pre>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="applied-linear-mixed-models-i.html#cb21-1" tabindex="-1"></a>mgcv<span class="sc">::</span><span class="fu">rmvn</span>(<span class="dv">1</span>, <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>), <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, .<span class="dv">6</span>, .<span class="dv">6</span>, <span class="dv">1</span>), <span class="at">nrow=</span><span class="dv">2</span>, <span class="at">ncol=</span><span class="dv">2</span>))</span></code></pre></div>
-<pre><code>## [1] 0.3864344 0.1835374</code></pre>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="applied-linear-mixed-models-i.html#cb23-1" tabindex="-1"></a><span class="co"># no covariance</span></span>
-<span id="cb23-2"><a href="applied-linear-mixed-models-i.html#cb23-2" tabindex="-1"></a>mgcv<span class="sc">::</span><span class="fu">rmvn</span>(<span class="dv">1</span>, <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>), <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>), <span class="at">nrow=</span><span class="dv">2</span>, <span class="at">ncol=</span><span class="dv">2</span>))</span></code></pre></div>
-<pre><code>## [1] -0.6861798 -1.9061368</code></pre>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="applied-linear-mixed-models-i.html#cb25-1" tabindex="-1"></a>mgcv<span class="sc">::</span><span class="fu">rmvn</span>(<span class="dv">1</span>, <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>), <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>), <span class="at">nrow=</span><span class="dv">2</span>, <span class="at">ncol=</span><span class="dv">2</span>))</span></code></pre></div>
-<pre><code>## [1]  1.8037598 -0.9668729</code></pre>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="applied-linear-mixed-models-i.html#cb27-1" tabindex="-1"></a>mgcv<span class="sc">::</span><span class="fu">rmvn</span>(<span class="dv">1</span>, <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>), <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>), <span class="at">nrow=</span><span class="dv">2</span>, <span class="at">ncol=</span><span class="dv">2</span>))</span></code></pre></div>
-<pre><code>## [1] -0.3531183  1.1069375</code></pre>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="applied-linear-mixed-models-i.html#cb29-1" tabindex="-1"></a>mgcv<span class="sc">::</span><span class="fu">rmvn</span>(<span class="dv">1</span>, <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>), <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>), <span class="at">nrow=</span><span class="dv">2</span>, <span class="at">ncol=</span><span class="dv">2</span>))</span></code></pre></div>
-<pre><code>## [1] 0.5663244 2.0643087</code></pre>
-</div>
-</div>
-</div>
-<div id="review-designs" class="section level2 hasAnchor" number="9.3">
-<h2><span class="header-section-number">9.3</span> Review: Designs<a href="applied-linear-mixed-models-i.html#review-designs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>When we model data generated by designed experiments, we typically put the information from the treatment as affecting the mean (<span class="math inline">\(\mu\)</span>), while the elements from the design (topographical, design, or the logistics of the experiment) indicate which observations are truly independent and which ones are not.</p>
-<ul>
-<li>Completely randomized designs: independent EUs</li>
-<li>Randomized complete block designs: <em>groups</em> of similar EUs</li>
-</ul>
-</div>
-<div id="split-plot-designs" class="section level2 hasAnchor" number="9.4">
-<h2><span class="header-section-number">9.4</span> Split-plot designs<a href="applied-linear-mixed-models-i.html#split-plot-designs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="review-hierarchical-designs" class="section level2 hasAnchor" number="10.2">
+<h2><span class="header-section-number">10.2</span> Review: Hierarchical Designs<a href="hierarchical-multilevel-designs.html#review-hierarchical-designs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>Remember the definition of experimental unit? The smallest unit to which a treatment is independently applied.</li>
 <li>Sometimes we find that there are different sizes of experimental units.</li>
 <li>In such cases, it is important to identify the different experimental units and the randomization scheme. We may be in front of a multilevel design.</li>
 </ul>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-20"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-22"></span>
 <img src="../figures/designs_splitplot.PNG" alt="Schematic description of a field experiment with a split-plot design" width="100%" />
 <p class="caption">
-Figure 9.1: Schematic description of a field experiment with a split-plot design
+Figure 10.1: Schematic description of a field experiment with a split-plot design
 </p>
 </div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-21"></span>
-<img src="../figures/pigs_splitplot.PNG" alt="Schematic description of a swine experiment with a split-plot design" width="80%" />
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-23"></span>
+<img src="../figures/pigs_splitplot.PNG" alt="Schematic description of a swine experiment with a split-plot design" width="70%" />
 <p class="caption">
-Figure 9.2: Schematic description of a swine experiment with a split-plot design
+Figure 10.2: Schematic description of a swine experiment with a split-plot design
 </p>
 </div>
 <ul>
 <li>Sometimes, these differences in the sizes of EUs are not that easy to notice.<br />
 </li>
 <li>More details in Analysis of Messy Data - Ch5.</li>
+</ul>
+<div id="an-applied-example" class="section level3 hasAnchor" number="10.2.1">
+<h3><span class="header-section-number">10.2.1</span> An applied example:<a href="hierarchical-multilevel-designs.html#an-applied-example" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Designed experiment of barley with fungicide treatments.</li>
+<li>Fungicide has some logistic restrictions that make it harder to apply the treatment in a small area only.<br />
+</li>
+<li>Let’s take a look at the maps:</li>
+</ul>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="hierarchical-multilevel-designs.html#cb31-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb31-2"><a href="hierarchical-multilevel-designs.html#cb31-2" tabindex="-1"></a><span class="fu">library</span>(agridat)</span>
+<span id="cb31-3"><a href="hierarchical-multilevel-designs.html#cb31-3" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
+<span id="cb31-4"><a href="hierarchical-multilevel-designs.html#cb31-4" tabindex="-1"></a></span>
+<span id="cb31-5"><a href="hierarchical-multilevel-designs.html#cb31-5" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;durban.splitplot&quot;</span>)</span>
+<span id="cb31-6"><a href="hierarchical-multilevel-designs.html#cb31-6" tabindex="-1"></a>df <span class="ot">&lt;-</span> durban.splitplot</span>
+<span id="cb31-7"><a href="hierarchical-multilevel-designs.html#cb31-7" tabindex="-1"></a></span>
+<span id="cb31-8"><a href="hierarchical-multilevel-designs.html#cb31-8" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_minimal</span>())</span>
+<span id="cb31-9"><a href="hierarchical-multilevel-designs.html#cb31-9" tabindex="-1"></a></span>
+<span id="cb31-10"><a href="hierarchical-multilevel-designs.html#cb31-10" tabindex="-1"></a>p_blocks <span class="ot">&lt;-</span> </span>
+<span id="cb31-11"><a href="hierarchical-multilevel-designs.html#cb31-11" tabindex="-1"></a>  df <span class="sc">|&gt;</span> </span>
+<span id="cb31-12"><a href="hierarchical-multilevel-designs.html#cb31-12" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(bed, row))<span class="sc">+</span></span>
+<span id="cb31-13"><a href="hierarchical-multilevel-designs.html#cb31-13" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="fu">aes</span>(<span class="at">fill =</span> block))<span class="sc">+</span></span>
+<span id="cb31-14"><a href="hierarchical-multilevel-designs.html#cb31-14" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">fill=</span><span class="cn">NA</span>)<span class="sc">+</span></span>
+<span id="cb31-15"><a href="hierarchical-multilevel-designs.html#cb31-15" tabindex="-1"></a>  <span class="fu">coord_fixed</span>()</span>
+<span id="cb31-16"><a href="hierarchical-multilevel-designs.html#cb31-16" tabindex="-1"></a></span>
+<span id="cb31-17"><a href="hierarchical-multilevel-designs.html#cb31-17" tabindex="-1"></a>p_wholeplot <span class="ot">&lt;-</span></span>
+<span id="cb31-18"><a href="hierarchical-multilevel-designs.html#cb31-18" tabindex="-1"></a>  df <span class="sc">|&gt;</span> </span>
+<span id="cb31-19"><a href="hierarchical-multilevel-designs.html#cb31-19" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(bed, row))<span class="sc">+</span></span>
+<span id="cb31-20"><a href="hierarchical-multilevel-designs.html#cb31-20" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="fu">aes</span>(<span class="at">fill =</span> fung))<span class="sc">+</span></span>
+<span id="cb31-21"><a href="hierarchical-multilevel-designs.html#cb31-21" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">fill=</span><span class="cn">NA</span>)<span class="sc">+</span></span>
+<span id="cb31-22"><a href="hierarchical-multilevel-designs.html#cb31-22" tabindex="-1"></a>  <span class="fu">coord_fixed</span>()</span>
+<span id="cb31-23"><a href="hierarchical-multilevel-designs.html#cb31-23" tabindex="-1"></a></span>
+<span id="cb31-24"><a href="hierarchical-multilevel-designs.html#cb31-24" tabindex="-1"></a>p_splitplot <span class="ot">&lt;-</span> </span>
+<span id="cb31-25"><a href="hierarchical-multilevel-designs.html#cb31-25" tabindex="-1"></a>df <span class="sc">|&gt;</span>  </span>
+<span id="cb31-26"><a href="hierarchical-multilevel-designs.html#cb31-26" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(bed, row))<span class="sc">+</span></span>
+<span id="cb31-27"><a href="hierarchical-multilevel-designs.html#cb31-27" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="fu">aes</span>(<span class="at">fill =</span> gen), <span class="at">show.legend=</span> F)<span class="sc">+</span></span>
+<span id="cb31-28"><a href="hierarchical-multilevel-designs.html#cb31-28" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">fill=</span><span class="cn">NA</span>)<span class="sc">+</span></span>
+<span id="cb31-29"><a href="hierarchical-multilevel-designs.html#cb31-29" tabindex="-1"></a>  <span class="fu">coord_fixed</span>()</span>
+<span id="cb31-30"><a href="hierarchical-multilevel-designs.html#cb31-30" tabindex="-1"></a></span>
+<span id="cb31-31"><a href="hierarchical-multilevel-designs.html#cb31-31" tabindex="-1"></a><span class="fu">ggarrange</span>(p_blocks, p_wholeplot, p_splitplot, <span class="at">ncol =</span> <span class="dv">1</span>, <span class="at">nrow =</span> <span class="dv">3</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-24-1.png" alt="" width="672" /></p>
+<p>Rows and beds (aka columns) probably looked somewhat like this:</p>
+<p><img src="https://www.pnw.coop/images/651/images/strip4.jpg" /></p>
+<p><strong>Discuss:</strong></p>
+<ul>
+<li>Experimental units</li>
+<li>Observational units</li>
+<li>Treatment structure</li>
+<li>Design structure</li>
+<li>Could we have had the same treatment structure with a different design?</li>
+</ul>
+</div>
+</div>
+<div id="building-the-anova-skeleton-using-design-aka-topographical-and-treatment-elements" class="section level2 hasAnchor" number="10.3">
+<h2><span class="header-section-number">10.3</span> Building the ANOVA skeleton using design (aka topographical) and treatment elements<a href="hierarchical-multilevel-designs.html#building-the-anova-skeleton-using-design-aka-topographical-and-treatment-elements" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<table class="kable_wrapper">
+<caption>
+<span id="tab:unnamed-chunk-25">Table 10.1: </span>Constructing the ANOVA skeleton
+</caption>
+<tbody>
+<tr>
+<td>
+<table>
+<caption><span id="tab:unnamed-chunk-25">Table 10.1: </span>Experiment or Topographical</caption>
+<thead>
+<tr class="header">
+<th align="left">Source</th>
+<th align="left">df</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Block</td>
+<td align="left">b-1</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">-</td>
+</tr>
+<tr class="odd">
+<td align="left">Fungicide(Block)</td>
+<td align="left">(f-1)*b</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">-</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">-</td>
+</tr>
+<tr class="even">
+<td align="left">Gen(Fung x Block)</td>
+<td align="left">(g-1)<em>f</em>b</td>
+</tr>
+<tr class="odd">
+<td align="left">Total</td>
+<td align="left">N-1</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>
+<table>
+<caption><span id="tab:unnamed-chunk-25">Table 10.1: </span>Treatment</caption>
+<thead>
+<tr class="header">
+<th align="left">Source</th>
+<th align="left">df</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">-</td>
+<td align="left">-</td>
+</tr>
+<tr class="even">
+<td align="left">Fungicide</td>
+<td align="left">f-1</td>
+</tr>
+<tr class="odd">
+<td align="left">-</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">Genotype</td>
+<td align="left">g-1</td>
+</tr>
+<tr class="odd">
+<td align="left">Fung x Gen</td>
+<td align="left">(f-1)(g-1)</td>
+</tr>
+<tr class="even">
+<td align="left">Parallels</td>
+<td align="left">N-(f*g)</td>
+</tr>
+<tr class="odd">
+<td align="left">Total</td>
+<td align="left">N-1</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>
+<table>
+<caption><span id="tab:unnamed-chunk-25">Table 10.1: </span>Combined Table</caption>
+<thead>
+<tr class="header">
+<th align="left">Source</th>
+<th align="left">df</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Block</td>
+<td align="left">b-1</td>
+</tr>
+<tr class="even">
+<td align="left">Fungicide</td>
+<td align="left">t-1</td>
+</tr>
+<tr class="odd">
+<td align="left">Fungicide(Block)</td>
+<td align="left">(f-1)*b - (t-1)</td>
+</tr>
+<tr class="even">
+<td align="left">Genotype</td>
+<td align="left">g-1</td>
+</tr>
+<tr class="odd">
+<td align="left">Fung x Gen</td>
+<td align="left">(f-1)(g-1)</td>
+</tr>
+<tr class="even">
+<td align="left">Pens(Block x Trt) error</td>
+<td align="left">(g-1)* f * b - (g-1 + (f-1)(g-1))</td>
+</tr>
+<tr class="odd">
+<td align="left">Total</td>
+<td align="left">N-1</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="reading" class="section level2 hasAnchor" number="10.4">
+<h2><span class="header-section-number">10.4</span> Reading<a href="hierarchical-multilevel-designs.html#reading" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Analysis of Messy Data - Ch5.</li>
 </ul>
 
 </div>
@@ -398,8 +529,8 @@ Figure 9.2: Schematic description of a swine experiment with a split-plot design
           </div>
         </div>
       </div>
-<a href="applied-examples.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="hierarchical-multilevel-designs.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="applied-linear-mixed-models-i.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="semester-project.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -430,7 +561,7 @@ gitbook.start({
     "size": 2
   },
   "edit": {
-    "link": "https://github.com/stat720/book2025/edit/main/09-mixedmodels.Rmd",
+    "link": "https://github.com/stat720/book2025/edit/main/09-splitplot_anova.Rmd",
     "text": "Edit"
   },
   "history": {
@@ -438,7 +569,7 @@ gitbook.start({
     "text": null
   },
   "view": {
-    "link": "https://github.com/stat720/book2025/blob/main/09-mixedmodels.Rmd",
+    "link": "https://github.com/stat720/book2025/blob/main/09-splitplot_anova.Rmd",
     "text": null
   },
   "download": null,
