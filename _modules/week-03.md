@@ -8,7 +8,7 @@ June 15
 
 June 16 
 : Applied linear mixed models and hierarchical experiment designs: split-plot 
-  : [ ](https://stat720.github.io/summer2026/notes/applied-linear-mixed-models-ii.html)
+  : [html](https://stat720.github.io/summer2026/notes/hierarchical-multilevel-designs.html)
   : **HW 2**{: .label .label-green }
 
 June 17 
