@@ -102,6 +102,23 @@ knitr::kables(
 )
 ```
 
+## Blocks: fixed of random? 
+
+- The assumptions behind $b_j$ vary: 
+- Fundamentals of mixed models 
+  - Assumption behind blocks as fixed effects: there is a 'true' block effect out there. 
+  - Assumption behind blocks as random effects: 
+- Confidence intervals of the means differ depending on the model:  
+  - Blocks as fixed: $\hat\mu \pm t \cdot \sqrt{\frac{\sigma_{\varepsilon}^2 }{b}}$
+  - Blocks as random: $\hat\mu \pm t \cdot \sqrt{\frac{\sigma_{\varepsilon}^2 + \sigma^2_{b}}{b}}$ 
+- Confidence intervals of the means differences don't differ depending on the model:  
+  - Blocks as fixed/as random: $\hat\mu \pm t \cdot \sqrt{\frac{2 \sigma_{\varepsilon}^2 }{b}}$  
+
+
+**Some reading material:** 
+
+- "Should blocks be fixed or random?" [(Dixon, 2016)](https://newprairiepress.org/cgi/viewcontent.cgi?article=1474&context=agstatconference)
+
 ## Reading 
 
 - Analysis of Messy Data - Ch5. 

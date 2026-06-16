@@ -1,0 +1,23 @@
+# Hierarchical (Multilevel) Designs and their implementation in R 
+
+June 17th, 2026 
+
+## Review 
+
+Below is a general description of the mindmap for this course. 
+
+```{r echo=FALSE, fig.cap="Mind map", out.width = '100%'}
+knitr::include_graphics("../figures/mindmap2.jpg")
+```
+
+
+
+## Split-plot designs 
+
+
+## General advice to model data with some type of structure
+
+- 1. Draw a picture of the data generating process, focusing on the structure (blueprint) of the data 
+- 2. Define the groups of similar observations (in terms of structure) 
+- 3. Write out a statistical model 
+- 4. 

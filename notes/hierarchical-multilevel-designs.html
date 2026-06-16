@@ -263,7 +263,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.2.1" data-path="hierarchical-multilevel-designs.html"><a href="hierarchical-multilevel-designs.html#an-applied-example"><i class="fa fa-check"></i><b>10.2.1</b> An applied example:</a></li>
 </ul></li>
 <li class="chapter" data-level="10.3" data-path="hierarchical-multilevel-designs.html"><a href="hierarchical-multilevel-designs.html#building-the-anova-skeleton-using-design-aka-topographical-and-treatment-elements"><i class="fa fa-check"></i><b>10.3</b> Building the ANOVA skeleton using design (aka topographical) and treatment elements</a></li>
-<li class="chapter" data-level="10.4" data-path="hierarchical-multilevel-designs.html"><a href="hierarchical-multilevel-designs.html#reading"><i class="fa fa-check"></i><b>10.4</b> Reading</a></li>
+<li class="chapter" data-level="10.4" data-path="hierarchical-multilevel-designs.html"><a href="hierarchical-multilevel-designs.html#blocks-fixed-of-random"><i class="fa fa-check"></i><b>10.4</b> Blocks: fixed of random?</a></li>
+<li class="chapter" data-level="10.5" data-path="hierarchical-multilevel-designs.html"><a href="hierarchical-multilevel-designs.html#reading"><i class="fa fa-check"></i><b>10.5</b> Reading</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="semester-project.html"><a href="semester-project.html"><i class="fa fa-check"></i><b>11</b> Semester Project</a>
 <ul>
@@ -313,13 +314,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Sometimes we find that there are different sizes of experimental units.</li>
 <li>In such cases, it is important to identify the different experimental units and the randomization scheme. We may be in front of a multilevel design.</li>
 </ul>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-22"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-23"></span>
 <img src="../figures/designs_splitplot.PNG" alt="Schematic description of a field experiment with a split-plot design" width="100%" />
 <p class="caption">
 Figure 10.1: Schematic description of a field experiment with a split-plot design
 </p>
 </div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-23"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-24"></span>
 <img src="../figures/pigs_splitplot.PNG" alt="Schematic description of a swine experiment with a split-plot design" width="70%" />
 <p class="caption">
 Figure 10.2: Schematic description of a swine experiment with a split-plot design
@@ -369,7 +370,7 @@ Figure 10.2: Schematic description of a swine experiment with a split-plot desig
 <span id="cb31-29"><a href="hierarchical-multilevel-designs.html#cb31-29" tabindex="-1"></a>  <span class="fu">coord_fixed</span>()</span>
 <span id="cb31-30"><a href="hierarchical-multilevel-designs.html#cb31-30" tabindex="-1"></a></span>
 <span id="cb31-31"><a href="hierarchical-multilevel-designs.html#cb31-31" tabindex="-1"></a><span class="fu">ggarrange</span>(p_blocks, p_wholeplot, p_splitplot, <span class="at">ncol =</span> <span class="dv">1</span>, <span class="at">nrow =</span> <span class="dv">3</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-24-1.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-25-1.png" alt="" width="672" /></p>
 <p>Rows and beds (aka columns) probably looked somewhat like this:</p>
 <p><img src="https://www.pnw.coop/images/651/images/strip4.jpg" /></p>
 <p><strong>Discuss:</strong></p>
@@ -386,13 +387,13 @@ Figure 10.2: Schematic description of a swine experiment with a split-plot desig
 <h2><span class="header-section-number">10.3</span> Building the ANOVA skeleton using design (aka topographical) and treatment elements<a href="hierarchical-multilevel-designs.html#building-the-anova-skeleton-using-design-aka-topographical-and-treatment-elements" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <table class="kable_wrapper">
 <caption>
-<span id="tab:unnamed-chunk-25">Table 10.1: </span>Constructing the ANOVA skeleton
+<span id="tab:unnamed-chunk-26">Table 10.1: </span>Constructing the ANOVA skeleton
 </caption>
 <tbody>
 <tr>
 <td>
 <table>
-<caption><span id="tab:unnamed-chunk-25">Table 10.1: </span>Experiment or Topographical</caption>
+<caption><span id="tab:unnamed-chunk-26">Table 10.1: </span>Experiment or Topographical</caption>
 <thead>
 <tr class="header">
 <th align="left">Source</th>
@@ -433,7 +434,7 @@ Figure 10.2: Schematic description of a swine experiment with a split-plot desig
 </td>
 <td>
 <table>
-<caption><span id="tab:unnamed-chunk-25">Table 10.1: </span>Treatment</caption>
+<caption><span id="tab:unnamed-chunk-26">Table 10.1: </span>Treatment</caption>
 <thead>
 <tr class="header">
 <th align="left">Source</th>
@@ -474,7 +475,7 @@ Figure 10.2: Schematic description of a swine experiment with a split-plot desig
 </td>
 <td>
 <table>
-<caption><span id="tab:unnamed-chunk-25">Table 10.1: </span>Combined Table</caption>
+<caption><span id="tab:unnamed-chunk-26">Table 10.1: </span>Combined Table</caption>
 <thead>
 <tr class="header">
 <th align="left">Source</th>
@@ -517,8 +518,32 @@ Figure 10.2: Schematic description of a swine experiment with a split-plot desig
 </tbody>
 </table>
 </div>
-<div id="reading" class="section level2 hasAnchor" number="10.4">
-<h2><span class="header-section-number">10.4</span> Reading<a href="hierarchical-multilevel-designs.html#reading" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="blocks-fixed-of-random" class="section level2 hasAnchor" number="10.4">
+<h2><span class="header-section-number">10.4</span> Blocks: fixed of random?<a href="hierarchical-multilevel-designs.html#blocks-fixed-of-random" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>The assumptions behind <span class="math inline">\(b_j\)</span> vary:</li>
+<li>Fundamentals of mixed models
+<ul>
+<li>Assumption behind blocks as fixed effects: there is a ‘true’ block effect out there.</li>
+<li>Assumption behind blocks as random effects:</li>
+</ul></li>
+<li>Confidence intervals of the means differ depending on the model:
+<ul>
+<li>Blocks as fixed: <span class="math inline">\(\hat\mu \pm t \cdot \sqrt{\frac{\sigma_{\varepsilon}^2 }{b}}\)</span></li>
+<li>Blocks as random: <span class="math inline">\(\hat\mu \pm t \cdot \sqrt{\frac{\sigma_{\varepsilon}^2 + \sigma^2_{b}}{b}}\)</span></li>
+</ul></li>
+<li>Confidence intervals of the means differences don’t differ depending on the model:
+<ul>
+<li>Blocks as fixed/as random: <span class="math inline">\(\hat\mu \pm t \cdot \sqrt{\frac{2 \sigma_{\varepsilon}^2 }{b}}\)</span></li>
+</ul></li>
+</ul>
+<p><strong>Some reading material:</strong></p>
+<ul>
+<li>“Should blocks be fixed or random?” <a href="https://newprairiepress.org/cgi/viewcontent.cgi?article=1474&amp;context=agstatconference">(Dixon, 2016)</a></li>
+</ul>
+</div>
+<div id="reading" class="section level2 hasAnchor" number="10.5">
+<h2><span class="header-section-number">10.5</span> Reading<a href="hierarchical-multilevel-designs.html#reading" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>Analysis of Messy Data - Ch5.</li>
 </ul>
