@@ -22,3 +22,4 @@ Keep in mid that all the code to generate this website and the class notes can b
 ## Mixed models and split-plot designs (week 3) 
 
 - Day 9 -- 06/15 [[get R code](scripts/06152026_inclass.Rmd)] 
+- Day 10 -- 06/16 [[get R code](scripts/06162026_inclass.Rmd)] 

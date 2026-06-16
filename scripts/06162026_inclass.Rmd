@@ -1,0 +1,36 @@
+---
+title: "In class Tuesday 06/16"
+author: "J Lacasa"
+date: "2026-06-16"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(agridat)
+library(ggpubr)
+library(lme4)
+
+data("durban.splitplot")
+df <- durban.splitplot
+```
+
+
+```{r}
+str(df)
+m <- lmer(yield ~ fung + gen + fung:gen + (1|block) + (1|block:fung), data = df)
+
+car::Anova(m, type = 2)
+```
+
+```{r}
+emmeans(m, ~fung, contr = list(c(1, -1)))
+```
+```{r}
+emmeans(m, ~gen, contr = list(c(1, -1, rep(0, 68))))
+```
+
