@@ -304,6 +304,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">10.1</span> Announcements<a href="hierarchical-multilevel-designs.html#announcements-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>Homework #2 is posted and due in a week.</li>
+<li>Office hours today are 11.20am-12pm.<br />
+</li>
 <li>ONLINE class tomorrow (Wednesday 06-17)</li>
 </ul>
 </div>
@@ -314,13 +316,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Sometimes we find that there are different sizes of experimental units.</li>
 <li>In such cases, it is important to identify the different experimental units and the randomization scheme. We may be in front of a multilevel design.</li>
 </ul>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-23"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-22"></span>
 <img src="../figures/designs_splitplot.PNG" alt="Schematic description of a field experiment with a split-plot design" width="100%" />
 <p class="caption">
 Figure 10.1: Schematic description of a field experiment with a split-plot design
 </p>
 </div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-24"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-23"></span>
 <img src="../figures/pigs_splitplot.PNG" alt="Schematic description of a swine experiment with a split-plot design" width="70%" />
 <p class="caption">
 Figure 10.2: Schematic description of a swine experiment with a split-plot design
@@ -370,7 +372,7 @@ Figure 10.2: Schematic description of a swine experiment with a split-plot desig
 <span id="cb31-29"><a href="hierarchical-multilevel-designs.html#cb31-29" tabindex="-1"></a>  <span class="fu">coord_fixed</span>()</span>
 <span id="cb31-30"><a href="hierarchical-multilevel-designs.html#cb31-30" tabindex="-1"></a></span>
 <span id="cb31-31"><a href="hierarchical-multilevel-designs.html#cb31-31" tabindex="-1"></a><span class="fu">ggarrange</span>(p_blocks, p_wholeplot, p_splitplot, <span class="at">ncol =</span> <span class="dv">1</span>, <span class="at">nrow =</span> <span class="dv">3</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-25-1.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-24-1.png" alt="" width="672" /></p>
 <p>Rows and beds (aka columns) probably looked somewhat like this:</p>
 <p><img src="https://www.pnw.coop/images/651/images/strip4.jpg" /></p>
 <p><strong>Discuss:</strong></p>
@@ -387,13 +389,13 @@ Figure 10.2: Schematic description of a swine experiment with a split-plot desig
 <h2><span class="header-section-number">10.3</span> Building the ANOVA skeleton using design (aka topographical) and treatment elements<a href="hierarchical-multilevel-designs.html#building-the-anova-skeleton-using-design-aka-topographical-and-treatment-elements" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <table class="kable_wrapper">
 <caption>
-<span id="tab:unnamed-chunk-26">Table 10.1: </span>Constructing the ANOVA skeleton
+<span id="tab:unnamed-chunk-25">Table 10.1: </span>Constructing the ANOVA skeleton
 </caption>
 <tbody>
 <tr>
 <td>
 <table>
-<caption><span id="tab:unnamed-chunk-26">Table 10.1: </span>Experiment or Topographical</caption>
+<caption><span id="tab:unnamed-chunk-25">Table 10.1: </span>Experiment or Topographical</caption>
 <thead>
 <tr class="header">
 <th align="left">Source</th>
@@ -434,7 +436,7 @@ Figure 10.2: Schematic description of a swine experiment with a split-plot desig
 </td>
 <td>
 <table>
-<caption><span id="tab:unnamed-chunk-26">Table 10.1: </span>Treatment</caption>
+<caption><span id="tab:unnamed-chunk-25">Table 10.1: </span>Treatment</caption>
 <thead>
 <tr class="header">
 <th align="left">Source</th>
@@ -475,7 +477,7 @@ Figure 10.2: Schematic description of a swine experiment with a split-plot desig
 </td>
 <td>
 <table>
-<caption><span id="tab:unnamed-chunk-26">Table 10.1: </span>Combined Table</caption>
+<caption><span id="tab:unnamed-chunk-25">Table 10.1: </span>Combined Table</caption>
 <thead>
 <tr class="header">
 <th align="left">Source</th>
