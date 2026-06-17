@@ -266,16 +266,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.4" data-path="hierarchical-multilevel-designs.html"><a href="hierarchical-multilevel-designs.html#blocks-fixed-of-random"><i class="fa fa-check"></i><b>10.4</b> Blocks: fixed of random?</a></li>
 <li class="chapter" data-level="10.5" data-path="hierarchical-multilevel-designs.html"><a href="hierarchical-multilevel-designs.html#reading"><i class="fa fa-check"></i><b>10.5</b> Reading</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="semester-project.html"><a href="semester-project.html"><i class="fa fa-check"></i><b>11</b> Semester Project</a>
+<li class="chapter" data-level="11" data-path="hierarchical-multilevel-designs-and-their-implementation-in-r.html"><a href="hierarchical-multilevel-designs-and-their-implementation-in-r.html"><i class="fa fa-check"></i><b>11</b> Hierarchical (Multilevel) Designs and their implementation in R</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="semester-project.html"><a href="semester-project.html#learning-objectives"><i class="fa fa-check"></i><b>11.1</b> Learning objectives</a></li>
-<li class="chapter" data-level="11.2" data-path="semester-project.html"><a href="semester-project.html#partial-deadlines"><i class="fa fa-check"></i><b>11.2</b> Partial deadlines</a>
+<li class="chapter" data-level="11.1" data-path="hierarchical-multilevel-designs-and-their-implementation-in-r.html"><a href="hierarchical-multilevel-designs-and-their-implementation-in-r.html#review-4"><i class="fa fa-check"></i><b>11.1</b> Review</a></li>
+<li class="chapter" data-level="11.2" data-path="hierarchical-multilevel-designs-and-their-implementation-in-r.html"><a href="hierarchical-multilevel-designs-and-their-implementation-in-r.html#split-plot-designs-1"><i class="fa fa-check"></i><b>11.2</b> Split-plot designs</a></li>
+<li class="chapter" data-level="11.3" data-path="hierarchical-multilevel-designs-and-their-implementation-in-r.html"><a href="hierarchical-multilevel-designs-and-their-implementation-in-r.html#general-advice-to-model-data-with-some-type-of-structure"><i class="fa fa-check"></i><b>11.3</b> General advice to model data with some type of structure</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="semester-project.html"><a href="semester-project.html"><i class="fa fa-check"></i><b>12</b> Semester Project</a>
 <ul>
-<li class="chapter" data-level="11.2.1" data-path="semester-project.html"><a href="semester-project.html#project-proposal---due-friday-june-12-at-2pm-ct"><i class="fa fa-check"></i><b>11.2.1</b> Project proposal - Due Friday June 12 at 2pm CT</a></li>
-<li class="chapter" data-level="11.2.2" data-path="semester-project.html"><a href="semester-project.html#written-report---due-wednesday-july-1-at-2pm-ct-for-peer-review"><i class="fa fa-check"></i><b>11.2.2</b> Written report - Due Wednesday July 1 at 2pm CT for peer review</a></li>
-<li class="chapter" data-level="11.2.3" data-path="semester-project.html"><a href="semester-project.html#oral-presentation---somewhere-between-july-8---july-14"><i class="fa fa-check"></i><b>11.2.3</b> Oral presentation - Somewhere between July 8 - July 14</a></li>
-<li class="chapter" data-level="11.2.4" data-path="semester-project.html"><a href="semester-project.html#final-written-report---due-wednesday-july-16-at-1159pm-ct"><i class="fa fa-check"></i><b>11.2.4</b> FINAL written report - Due Wednesday July 16 at 11:59pm CT</a></li>
-<li class="chapter" data-level="11.2.5" data-path="semester-project.html"><a href="semester-project.html#practical-reads"><i class="fa fa-check"></i><b>11.2.5</b> Practical reads</a></li>
+<li class="chapter" data-level="12.1" data-path="semester-project.html"><a href="semester-project.html#learning-objectives"><i class="fa fa-check"></i><b>12.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="12.2" data-path="semester-project.html"><a href="semester-project.html#partial-deadlines"><i class="fa fa-check"></i><b>12.2</b> Partial deadlines</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="semester-project.html"><a href="semester-project.html#project-proposal---due-friday-june-12-at-2pm-ct"><i class="fa fa-check"></i><b>12.2.1</b> Project proposal - Due Friday June 12 at 2pm CT</a></li>
+<li class="chapter" data-level="12.2.2" data-path="semester-project.html"><a href="semester-project.html#written-report---due-wednesday-july-1-at-2pm-ct-for-peer-review"><i class="fa fa-check"></i><b>12.2.2</b> Written report - Due Wednesday July 1 at 2pm CT for peer review</a></li>
+<li class="chapter" data-level="12.2.3" data-path="semester-project.html"><a href="semester-project.html#oral-presentation---somewhere-between-july-8---july-14"><i class="fa fa-check"></i><b>12.2.3</b> Oral presentation - Somewhere between July 8 - July 14</a></li>
+<li class="chapter" data-level="12.2.4" data-path="semester-project.html"><a href="semester-project.html#final-written-report---due-wednesday-july-16-at-1159pm-ct"><i class="fa fa-check"></i><b>12.2.4</b> FINAL written report - Due Wednesday July 16 at 11:59pm CT</a></li>
+<li class="chapter" data-level="12.2.5" data-path="semester-project.html"><a href="semester-project.html#practical-reads"><i class="fa fa-check"></i><b>12.2.5</b> Practical reads</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -374,13 +380,13 @@ Using the notation we’ve been using in class, that can be written as</p>
 <li>Sometimes we find that there are different sizes of experimental units.</li>
 <li>In such cases, it is important to identify the different experimental units and the randomization scheme. We may be in front of a multilevel design.</li>
 </ul>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-20"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-55"></span>
 <img src="../figures/designs_splitplot.PNG" alt="Schematic description of a field experiment with a split-plot design" width="100%" />
 <p class="caption">
 Figure 9.1: Schematic description of a field experiment with a split-plot design
 </p>
 </div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-21"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-56"></span>
 <img src="../figures/pigs_splitplot.PNG" alt="Schematic description of a swine experiment with a split-plot design" width="80%" />
 <p class="caption">
 Figure 9.2: Schematic description of a swine experiment with a split-plot design
