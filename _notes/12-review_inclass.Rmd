@@ -1,0 +1,45 @@
+# Review: hierarchical multilevel models 
+
+June 18th, 2026
+
+In-class activity 
+
+A study was designed to determine the effect on the incidence of root rot, of variety of wheat, kinds of dust for seed treatment, method of application of the dust, and efficacy of soil inoculation with the root-rot organism. We have a data frame with 160 observations on the following 9 variables that describe a designed experiment: 
+
+- `row` row: equivalent to "longitude" in the field coordinates 
+- `col` column: equivalent to "latitude" in the field coordinates 
+- `yield` yield: response variable 
+- `inoc` inoculate: indicator whether soil was inoculated with root rot or not  
+- `gen` genotype 
+- `dry` dry/wet dust application 
+- `dust` dust treatment 
+- `block` block: the field was divided in 4 equally-sized subsections that showed approximately similar characteristics. 
+
+```{r}
+url <- "https://raw.githubusercontent.com/stat720/summer2026/refs/heads/main/data/data_inclass_06182026.csv"
+df <- read.csv(url)
+```
+
+
+## Exercises 
+
+### Data structure 
+1. Draw a figure of the structure in the data. Do not consider the treatments yet.  
+
+### Designed experiment  
+2a. Draw a figure of the different randomization steps. 
+2b. Indicate the experimental units for the different treatment factors. 
+2c. How many observations do you have for each treatment factor? 
+2d. What are the treatment structure and the design structure? 
+
+### Stat model
+3a. Write the statistical model that describes the data generating process. 
+3b. Fit the model in (3) to the data using R. 
+
+### Bonus 
+4. How would you name this experiment design? 
+
+
+## Acknowledgements 
+
+- Data come from the [`agridat`](https://cran.r-project.org/web/packages/agridat/agridat.pdf) package. 

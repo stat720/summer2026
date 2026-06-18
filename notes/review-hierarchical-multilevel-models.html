@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Day 10 Hierarchical (Multilevel) Designs | STAT 720 - Design of Experiments</title>
-  <meta name="description" content="Day 10 Hierarchical (Multilevel) Designs | STAT 720 - Design of Experiments" />
+  <title>Day 12 Review: hierarchical multilevel models | STAT 720 - Design of Experiments</title>
+  <meta name="description" content="Day 12 Review: hierarchical multilevel models | STAT 720 - Design of Experiments" />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Day 10 Hierarchical (Multilevel) Designs | STAT 720 - Design of Experiments" />
+  <meta property="og:title" content="Day 12 Review: hierarchical multilevel models | STAT 720 - Design of Experiments" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Day 10 Hierarchical (Multilevel) Designs | STAT 720 - Design of Experiments" />
+  <meta name="twitter:title" content="Day 12 Review: hierarchical multilevel models | STAT 720 - Design of Experiments" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="applied-linear-mixed-models-i.html"/>
-<link rel="next" href="hierarchical-multilevel-designs-and-their-implementation-in-r.html"/>
+<link rel="prev" href="hierarchical-multilevel-designs-and-their-implementation-in-r.html"/>
+<link rel="next" href="semester-project.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -314,257 +314,55 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="hierarchical-multilevel-designs" class="section level1 hasAnchor" number="10">
-<h1><span class="header-section-number">Day 10</span> Hierarchical (Multilevel) Designs<a href="hierarchical-multilevel-designs.html#hierarchical-multilevel-designs" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>June 16th, 2025</p>
-<div id="announcements-6" class="section level2 hasAnchor" number="10.1">
-<h2><span class="header-section-number">10.1</span> Announcements<a href="hierarchical-multilevel-designs.html#announcements-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="review-hierarchical-multilevel-models" class="section level1 hasAnchor" number="12">
+<h1><span class="header-section-number">Day 12</span> Review: hierarchical multilevel models<a href="review-hierarchical-multilevel-models.html#review-hierarchical-multilevel-models" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>June 18th, 2026</p>
+<p>In-class activity</p>
+<p>A study was designed to determine the effect on the incidence of root rot, of variety of wheat, kinds of dust for seed treatment, method of application of the dust, and efficacy of soil inoculation with the root-rot organism. We have a data frame with 160 observations on the following 9 variables that describe a designed experiment:</p>
 <ul>
-<li>Homework #2 is posted and due in a week.</li>
-<li>Office hours today are 11.20am-12pm.<br />
+<li><code>row</code> row: equivalent to “longitude” in the field coordinates</li>
+<li><code>col</code> column: equivalent to “latitude” in the field coordinates</li>
+<li><code>yield</code> yield: response variable</li>
+<li><code>inoc</code> inoculate: indicator whether soil was inoculated with root rot or not<br />
 </li>
-<li>ONLINE class tomorrow (Wednesday 06-17)</li>
+<li><code>gen</code> genotype</li>
+<li><code>dry</code> dry/wet dust application</li>
+<li><code>dust</code> dust treatment</li>
+<li><code>block</code> block: the field was divided in 4 equally-sized subsections that showed approximately similar characteristics.</li>
 </ul>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="review-hierarchical-multilevel-models.html#cb32-1" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://raw.githubusercontent.com/stat720/summer2026/refs/heads/main/data/data_inclass_06182026.csv&quot;</span></span>
+<span id="cb32-2"><a href="review-hierarchical-multilevel-models.html#cb32-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(url)</span></code></pre></div>
+<div id="exercises" class="section level2 hasAnchor" number="12.1">
+<h2><span class="header-section-number">12.1</span> Exercises<a href="review-hierarchical-multilevel-models.html#exercises" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="data-structure" class="section level3 hasAnchor" number="12.1.1">
+<h3><span class="header-section-number">12.1.1</span> Data structure<a href="review-hierarchical-multilevel-models.html#data-structure" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>Draw a figure of the structure in the data. Do not consider the treatments yet.</li>
+</ol>
 </div>
-<div id="review-hierarchical-designs" class="section level2 hasAnchor" number="10.2">
-<h2><span class="header-section-number">10.2</span> Review: Hierarchical Designs<a href="hierarchical-multilevel-designs.html#review-hierarchical-designs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li>Remember the definition of experimental unit? The smallest unit to which a treatment is independently applied.</li>
-<li>Sometimes we find that there are different sizes of experimental units.</li>
-<li>In such cases, it is important to identify the different experimental units and the randomization scheme. We may be in front of a multilevel design.</li>
-</ul>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-22"></span>
-<img src="../figures/designs_splitplot.PNG" alt="Schematic description of a field experiment with a split-plot design" width="100%" />
-<p class="caption">
-Figure 10.1: Schematic description of a field experiment with a split-plot design
-</p>
+<div id="designed-experiment" class="section level3 hasAnchor" number="12.1.2">
+<h3><span class="header-section-number">12.1.2</span> Designed experiment<a href="review-hierarchical-multilevel-models.html#designed-experiment" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>2a. Draw a figure of the different randomization steps.
+2b. Indicate the experimental units for the different treatment factors.
+2c. How many observations do you have for each treatment factor?
+2d. What are the treatment structure and the design structure?</p>
 </div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-23"></span>
-<img src="../figures/pigs_splitplot.PNG" alt="Schematic description of a swine experiment with a split-plot design" width="70%" />
-<p class="caption">
-Figure 10.2: Schematic description of a swine experiment with a split-plot design
-</p>
+<div id="stat-model" class="section level3 hasAnchor" number="12.1.3">
+<h3><span class="header-section-number">12.1.3</span> Stat model<a href="review-hierarchical-multilevel-models.html#stat-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>3a. Write the statistical model that describes the data generating process.
+3b. Fit the model in (3) to the data using R.</p>
 </div>
-<ul>
-<li>Sometimes, these differences in the sizes of EUs are not that easy to notice.<br />
-</li>
-<li>More details in Analysis of Messy Data - Ch5.</li>
-</ul>
-<div id="an-applied-example" class="section level3 hasAnchor" number="10.2.1">
-<h3><span class="header-section-number">10.2.1</span> An applied example:<a href="hierarchical-multilevel-designs.html#an-applied-example" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ul>
-<li>Designed experiment of barley with fungicide treatments.</li>
-<li>Fungicide has some logistic restrictions that make it harder to apply the treatment in a small area only.<br />
-</li>
-<li>Let’s take a look at the maps:</li>
-</ul>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="hierarchical-multilevel-designs.html#cb31-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb31-2"><a href="hierarchical-multilevel-designs.html#cb31-2" tabindex="-1"></a><span class="fu">library</span>(agridat)</span>
-<span id="cb31-3"><a href="hierarchical-multilevel-designs.html#cb31-3" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
-<span id="cb31-4"><a href="hierarchical-multilevel-designs.html#cb31-4" tabindex="-1"></a></span>
-<span id="cb31-5"><a href="hierarchical-multilevel-designs.html#cb31-5" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;durban.splitplot&quot;</span>)</span>
-<span id="cb31-6"><a href="hierarchical-multilevel-designs.html#cb31-6" tabindex="-1"></a>df <span class="ot">&lt;-</span> durban.splitplot</span>
-<span id="cb31-7"><a href="hierarchical-multilevel-designs.html#cb31-7" tabindex="-1"></a></span>
-<span id="cb31-8"><a href="hierarchical-multilevel-designs.html#cb31-8" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_minimal</span>())</span>
-<span id="cb31-9"><a href="hierarchical-multilevel-designs.html#cb31-9" tabindex="-1"></a></span>
-<span id="cb31-10"><a href="hierarchical-multilevel-designs.html#cb31-10" tabindex="-1"></a>p_blocks <span class="ot">&lt;-</span> </span>
-<span id="cb31-11"><a href="hierarchical-multilevel-designs.html#cb31-11" tabindex="-1"></a>  df <span class="sc">|&gt;</span> </span>
-<span id="cb31-12"><a href="hierarchical-multilevel-designs.html#cb31-12" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(bed, row))<span class="sc">+</span></span>
-<span id="cb31-13"><a href="hierarchical-multilevel-designs.html#cb31-13" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="fu">aes</span>(<span class="at">fill =</span> block))<span class="sc">+</span></span>
-<span id="cb31-14"><a href="hierarchical-multilevel-designs.html#cb31-14" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">fill=</span><span class="cn">NA</span>)<span class="sc">+</span></span>
-<span id="cb31-15"><a href="hierarchical-multilevel-designs.html#cb31-15" tabindex="-1"></a>  <span class="fu">coord_fixed</span>()</span>
-<span id="cb31-16"><a href="hierarchical-multilevel-designs.html#cb31-16" tabindex="-1"></a></span>
-<span id="cb31-17"><a href="hierarchical-multilevel-designs.html#cb31-17" tabindex="-1"></a>p_wholeplot <span class="ot">&lt;-</span></span>
-<span id="cb31-18"><a href="hierarchical-multilevel-designs.html#cb31-18" tabindex="-1"></a>  df <span class="sc">|&gt;</span> </span>
-<span id="cb31-19"><a href="hierarchical-multilevel-designs.html#cb31-19" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(bed, row))<span class="sc">+</span></span>
-<span id="cb31-20"><a href="hierarchical-multilevel-designs.html#cb31-20" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="fu">aes</span>(<span class="at">fill =</span> fung))<span class="sc">+</span></span>
-<span id="cb31-21"><a href="hierarchical-multilevel-designs.html#cb31-21" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">fill=</span><span class="cn">NA</span>)<span class="sc">+</span></span>
-<span id="cb31-22"><a href="hierarchical-multilevel-designs.html#cb31-22" tabindex="-1"></a>  <span class="fu">coord_fixed</span>()</span>
-<span id="cb31-23"><a href="hierarchical-multilevel-designs.html#cb31-23" tabindex="-1"></a></span>
-<span id="cb31-24"><a href="hierarchical-multilevel-designs.html#cb31-24" tabindex="-1"></a>p_splitplot <span class="ot">&lt;-</span> </span>
-<span id="cb31-25"><a href="hierarchical-multilevel-designs.html#cb31-25" tabindex="-1"></a>df <span class="sc">|&gt;</span>  </span>
-<span id="cb31-26"><a href="hierarchical-multilevel-designs.html#cb31-26" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(bed, row))<span class="sc">+</span></span>
-<span id="cb31-27"><a href="hierarchical-multilevel-designs.html#cb31-27" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="fu">aes</span>(<span class="at">fill =</span> gen), <span class="at">show.legend=</span> F)<span class="sc">+</span></span>
-<span id="cb31-28"><a href="hierarchical-multilevel-designs.html#cb31-28" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">fill=</span><span class="cn">NA</span>)<span class="sc">+</span></span>
-<span id="cb31-29"><a href="hierarchical-multilevel-designs.html#cb31-29" tabindex="-1"></a>  <span class="fu">coord_fixed</span>()</span>
-<span id="cb31-30"><a href="hierarchical-multilevel-designs.html#cb31-30" tabindex="-1"></a></span>
-<span id="cb31-31"><a href="hierarchical-multilevel-designs.html#cb31-31" tabindex="-1"></a><span class="fu">ggarrange</span>(p_blocks, p_wholeplot, p_splitplot, <span class="at">ncol =</span> <span class="dv">1</span>, <span class="at">nrow =</span> <span class="dv">3</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-24-1.png" alt="" width="672" /></p>
-<p>Rows and beds (aka columns) probably looked somewhat like this:</p>
-<p><img src="https://www.pnw.coop/images/651/images/strip4.jpg" /></p>
-<p><strong>Discuss:</strong></p>
-<ul>
-<li>Experimental units</li>
-<li>Observational units</li>
-<li>Treatment structure</li>
-<li>Design structure</li>
-<li>Could we have had the same treatment structure with a different design?</li>
-</ul>
+<div id="bonus" class="section level3 hasAnchor" number="12.1.4">
+<h3><span class="header-section-number">12.1.4</span> Bonus<a href="review-hierarchical-multilevel-models.html#bonus" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol start="4" style="list-style-type: decimal">
+<li>How would you name this experiment design?</li>
+</ol>
 </div>
 </div>
-<div id="building-the-anova-skeleton-using-design-aka-topographical-and-treatment-elements" class="section level2 hasAnchor" number="10.3">
-<h2><span class="header-section-number">10.3</span> Building the ANOVA skeleton using design (aka topographical) and treatment elements<a href="hierarchical-multilevel-designs.html#building-the-anova-skeleton-using-design-aka-topographical-and-treatment-elements" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<table class="kable_wrapper">
-<caption>
-<span id="tab:unnamed-chunk-25">Table 10.1: </span>Constructing the ANOVA skeleton
-</caption>
-<tbody>
-<tr>
-<td>
-<table>
-<caption><span id="tab:unnamed-chunk-25">Table 10.1: </span>Experiment or Topographical</caption>
-<thead>
-<tr class="header">
-<th align="left">Source</th>
-<th align="left">df</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Block</td>
-<td align="left">b-1</td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-<td align="left">-</td>
-</tr>
-<tr class="odd">
-<td align="left">Fungicide(Block)</td>
-<td align="left">(f-1)*b</td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-<td align="left">-</td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="left">-</td>
-</tr>
-<tr class="even">
-<td align="left">Gen(Fung x Block)</td>
-<td align="left">(g-1)<em>f</em>b</td>
-</tr>
-<tr class="odd">
-<td align="left">Total</td>
-<td align="left">N-1</td>
-</tr>
-</tbody>
-</table>
-</td>
-<td>
-<table>
-<caption><span id="tab:unnamed-chunk-25">Table 10.1: </span>Treatment</caption>
-<thead>
-<tr class="header">
-<th align="left">Source</th>
-<th align="left">df</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">-</td>
-<td align="left">-</td>
-</tr>
-<tr class="even">
-<td align="left">Fungicide</td>
-<td align="left">f-1</td>
-</tr>
-<tr class="odd">
-<td align="left">-</td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="left">Genotype</td>
-<td align="left">g-1</td>
-</tr>
-<tr class="odd">
-<td align="left">Fung x Gen</td>
-<td align="left">(f-1)(g-1)</td>
-</tr>
-<tr class="even">
-<td align="left">Parallels</td>
-<td align="left">N-(f*g)</td>
-</tr>
-<tr class="odd">
-<td align="left">Total</td>
-<td align="left">N-1</td>
-</tr>
-</tbody>
-</table>
-</td>
-<td>
-<table>
-<caption><span id="tab:unnamed-chunk-25">Table 10.1: </span>Combined Table</caption>
-<thead>
-<tr class="header">
-<th align="left">Source</th>
-<th align="left">df</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Block</td>
-<td align="left">b-1</td>
-</tr>
-<tr class="even">
-<td align="left">Fungicide</td>
-<td align="left">t-1</td>
-</tr>
-<tr class="odd">
-<td align="left">Fungicide(Block)</td>
-<td align="left">(f-1)*b - (t-1)</td>
-</tr>
-<tr class="even">
-<td align="left">Genotype</td>
-<td align="left">g-1</td>
-</tr>
-<tr class="odd">
-<td align="left">Fung x Gen</td>
-<td align="left">(f-1)(g-1)</td>
-</tr>
-<tr class="even">
-<td align="left">Pens(Block x Trt) error</td>
-<td align="left">(g-1)* f * b - (g-1 + (f-1)(g-1))</td>
-</tr>
-<tr class="odd">
-<td align="left">Total</td>
-<td align="left">N-1</td>
-</tr>
-</tbody>
-</table>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="blocks-fixed-of-random" class="section level2 hasAnchor" number="10.4">
-<h2><span class="header-section-number">10.4</span> Blocks: fixed of random?<a href="hierarchical-multilevel-designs.html#blocks-fixed-of-random" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="acknowledgements" class="section level2 hasAnchor" number="12.2">
+<h2><span class="header-section-number">12.2</span> Acknowledgements<a href="review-hierarchical-multilevel-models.html#acknowledgements" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
-<li>The assumptions behind <span class="math inline">\(b_j\)</span> vary:</li>
-<li>Fundamentals of mixed models
-<ul>
-<li>Assumption behind blocks as fixed effects: there is a ‘true’ block effect out there.</li>
-<li>Assumption behind blocks as random effects:</li>
-</ul></li>
-<li>Confidence intervals of the means differ depending on the model:
-<ul>
-<li>Blocks as fixed: <span class="math inline">\(\hat\mu \pm t \cdot \sqrt{\frac{\sigma_{\varepsilon}^2 }{b}}\)</span></li>
-<li>Blocks as random: <span class="math inline">\(\hat\mu \pm t \cdot \sqrt{\frac{\sigma_{\varepsilon}^2 + \sigma^2_{b}}{b}}\)</span></li>
-</ul></li>
-<li>Confidence intervals of the means differences don’t differ depending on the model:
-<ul>
-<li>Blocks as fixed/as random: <span class="math inline">\(\hat\mu \pm t \cdot \sqrt{\frac{2 \sigma_{\varepsilon}^2 }{b}}\)</span></li>
-</ul></li>
-</ul>
-<p><strong>Some reading material:</strong></p>
-<ul>
-<li>“Should blocks be fixed or random?” <a href="https://newprairiepress.org/cgi/viewcontent.cgi?article=1474&amp;context=agstatconference">(Dixon, 2016)</a></li>
-</ul>
-</div>
-<div id="reading" class="section level2 hasAnchor" number="10.5">
-<h2><span class="header-section-number">10.5</span> Reading<a href="hierarchical-multilevel-designs.html#reading" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li>Analysis of Messy Data - Ch5.</li>
+<li>Data come from the <a href="https://cran.r-project.org/web/packages/agridat/agridat.pdf"><code>agridat</code></a> package.</li>
 </ul>
 
 </div>
@@ -574,8 +372,8 @@ Figure 10.2: Schematic description of a swine experiment with a split-plot desig
           </div>
         </div>
       </div>
-<a href="applied-linear-mixed-models-i.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="hierarchical-multilevel-designs-and-their-implementation-in-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="hierarchical-multilevel-designs-and-their-implementation-in-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="semester-project.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -606,7 +404,7 @@ gitbook.start({
     "size": 2
   },
   "edit": {
-    "link": "https://github.com/stat720/book2025/edit/main/10-splitplot_anova.Rmd",
+    "link": "https://github.com/stat720/book2025/edit/main/12-review_inclass.Rmd",
     "text": "Edit"
   },
   "history": {
@@ -614,7 +412,7 @@ gitbook.start({
     "text": null
   },
   "view": {
-    "link": "https://github.com/stat720/book2025/blob/main/10-splitplot_anova.Rmd",
+    "link": "https://github.com/stat720/book2025/blob/main/12-review_inclass.Rmd",
     "text": null
   },
   "download": null,
