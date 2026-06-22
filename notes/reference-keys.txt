@@ -22,6 +22,10 @@ fig:unnamed-chunk-22
 fig:unnamed-chunk-23
 tab:unnamed-chunk-25
 fig:unnamed-chunk-26
+fig:unnamed-chunk-30
+fig:unnamed-chunk-31
+fig:unnamed-chunk-32
+fig:unnamed-chunk-33
 welcome-to-stat-720
 about-this-course
 logistics
@@ -113,6 +117,12 @@ designed-experiment
 stat-model
 bonus
 acknowledgements
+review-hierarchical-multilevel-models-cont.
+hierarchical-designs
+review-5
+treatment-structure-1
+design-structure
+exercises-1
 semester-project
 learning-objectives
 partial-deadlines

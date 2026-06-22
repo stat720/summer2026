@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Day 14 Semester Project | STAT 720 - Design of Experiments</title>
-  <meta name="description" content="Day 14 Semester Project | STAT 720 - Design of Experiments" />
+  <title>Day 13 Review: hierarchical multilevel models – cont. | STAT 720 - Design of Experiments</title>
+  <meta name="description" content="Day 13 Review: hierarchical multilevel models – cont. | STAT 720 - Design of Experiments" />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Day 14 Semester Project | STAT 720 - Design of Experiments" />
+  <meta property="og:title" content="Day 13 Review: hierarchical multilevel models – cont. | STAT 720 - Design of Experiments" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Day 14 Semester Project | STAT 720 - Design of Experiments" />
+  <meta name="twitter:title" content="Day 13 Review: hierarchical multilevel models – cont. | STAT 720 - Design of Experiments" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="review-hierarchical-multilevel-models-cont..html"/>
-
+<link rel="prev" href="review-hierarchical-multilevel-models.html"/>
+<link rel="next" href="semester-project.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -324,63 +324,110 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="semester-project" class="section level1 hasAnchor" number="14">
-<h1><span class="header-section-number">Day 14</span> Semester Project<a href="semester-project.html#semester-project" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Semester projects may deal with any topic that interests you [the student], as long as it is approved by the instructor.</p>
-<p>Broadly, projects are expected to <strong>identify a research problem</strong> and <strong>develop a designed experiment that is appropriate for solving that problem</strong>. Projects consist of a manuscript and a tutorial that describes the research problem, the experiment design and the treatment design.</p>
-<div id="learning-objectives" class="section level2 hasAnchor" number="14.1">
-<h2><span class="header-section-number">14.1</span> Learning objectives<a href="semester-project.html#learning-objectives" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="review-hierarchical-multilevel-models-cont." class="section level1 hasAnchor" number="13">
+<h1><span class="header-section-number">Day 13</span> Review: hierarchical multilevel models – cont.<a href="review-hierarchical-multilevel-models-cont..html#review-hierarchical-multilevel-models-cont." class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>June 22nd, 2026</p>
+<div id="hierarchical-designs" class="section level2 hasAnchor" number="13.1">
+<h2><span class="header-section-number">13.1</span> Hierarchical designs<a href="review-hierarchical-multilevel-models-cont..html#hierarchical-designs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A study was designed to determine the effect on the incidence of root rot, of variety of wheat, kinds of dust for seed treatment, method of application of the dust, and efficacy of soil inoculation with the root-rot organism.
+We have a data frame with 160 observations on the following 8 variables that describe a designed experiment:</p>
 <ul>
-<li>Be able to identify an experiment design that is appropriate for answering a given research question and discuss the strengths and weaknesses of that design for answering the question.<br />
+<li><code>row</code> row: equivalent to “longitude” in the field coordinates</li>
+<li><code>col</code> column: equivalent to “latitude” in the field coordinates</li>
+<li><code>yield</code> yield: response variable</li>
+<li><code>inoc</code> inoculate: indicator whether soil was inoculated with root rot or not<br />
 </li>
-<li>Be able to write the materials and methods section of a paper/thesis, including the statistical model that corresponds the experiment design.</li>
+<li><code>gen</code> genotype treatment</li>
+<li><code>dust</code> dust treatment</li>
+<li><code>dry</code> dry or wet dust application</li>
+<li><code>block</code> block: the field was divided in 4 equally-sized subsections that showed approximately similar characteristics.</li>
+</ul>
+<p>Note that:</p>
+<ul>
+<li>The field has 4 areas of similar experimental units (blocks).</li>
+<li>Within each block, the genotype treatments were applied.</li>
+<li>Within each block-genotype, the dry-dust treatments were applied.</li>
+<li>Within each block-genotype-dry-dust, the inoculation treatments were applied.</li>
+</ul>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="review-hierarchical-multilevel-models-cont..html#cb36-1" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://raw.githubusercontent.com/stat720/summer2026/refs/heads/main/data/data_inclass_06182026.csv&quot;</span></span>
+<span id="cb36-2"><a href="review-hierarchical-multilevel-models-cont..html#cb36-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(url)</span></code></pre></div>
+</div>
+<div id="review-5" class="section level2 hasAnchor" number="13.2">
+<h2><span class="header-section-number">13.2</span> Review<a href="review-hierarchical-multilevel-models-cont..html#review-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-30"></span>
+<img src="../figures/mindmap2.jpg" alt="Mind map" width="100%" />
+<p class="caption">
+Figure 13.1: Mind map
+</p>
+</div>
+<div id="treatment-structure-1" class="section level3 hasAnchor" number="13.2.1">
+<h3><span class="header-section-number">13.2.1</span> Treatment structure<a href="review-hierarchical-multilevel-models-cont..html#treatment-structure-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>What treatment factor(s) and/or combinations of treatment factors we’ve got.<br />
+</li>
+<li>Typically defines the fixed effects in a model.</li>
 </ul>
 </div>
-<div id="partial-deadlines" class="section level2 hasAnchor" number="14.2">
-<h2><span class="header-section-number">14.2</span> Partial deadlines<a href="semester-project.html#partial-deadlines" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="project-proposal---due-friday-june-12-at-2pm-ct" class="section level3 hasAnchor" number="14.2.1">
-<h3><span class="header-section-number">14.2.1</span> Project proposal - Due Friday June 12 at 2pm CT<a href="semester-project.html#project-proposal---due-friday-june-12-at-2pm-ct" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Write a page-long project proposal that states your research problem and the objective of your project. An example of an appropriate project proposal can be found <a href="https://stat720.github.io/summer2025/assignments/proposal_example.pdf">here</a>.</p>
+<div id="design-structure" class="section level3 hasAnchor" number="13.2.2">
+<h3><span class="header-section-number">13.2.2</span> Design structure<a href="review-hierarchical-multilevel-models-cont..html#design-structure" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>How we apply said treatment factors in practice (what are the experimental units?).<br />
+</li>
+<li>Typically defines the random effects in a model.</li>
+</ul>
+<p><strong>Hierarchical designs</strong></p>
+<ul>
+<li>Typically, different treatment factors have different EUs.</li>
+<li>Therefore, randomization ocurrs in nested structures.</li>
+</ul>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-31"></span>
+<img src="../figures/designs_splitplot.PNG" alt="Schematic description of a field experiment with a split-plot design" width="100%" />
+<p class="caption">
+Figure 13.2: Schematic description of a field experiment with a split-plot design
+</p>
 </div>
-<div id="written-report---due-wednesday-july-1-at-2pm-ct-for-peer-review" class="section level3 hasAnchor" number="14.2.2">
-<h3><span class="header-section-number">14.2.2</span> Written report - Due Wednesday July 1 at 2pm CT for peer review<a href="semester-project.html#written-report---due-wednesday-july-1-at-2pm-ct-for-peer-review" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Send a manuscript to one of your peers, including:</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-32"></span>
+<img src="../figures/pigs_splitplot.PNG" alt="Schematic description of a swine experiment with a split-plot design" width="70%" />
+<p class="caption">
+Figure 13.3: Schematic description of a swine experiment with a split-plot design
+</p>
+</div>
 <ul>
-<li>Introduction (background &amp; justification of the problem)</li>
-<li>Methods, including:
+<li>The most common statistical model assumes:
 <ul>
-<li>A complete ANOVA table describing the degrees of freedom associated to mean comparisons,</li>
-<li>A clear and complete description of the statistical model,</li>
-<li>R code that would be implemented to fit that model,</li>
+<li>Constant variance,</li>
+<li>Normality,</li>
+<li><strong>Independence</strong> – this changes with hierarchical designs! That’s why we use mixed models.</li>
 </ul></li>
-<li>Expected results</li>
-<li>Discussion of strengths and weaknesses of the experiment design (e.g., compare an RCBD with a split-plot design)</li>
 </ul>
 </div>
-<div id="oral-presentation---somewhere-between-july-8---july-14" class="section level3 hasAnchor" number="14.2.3">
-<h3><span class="header-section-number">14.2.3</span> Oral presentation - Somewhere between July 8 - July 14<a href="semester-project.html#oral-presentation---somewhere-between-july-8---july-14" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Prepare a 15 minute presentation of the core aspects of your project.
-Presentations should include at least:</p>
-<ul>
-<li>Motivation<br />
-</li>
-<li>Methods, including a clear and complete description of the statistical model and code</li>
-<li>Discussion of strengths and weaknesses</li>
-</ul>
 </div>
-<div id="final-written-report---due-wednesday-july-16-at-1159pm-ct" class="section level3 hasAnchor" number="14.2.4">
-<h3><span class="header-section-number">14.2.4</span> FINAL written report - Due Wednesday July 16 at 11:59pm CT<a href="semester-project.html#final-written-report---due-wednesday-july-16-at-1159pm-ct" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Submit your reviewed manuscript on CANVAS, including your peer’s and the instructor’s feedback.</p>
+<div id="exercises-1" class="section level2 hasAnchor" number="13.3">
+<h2><span class="header-section-number">13.3</span> Exercises<a href="review-hierarchical-multilevel-models-cont..html#exercises-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Data structure</strong></p>
+<ol style="list-style-type: decimal">
+<li>Draw a figure of the structure in the data. Do not consider the treatments yet.</li>
+</ol>
+<p><strong>Designed experiment</strong></p>
+<p>2a. Draw a figure of the different randomization steps.
+2b. Indicate the experimental units for the different treatment factors.
+2c. How many observations do you have for each treatment factor?
+2d. What are the treatment structure and the design structure?</p>
+<p>Recall from day 2:</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-33"></span>
+<img src="../figures/fisher_diagram.jpg" alt="Fisher’s diagram ‘The Principles of Field Experimentation’. Figure 1 in [Preece (1990)](https://doi.org/10.2307/2532438)." width="70%" />
+<p class="caption">
+Figure 13.4: Fisher’s diagram ‘The Principles of Field Experimentation’. Figure 1 in <a href="https://doi.org/10.2307/2532438">Preece (1990)</a>.
+</p>
 </div>
-<div id="practical-reads" class="section level3 hasAnchor" number="14.2.5">
-<h3><span class="header-section-number">14.2.5</span> Practical reads<a href="semester-project.html#practical-reads" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ul>
-<li>Casler, M.D. (2015), Fundamentals of Experimental Design: Guidelines for Designing Successful Experiments. Agronomy Journal, 107: 692-705. <a href="https://doi.org/10.2134/agronj2013.0114" class="uri">https://doi.org/10.2134/agronj2013.0114</a><br />
-</li>
-<li>Casler, M.D. (2018). Power and Replication—Designing Powerful Experiments. In Applied Statistics in Agricultural, Biological, and Environmental Sciences (eds B. Glaz and K.M. Yeater). <a href="https://doi.org/10.2134/appliedstatistics.2015.0075.c4" class="uri">https://doi.org/10.2134/appliedstatistics.2015.0075.c4</a></li>
-</ul>
+<p><strong>Stat model</strong></p>
+<p>3a. Write the statistical model that describes the data generating process.
+3b. Fit the model in (3) to the data using R.</p>
+<p><strong>Bonus</strong></p>
+<ol start="4" style="list-style-type: decimal">
+<li>How would you name this experiment design?</li>
+</ol>
 
-</div>
 </div>
 </div>
             </section>
@@ -388,8 +435,8 @@ Presentations should include at least:</p>
           </div>
         </div>
       </div>
-<a href="review-hierarchical-multilevel-models-cont..html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="review-hierarchical-multilevel-models.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="semester-project.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -420,7 +467,7 @@ gitbook.start({
     "size": 2
   },
   "edit": {
-    "link": "https://github.com/stat720/book2025/edit/main/90-project-outline.Rmd",
+    "link": "https://github.com/stat720/book2025/edit/main/13-review_inclass_2.Rmd",
     "text": "Edit"
   },
   "history": {
@@ -428,7 +475,7 @@ gitbook.start({
     "text": null
   },
   "view": {
-    "link": "https://github.com/stat720/book2025/blob/main/90-project-outline.Rmd",
+    "link": "https://github.com/stat720/book2025/blob/main/13-review_inclass_2.Rmd",
     "text": null
   },
   "download": null,

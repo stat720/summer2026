@@ -4,7 +4,7 @@ June 18th, 2026
 
 In-class activity 
 
-A study was designed to determine the effect on the incidence of root rot, of variety of wheat, kinds of dust for seed treatment, method of application of the dust, and efficacy of soil inoculation with the root-rot organism. We have a data frame with 160 observations on the following 9 variables that describe a designed experiment: 
+A study was designed to determine the effect on the incidence of root rot, of variety of wheat, kinds of dust for seed treatment, method of application of the dust, and efficacy of soil inoculation with the root-rot organism. We have a data frame with 160 observations on the following 8 variables that describe a designed experiment: 
 
 - `row` row: equivalent to "longitude" in the field coordinates 
 - `col` column: equivalent to "latitude" in the field coordinates 
@@ -25,6 +25,30 @@ df <- read.csv(url)
 
 ### Data structure 
 1. Draw a figure of the structure in the data. Do not consider the treatments yet.  
+
+```{r}
+df |> 
+  ggplot(aes(col, row))+
+  geom_tile(aes(fill = block))+
+  coord_fixed()
+
+df |> 
+  filter(block == "B1") |> 
+  ggplot(aes(col, row))+
+  geom_tile(aes(fill = gen), color = "black")+
+  coord_fixed()
+
+
+df |> 
+  filter(block == "B1", gen == "Mindum") |> 
+  ggplot(aes(col, row))+
+  geom_tile(aes(fill = paste(dust, dry)), color = "black")+
+  geom_point(aes(fill = inoc), shape =21, size = 3)+
+  coord_fixed()
+
+```
+
+
 
 ### Designed experiment  
 2a. Draw a figure of the different randomization steps. 
