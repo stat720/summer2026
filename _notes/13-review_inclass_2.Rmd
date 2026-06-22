@@ -2,6 +2,14 @@
 
 June 22nd, 2026
 
+## Announcements 
+
+From the online poll: 
+
+- *"I would like to have a better understanding of why df matters"* -- this week and next! 
+- *"A split plot always need to have randomization?"* -- let's go to day 2 (golden rules of designed experiments) 
+- *"I would like to learn more about adaptive designs and/or bayesian experimental design (extra)."* -- STAT 870 
+
 ## Hierarchical designs 
 
 A study was designed to determine the effect on the incidence of root rot, of variety of wheat, kinds of dust for seed treatment, method of application of the dust, and efficacy of soil inoculation with the root-rot organism. 
@@ -92,6 +100,44 @@ knitr::include_graphics("../figures/fisher_diagram.jpg")
 
 3a. Write the statistical model that describes the data generating process. 
 3b. Fit the model in (3) to the data using R. 
+
+```{r message=FALSE, warning=FALSE}
+library(lme4)
+
+m <- lmer(yield ~ inoc*gen*dry*dust + (1|block/gen/dry:dust), data = df)
+
+performance::check_model(m, check = c("normality", "homogeneity"))
+
+summary(m)
+
+varcomp <- VarCorr(m)
+sigma2 <- sigma(m)^2
+sigma2_b <- varcomp$block[1]
+sigma2_wp <- varcomp$`gen:block`[1]
+sigma2_sp <- varcomp$`dust:dry:gen:block`[1]
+
+wp_n <- n_distinct(df$gen)
+sp_n <- n_distinct(df$dry)*n_distinct(df$dust)
+ssp_n <- n_distinct(df$inoc)
+block_n <- n_distinct(df$block)
+
+## se diff (whole plot factor)
+sqrt(2*(sigma2 + ssp_n*sigma2_sp + ssp_n*sp_n*sigma2_wp)/(block_n*ssp_n*sp_n))
+
+emmeans(m, ~ gen, contr = list(c(1, -1)))$contr
+
+## se diff (split plot factor)
+sqrt(2*(sigma2 + ssp_n*sigma2_sp)/(block_n*wp_n*ssp_n))
+
+emmeans(m, ~ dry:dust, contr = list(c(1, -1, rep(0, 8))))$contr
+
+## se diff (split split plot factor)
+sqrt(2*(sigma2)/(block_n*wp_n*sp_n))
+
+emmeans(m, ~ inoc, contr = list(c(1, -1)))$contr
+
+```
+
 
 **Bonus**  
 

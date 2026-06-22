@@ -118,6 +118,7 @@ stat-model
 bonus
 acknowledgements
 review-hierarchical-multilevel-models-cont.
+announcements-7
 hierarchical-designs
 review-5
 treatment-structure-1

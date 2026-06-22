@@ -285,13 +285,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="13" data-path="review-hierarchical-multilevel-models-cont..html"><a href="review-hierarchical-multilevel-models-cont..html"><i class="fa fa-check"></i><b>13</b> Review: hierarchical multilevel models – cont.</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="review-hierarchical-multilevel-models-cont..html"><a href="review-hierarchical-multilevel-models-cont..html#hierarchical-designs"><i class="fa fa-check"></i><b>13.1</b> Hierarchical designs</a></li>
-<li class="chapter" data-level="13.2" data-path="review-hierarchical-multilevel-models-cont..html"><a href="review-hierarchical-multilevel-models-cont..html#review-5"><i class="fa fa-check"></i><b>13.2</b> Review</a>
+<li class="chapter" data-level="13.1" data-path="review-hierarchical-multilevel-models-cont..html"><a href="review-hierarchical-multilevel-models-cont..html#announcements-7"><i class="fa fa-check"></i><b>13.1</b> Announcements</a></li>
+<li class="chapter" data-level="13.2" data-path="review-hierarchical-multilevel-models-cont..html"><a href="review-hierarchical-multilevel-models-cont..html#hierarchical-designs"><i class="fa fa-check"></i><b>13.2</b> Hierarchical designs</a></li>
+<li class="chapter" data-level="13.3" data-path="review-hierarchical-multilevel-models-cont..html"><a href="review-hierarchical-multilevel-models-cont..html#review-5"><i class="fa fa-check"></i><b>13.3</b> Review</a>
 <ul>
-<li class="chapter" data-level="13.2.1" data-path="review-hierarchical-multilevel-models-cont..html"><a href="review-hierarchical-multilevel-models-cont..html#treatment-structure-1"><i class="fa fa-check"></i><b>13.2.1</b> Treatment structure</a></li>
-<li class="chapter" data-level="13.2.2" data-path="review-hierarchical-multilevel-models-cont..html"><a href="review-hierarchical-multilevel-models-cont..html#design-structure"><i class="fa fa-check"></i><b>13.2.2</b> Design structure</a></li>
+<li class="chapter" data-level="13.3.1" data-path="review-hierarchical-multilevel-models-cont..html"><a href="review-hierarchical-multilevel-models-cont..html#treatment-structure-1"><i class="fa fa-check"></i><b>13.3.1</b> Treatment structure</a></li>
+<li class="chapter" data-level="13.3.2" data-path="review-hierarchical-multilevel-models-cont..html"><a href="review-hierarchical-multilevel-models-cont..html#design-structure"><i class="fa fa-check"></i><b>13.3.2</b> Design structure</a></li>
 </ul></li>
-<li class="chapter" data-level="13.3" data-path="review-hierarchical-multilevel-models-cont..html"><a href="review-hierarchical-multilevel-models-cont..html#exercises-1"><i class="fa fa-check"></i><b>13.3</b> Exercises</a></li>
+<li class="chapter" data-level="13.4" data-path="review-hierarchical-multilevel-models-cont..html"><a href="review-hierarchical-multilevel-models-cont..html#exercises-1"><i class="fa fa-check"></i><b>13.4</b> Exercises</a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="semester-project.html"><a href="semester-project.html"><i class="fa fa-check"></i><b>14</b> Semester Project</a>
 <ul>
@@ -327,8 +328,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="review-hierarchical-multilevel-models-cont." class="section level1 hasAnchor" number="13">
 <h1><span class="header-section-number">Day 13</span> Review: hierarchical multilevel models – cont.<a href="review-hierarchical-multilevel-models-cont..html#review-hierarchical-multilevel-models-cont." class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>June 22nd, 2026</p>
-<div id="hierarchical-designs" class="section level2 hasAnchor" number="13.1">
-<h2><span class="header-section-number">13.1</span> Hierarchical designs<a href="review-hierarchical-multilevel-models-cont..html#hierarchical-designs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="announcements-7" class="section level2 hasAnchor" number="13.1">
+<h2><span class="header-section-number">13.1</span> Announcements<a href="review-hierarchical-multilevel-models-cont..html#announcements-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>From the online poll:</p>
+<ul>
+<li><em>“I would like to have a better understanding of why df matters”</em> – this week and next!</li>
+<li><em>“A split plot always need to have randomization?”</em> – let’s go to day 2 (golden rules of designed experiments)</li>
+<li><em>“I would like to learn more about adaptive designs and/or bayesian experimental design (extra).”</em> – STAT 870</li>
+</ul>
+</div>
+<div id="hierarchical-designs" class="section level2 hasAnchor" number="13.2">
+<h2><span class="header-section-number">13.2</span> Hierarchical designs<a href="review-hierarchical-multilevel-models-cont..html#hierarchical-designs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A study was designed to determine the effect on the incidence of root rot, of variety of wheat, kinds of dust for seed treatment, method of application of the dust, and efficacy of soil inoculation with the root-rot organism.
 We have a data frame with 160 observations on the following 8 variables that describe a designed experiment:</p>
 <ul>
@@ -352,24 +362,24 @@ We have a data frame with 160 observations on the following 8 variables that des
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="review-hierarchical-multilevel-models-cont..html#cb36-1" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://raw.githubusercontent.com/stat720/summer2026/refs/heads/main/data/data_inclass_06182026.csv&quot;</span></span>
 <span id="cb36-2"><a href="review-hierarchical-multilevel-models-cont..html#cb36-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(url)</span></code></pre></div>
 </div>
-<div id="review-5" class="section level2 hasAnchor" number="13.2">
-<h2><span class="header-section-number">13.2</span> Review<a href="review-hierarchical-multilevel-models-cont..html#review-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="review-5" class="section level2 hasAnchor" number="13.3">
+<h2><span class="header-section-number">13.3</span> Review<a href="review-hierarchical-multilevel-models-cont..html#review-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-30"></span>
 <img src="../figures/mindmap2.jpg" alt="Mind map" width="100%" />
 <p class="caption">
 Figure 13.1: Mind map
 </p>
 </div>
-<div id="treatment-structure-1" class="section level3 hasAnchor" number="13.2.1">
-<h3><span class="header-section-number">13.2.1</span> Treatment structure<a href="review-hierarchical-multilevel-models-cont..html#treatment-structure-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="treatment-structure-1" class="section level3 hasAnchor" number="13.3.1">
+<h3><span class="header-section-number">13.3.1</span> Treatment structure<a href="review-hierarchical-multilevel-models-cont..html#treatment-structure-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>What treatment factor(s) and/or combinations of treatment factors we’ve got.<br />
 </li>
 <li>Typically defines the fixed effects in a model.</li>
 </ul>
 </div>
-<div id="design-structure" class="section level3 hasAnchor" number="13.2.2">
-<h3><span class="header-section-number">13.2.2</span> Design structure<a href="review-hierarchical-multilevel-models-cont..html#design-structure" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="design-structure" class="section level3 hasAnchor" number="13.3.2">
+<h3><span class="header-section-number">13.3.2</span> Design structure<a href="review-hierarchical-multilevel-models-cont..html#design-structure" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>How we apply said treatment factors in practice (what are the experimental units?).<br />
 </li>
@@ -402,8 +412,8 @@ Figure 13.3: Schematic description of a swine experiment with a split-plot desig
 </ul>
 </div>
 </div>
-<div id="exercises-1" class="section level2 hasAnchor" number="13.3">
-<h2><span class="header-section-number">13.3</span> Exercises<a href="review-hierarchical-multilevel-models-cont..html#exercises-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="exercises-1" class="section level2 hasAnchor" number="13.4">
+<h2><span class="header-section-number">13.4</span> Exercises<a href="review-hierarchical-multilevel-models-cont..html#exercises-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>Data structure</strong></p>
 <ol style="list-style-type: decimal">
 <li>Draw a figure of the structure in the data. Do not consider the treatments yet.</li>
@@ -423,6 +433,111 @@ Figure 13.4: Fisher’s diagram ‘The Principles of Field Experimentation’. F
 <p><strong>Stat model</strong></p>
 <p>3a. Write the statistical model that describes the data generating process.
 3b. Fit the model in (3) to the data using R.</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="review-hierarchical-multilevel-models-cont..html#cb37-1" tabindex="-1"></a><span class="fu">library</span>(lme4)</span>
+<span id="cb37-2"><a href="review-hierarchical-multilevel-models-cont..html#cb37-2" tabindex="-1"></a></span>
+<span id="cb37-3"><a href="review-hierarchical-multilevel-models-cont..html#cb37-3" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lmer</span>(yield <span class="sc">~</span> inoc<span class="sc">*</span>gen<span class="sc">*</span>dry<span class="sc">*</span>dust <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>block<span class="sc">/</span>gen<span class="sc">/</span>dry<span class="sc">:</span>dust), <span class="at">data =</span> df)</span>
+<span id="cb37-4"><a href="review-hierarchical-multilevel-models-cont..html#cb37-4" tabindex="-1"></a></span>
+<span id="cb37-5"><a href="review-hierarchical-multilevel-models-cont..html#cb37-5" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">check_model</span>(m, <span class="at">check =</span> <span class="fu">c</span>(<span class="st">&quot;normality&quot;</span>, <span class="st">&quot;homogeneity&quot;</span>))</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-34-1.png" alt="" width="672" /></p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="review-hierarchical-multilevel-models-cont..html#cb38-1" tabindex="-1"></a><span class="fu">summary</span>(m)</span></code></pre></div>
+<pre><code>## Linear mixed model fit by REML [&#39;lmerMod&#39;]
+## Formula: yield ~ inoc * gen * dry * dust + (1 | block/gen/dry:dust)
+##    Data: df
+## 
+## REML criterion at convergence: 863.2
+## 
+## Scaled residuals: 
+##      Min       1Q   Median       3Q      Max 
+## -2.84839 -0.53343 -0.00891  0.49012  1.57229 
+## 
+## Random effects:
+##  Groups             Name        Variance Std.Dev.
+##  dust:dry:gen:block (Intercept)  2.113   1.454   
+##  gen:block          (Intercept)  9.813   3.133   
+##  block              (Intercept)  2.849   1.688   
+##  Residual                       15.390   3.923   
+## Number of obs: 160, groups:  dust:dry:gen:block, 80; gen:block, 8; block, 4
+## 
+## Fixed effects:
+##                       Estimate Std. Error t value
+## (Intercept)           67.11875    1.43578  46.747
+## inoc1                  2.45625    0.31014   7.920
+## gen1                  -4.76875    1.16154  -4.106
+## dry1                   0.85625    0.35014   2.445
+## dust1                  1.72500    0.70028   2.463
+## dust2                 -2.02500    0.70028  -2.892
+## dust3                  4.03750    0.70028   5.766
+## dust4                 -2.36875    0.70028  -3.383
+## inoc1:gen1             0.04375    0.31014   0.141
+## inoc1:dry1            -0.65625    0.31014  -2.116
+## gen1:dry1             -0.75625    0.35014  -2.160
+## inoc1:dust1            0.70000    0.62027   1.129
+## inoc1:dust2           -0.73750    0.62027  -1.189
+## inoc1:dust3            2.70000    0.62027   4.353
+## inoc1:dust4           -1.33125    0.62027  -2.146
+## gen1:dust1             0.36250    0.70028   0.518
+## gen1:dust2             0.30000    0.70028   0.428
+## gen1:dust3            -1.88750    0.70028  -2.695
+## gen1:dust4             0.45625    0.70028   0.652
+## dry1:dust1            -0.07500    0.70028  -0.107
+## dry1:dust2            -0.70000    0.70028  -1.000
+## dry1:dust3             0.42500    0.70028   0.607
+## dry1:dust4             0.76875    0.70028   1.098
+## inoc1:gen1:dry1        0.15625    0.31014   0.504
+## inoc1:gen1:dust1       0.86250    0.62027   1.391
+## inoc1:gen1:dust2      -0.13750    0.62027  -0.222
+## inoc1:gen1:dust3       0.42500    0.62027   0.685
+## inoc1:gen1:dust4      -1.60625    0.62027  -2.590
+## inoc1:dry1:dust1      -0.62500    0.62027  -1.008
+## inoc1:dry1:dust2       0.06250    0.62027   0.101
+## inoc1:dry1:dust3       0.56250    0.62027   0.907
+## inoc1:dry1:dust4      -0.21875    0.62027  -0.353
+## gen1:dry1:dust1        0.03750    0.70028   0.054
+## gen1:dry1:dust2        0.22500    0.70028   0.321
+## gen1:dry1:dust3        1.60000    0.70028   2.285
+## gen1:dry1:dust4       -1.30625    0.70028  -1.865
+## inoc1:gen1:dry1:dust1 -0.18750    0.62027  -0.302
+## inoc1:gen1:dry1:dust2  0.06250    0.62027   0.101
+## inoc1:gen1:dry1:dust3 -0.31250    0.62027  -0.504
+## inoc1:gen1:dry1:dust4  0.15625    0.62027   0.252</code></pre>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="review-hierarchical-multilevel-models-cont..html#cb40-1" tabindex="-1"></a>varcomp <span class="ot">&lt;-</span> <span class="fu">VarCorr</span>(m)</span>
+<span id="cb40-2"><a href="review-hierarchical-multilevel-models-cont..html#cb40-2" tabindex="-1"></a>sigma2 <span class="ot">&lt;-</span> <span class="fu">sigma</span>(m)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb40-3"><a href="review-hierarchical-multilevel-models-cont..html#cb40-3" tabindex="-1"></a>sigma2_b <span class="ot">&lt;-</span> varcomp<span class="sc">$</span>block[<span class="dv">1</span>]</span>
+<span id="cb40-4"><a href="review-hierarchical-multilevel-models-cont..html#cb40-4" tabindex="-1"></a>sigma2_wp <span class="ot">&lt;-</span> varcomp<span class="sc">$</span><span class="st">`</span><span class="at">gen:block</span><span class="st">`</span>[<span class="dv">1</span>]</span>
+<span id="cb40-5"><a href="review-hierarchical-multilevel-models-cont..html#cb40-5" tabindex="-1"></a>sigma2_sp <span class="ot">&lt;-</span> varcomp<span class="sc">$</span><span class="st">`</span><span class="at">dust:dry:gen:block</span><span class="st">`</span>[<span class="dv">1</span>]</span>
+<span id="cb40-6"><a href="review-hierarchical-multilevel-models-cont..html#cb40-6" tabindex="-1"></a></span>
+<span id="cb40-7"><a href="review-hierarchical-multilevel-models-cont..html#cb40-7" tabindex="-1"></a>wp_n <span class="ot">&lt;-</span> <span class="fu">n_distinct</span>(df<span class="sc">$</span>gen)</span>
+<span id="cb40-8"><a href="review-hierarchical-multilevel-models-cont..html#cb40-8" tabindex="-1"></a>sp_n <span class="ot">&lt;-</span> <span class="fu">n_distinct</span>(df<span class="sc">$</span>dry)<span class="sc">*</span><span class="fu">n_distinct</span>(df<span class="sc">$</span>dust)</span>
+<span id="cb40-9"><a href="review-hierarchical-multilevel-models-cont..html#cb40-9" tabindex="-1"></a>ssp_n <span class="ot">&lt;-</span> <span class="fu">n_distinct</span>(df<span class="sc">$</span>inoc)</span>
+<span id="cb40-10"><a href="review-hierarchical-multilevel-models-cont..html#cb40-10" tabindex="-1"></a>block_n <span class="ot">&lt;-</span> <span class="fu">n_distinct</span>(df<span class="sc">$</span>block)</span>
+<span id="cb40-11"><a href="review-hierarchical-multilevel-models-cont..html#cb40-11" tabindex="-1"></a></span>
+<span id="cb40-12"><a href="review-hierarchical-multilevel-models-cont..html#cb40-12" tabindex="-1"></a><span class="do">## se diff (whole plot factor)</span></span>
+<span id="cb40-13"><a href="review-hierarchical-multilevel-models-cont..html#cb40-13" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">2</span><span class="sc">*</span>(sigma2 <span class="sc">+</span> ssp_n<span class="sc">*</span>sigma2_sp <span class="sc">+</span> ssp_n<span class="sc">*</span>sp_n<span class="sc">*</span>sigma2_wp)<span class="sc">/</span>(block_n<span class="sc">*</span>ssp_n<span class="sc">*</span>sp_n))</span></code></pre></div>
+<pre><code>## [1] 2.323079</code></pre>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="review-hierarchical-multilevel-models-cont..html#cb42-1" tabindex="-1"></a><span class="fu">emmeans</span>(m, <span class="sc">~</span> gen, <span class="at">contr =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>)))<span class="sc">$</span>contr</span></code></pre></div>
+<pre><code>##  contrast estimate   SE df t.ratio p.value
+##  c(1, -1)    -9.54 2.32  3  -4.106  0.0262
+## 
+## Results are averaged over the levels of: inoc, dry, dust 
+## Degrees-of-freedom method: kenward-roger</code></pre>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="review-hierarchical-multilevel-models-cont..html#cb44-1" tabindex="-1"></a><span class="do">## se diff (split plot factor)</span></span>
+<span id="cb44-2"><a href="review-hierarchical-multilevel-models-cont..html#cb44-2" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">2</span><span class="sc">*</span>(sigma2 <span class="sc">+</span> ssp_n<span class="sc">*</span>sigma2_sp)<span class="sc">/</span>(block_n<span class="sc">*</span>wp_n<span class="sc">*</span>ssp_n))</span></code></pre></div>
+<pre><code>## [1] 1.56587</code></pre>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="review-hierarchical-multilevel-models-cont..html#cb46-1" tabindex="-1"></a><span class="fu">emmeans</span>(m, <span class="sc">~</span> dry<span class="sc">:</span>dust, <span class="at">contr =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">8</span>))))<span class="sc">$</span>contr</span></code></pre></div>
+<pre><code>##  contrast                         estimate   SE df t.ratio p.value
+##  c(1, -1, 0, 0, 0, 0, 0, 0, 0, 0)     1.56 1.57 54   0.998  0.3228
+## 
+## Results are averaged over the levels of: inoc, gen 
+## Degrees-of-freedom method: kenward-roger</code></pre>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="review-hierarchical-multilevel-models-cont..html#cb48-1" tabindex="-1"></a><span class="do">## se diff (split split plot factor)</span></span>
+<span id="cb48-2"><a href="review-hierarchical-multilevel-models-cont..html#cb48-2" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">2</span><span class="sc">*</span>(sigma2)<span class="sc">/</span>(block_n<span class="sc">*</span>wp_n<span class="sc">*</span>sp_n))</span></code></pre></div>
+<pre><code>## [1] 0.6202733</code></pre>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="review-hierarchical-multilevel-models-cont..html#cb50-1" tabindex="-1"></a><span class="fu">emmeans</span>(m, <span class="sc">~</span> inoc, <span class="at">contr =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>)))<span class="sc">$</span>contr</span></code></pre></div>
+<pre><code>##  contrast estimate   SE df t.ratio p.value
+##  c(1, -1)     4.91 0.62 60   7.920 &lt;0.0001
+## 
+## Results are averaged over the levels of: gen, dry, dust 
+## Degrees-of-freedom method: kenward-roger</code></pre>
 <p><strong>Bonus</strong></p>
 <ol start="4" style="list-style-type: decimal">
 <li>How would you name this experiment design?</li>
