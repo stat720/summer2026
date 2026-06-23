@@ -1,0 +1,171 @@
+# Statistical inference and experiment designs 
+
+JUne 23rd, 2026
+
+## Announcements 
+
+- Homework is due today at midnight. 
+- Tomorrow will be online. 
+
+## Why do we care about standard errors and degrees of freedom? 
+
+### The hypothesis test explanation  
+
+Typically (for a two-tailed test): 
+
+1. Obtain t test statistic $t^\star = \frac{\hat\theta}{se(\hat\theta)}$.
+2. Obtain $t_c = t_{df, \ \alpha/2}$. 
+3. Obtain $P(t^\star>t_c)$. 
+4. If $P(t^\star>t_c) > \alpha$, reject $H_0$.  
+
+### The signal & noise explanation 
+
+- Each point estimate should be associated to some measure of uncertainty 
+- How little uncertainty do you need to be convinced? 
+- What is a 100% confidence interval (CI)? Why is it less useful than a 95% CI?
+- A 95% CI tells us the range of values where we would not reject the null ([Murtaugh, 2013](https://esajournals.onlinelibrary.wiley.com/doi/10.1890/13-0590.1)). 
+
+
+### Applied case I -- CRD
+
+A group of scientists ran an experiment to answer whether swine diets can affect the Serum haptoglobin concentration. The treatment structure was a $6 \times 2$ factorial with Diet (6 levels) and Moment (2 levels) as the treamtment factors. The design structure was a CRD with 16 repetitions.  
+The scientists measured Serum haptoglobin (mg/dL) as the response variable and wish to maintain this metric as high as possible.  
+
+```{r}
+url <- "https://raw.githubusercontent.com/stat720/summer2026/refs/heads/main/data/blood_study_pigs.csv"
+df <- read.csv(url) |> 
+  mutate(Trt = as.factor(Trt), Day = as.factor(Day))
+```
+
+Because this is a CRD, the model is 
+
+$$y_{ijk} = \mu_0 + T_i + D_j +(T\times D)_{ij} + \varepsilon_{ijk}, \\  \varepsilon_{ijk} \sim N(0, \sigma^2).$$
+
+```{r}
+m <- lm(Serum_haptoglobin_mg.dL ~ Trt*Day, data = df)
+
+performance::check_model(m,  check = c("normality", "homogeneity"))
+
+car::Anova(m, type =2)
+```
+
+
+### Biological significance (and others) matter as much as statistical significance  
+
+
+- [ASA's statement on p-values](https://www.tandfonline.com/doi/full/10.1080/00031305.2016.1154108) 
+
+```{r}
+means <- emmeans(m, ~ Trt , at = list(Day = factor(38)))
+plot(means)
+```
+
+How is the story behind ANOVA and the marginal means so different?
+
+
+### Applied case II -- RCBD
+
+- Field experiment studying the effect of potassium on corn yield.
+- One treatment factor: Potassium fertilizer (one-way treatment structure).
+- Randomized Complete Block Design with 4 repetitions (design structure).
+
+
+```{r}
+url <- "https://raw.githubusercontent.com/stat720/summer2026/refs/heads/main/data/cochrancox_kfert.csv"
+
+df2 <- read.csv(url) |> 
+  transmute(K2O_lbac = as.factor(K2O_lbac), rep = as.factor(rep), yield)
+```
+
+Because this is an RCBD, the model is 
+
+$$y_{ij} = \mu_0 + T_i + b_j + \varepsilon_{ij}, \\  \varepsilon_{ij} \sim N(0, \sigma^2).$$
+
+**Blocks: fixed of random?** 
+
+- The assumptions behind $b_j$ vary: 
+- Fundamentals of mixed models 
+  - Assumption behind blocks as fixed effects: there is a 'true' block effect out there. 
+  - Assumption behind blocks as random effects: 
+- Confidence intervals of the means differ depending on the model:  
+  - Blocks as fixed: $\hat\mu \pm t \cdot \sqrt{\frac{\sigma_{\varepsilon}^2 }{b}}$
+  - Blocks as random: $\hat\mu \pm t \cdot \sqrt{\frac{\sigma_{\varepsilon}^2 + \sigma^2_{b}}{b}}$ 
+- Confidence intervals of the means differences don't differ depending on the model:  
+  - Blocks as fixed/as random: $\hat\mu \pm t \cdot \sqrt{\frac{2 \sigma_{\varepsilon}^2 }{b}}$  
+
+
+Blocks as fixed: 
+```{r}
+m_fixed <- lm(yield ~ K2O_lbac + rep, data = df2)
+emmeans(m_fixed, ~ K2O_lbac, contr = list(c(1, -1, 0, 0, 0)))
+```
+
+Blocks as random: 
+```{r}
+m_random <- lmer(yield ~ K2O_lbac + (1|rep), data = df2)
+emmeans(m_random, ~ K2O_lbac, contr = list(c(1, -1, 0, 0, 0)))
+```
+
+Things to highlight: 
+
+- Under an RCBD, se(mean) $\neq$ se(mean difference). 
+- Standard errors of the means differ depending on the model:  
+  - Blocks as fixed: $\sqrt{\frac{\sigma_{\varepsilon}^2 }{b}}$
+  - Blocks as random: $\sqrt{\frac{\sigma_{\varepsilon}^2 + \sigma^2_{b}}{b}}$ 
+- Standard errors of the means differences don't differ depending on the model:  
+  - Blocks as fixed/as random: $\sqrt{\frac{2 \sigma_{\varepsilon}^2 }{b}}$  
+
+
+
+## Applied case III -- split-plot design 
+
+- Designed experiment of barley (70 levels) with fungicide (2 levels) treatments. 
+- Two treatment factors: barley (70 levels) and fungicide (2 levels). Two-way factorial treatment structure.
+- Split-plot design in an RCBD: Fungicide in the whole plot and genotype in the subplot.  
+
+
+```{r}
+agridat::durban.splitplot
+df3 <- durban.splitplot
+```
+
+
+Because this is a split-plot design, the model is 
+
+$$y_{ij} = \mu_0 + F_i + G_j + (F\times G)_{ij} + b_k + wp_{i(k)} + \varepsilon_{ij}, \\
+wp_{i(k)}, \sim N(0, \sigma_{wp}^2) \\ \varepsilon_{ij} \sim N(0, \sigma^2_\varepsilon).$$
+
+- Like before, we can choose either fixed or random for $b_k$. 
+- But now, the se(mean) depend on the level we are looking.  
+
+For differences at the whole-plot level (fung): $se(\hat\mu-\mu') = \sqrt{\frac{2(\sigma^2_\varepsilon + g \ \sigma^2_{wp})}{b \cdot g}}$. 
+For differences at the split-plot level (gen): $se(\hat\mu-\mu') = \sqrt{\frac{2(\sigma^2_\varepsilon)}{b \cdot f}}$. 
+
+```{r message=F}
+m3 <- lmer(yield ~ gen*fung + (1|block/fung), data = df3)
+
+emmeans(m3, ~fung, contr = list(c(1, -1)))$contr
+emmeans(m3, ~gen, contr = list(c(1, -1, rep(0, 68))))$contr
+```
+
+```{r}
+vc <- VarCorr(m3)
+sigma2_b <- vc$block[1]
+sigma2_wp <- vc$`fung:block`[1]
+sigma2_epsilon <- sigma(m3)^2
+n_block <- n_distinct(df3$block)
+n_fung <- n_distinct(df3$fung)
+n_gen <- n_distinct(df3$gen)
+
+#se fung difference 
+sqrt( 2*(sigma2_epsilon + (n_gen*sigma2_wp)) / (n_block *n_gen) )
+
+#se gen difference 
+sqrt( 2*(sigma2_epsilon ) / (n_block *n_fung) )
+```
+
+## Tomorrow  
+
+- Online 
+- Types of SS (I, II, III) and the inference 
+
