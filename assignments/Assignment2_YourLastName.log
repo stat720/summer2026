@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2026.2.3)  15 JUN 2026 16:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2026.2.3)  23 JUN 2026 10:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -519,25 +519,25 @@ LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 90
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) [1
 
-{c:/Users/lacasa/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{c:/Users/lacasa/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{c:/Users/lacasa/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}] (./Assignment2_YourLastName.aux)
+{c:/Users/lacasa/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{c:/Users/lacasa/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{c:/Users/lacasa/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}] [2] (./Assignment2_YourLastName.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 13392 strings out of 469453
- 214058 string characters out of 5465957
- 668947 words of memory out of 5000000
+ 13393 strings out of 469453
+ 212756 string characters out of 5465957
+ 665585 words of memory out of 5000000
  41815 multiletter control sequences out of 15000+600000
- 658046 words of font info for 85 fonts, out of 8000000 for 9000
+ 658034 words of font info for 85 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 83i,6n,93p,6770b,456s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 83i,6n,93p,1021b,459s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/Users/lacasa/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><c:/Users/lacasa/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><c:/Users/lacasa/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr10.pfb><c:/Users/lacasa/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr12.pfb><c:/Users/lacasa/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr17.pfb>
-Output written on Assignment2_YourLastName.pdf (1 page, 137851 bytes).
+Output written on Assignment2_YourLastName.pdf (2 pages, 135036 bytes).
 PDF statistics:
- 88 PDF objects out of 1000 (max. 8388607)
- 73 compressed objects within 1 object stream
- 13 named destinations out of 1000 (max. 500000)
+ 92 PDF objects out of 1000 (max. 8388607)
+ 76 compressed objects within 1 object stream
+ 14 named destinations out of 1000 (max. 500000)
  18513 words of extra memory for PDF output out of 20736 (max. 10000000)
 

@@ -20,15 +20,15 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### 1a. 
 
-What treatment structure would you use? How many levels for each factor?   
+**What treatment structure would you use? How many levels for each factor?**   
 
 ### 1b. 
 
-What design structure would you use? 
+**What design structure would you use?** 
 
 ### 1c. 
 
-Fill out the following table with the values you consider:
+**Fill out the following table with the values you consider:**
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 t_design <- data.frame(Source = c("Factor A", "Factor B", "A x B", "Error", "Total"),
@@ -38,22 +38,22 @@ knitr::kable(t_design, caption = "")
 
 ### 1d. 
 
-Mention two strategies to increase the degrees of freedom of the error (see table above), show how they would increase said degrees of freedom, and discuss the implications in the conclusions of the study.  
+**Mention two strategies to increase the degrees of freedom of the error (see table above), show how they would increase said degrees of freedom, and discuss the implications in the conclusions of the study.**  
 
 
 ## 2. 
 
-Find a publication from your domain (e.g., animal science, agronomy, etc.) and paste a snippet of the Materials and Methods section where they describe the designed experiment. Answer the following questions:  
+**Find a publication from your domain (e.g., animal science, agronomy, etc.) and paste a snippet of the Materials and Methods section where they describe the designed experiment. Answer the following questions:**  
 
 ### 2a. 
 
-What is the treatment structure? How many levels for each factor?   
+**What is the treatment structure? How many levels for each factor?**   
 
 ### 2b. 
 
-What is the design structure? 
+**What is the design structure?** 
 
 ### 2c. 
 
-Would you change anything in the wording/writing to make it more understandable? 
+**Would you change anything in the wording/writing to make it more understandable?** 
 
