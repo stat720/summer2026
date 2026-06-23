@@ -4,12 +4,12 @@ title: Practice makes the master
 
 June 22 
 : Practice - Designing an RCBD/split-plot design  
-  : [](https://stat720.github.io/summer2025/notes/review-rcbd-and-split-plot.html)
+  : [html](https://stat720.github.io/summer2025/notes/review-hierarchical-multilevel-models-cont..html)
 
 June 23 
 : Practice - Designing an RCBD/split-plot design    
   : **HW 2 due**{: .label .label-red }
-  : [](https://stat720.github.io/summer2025/assignments/Assignment3_YourLastName.pdf){: .label .label-green }
+  : [html](https://stat720.github.io/summer2025/assignments/statistical-inference-and-experiment-designs.html)
 
 June 24 
 : ((Online)) Practice - Designing a split-plot design  

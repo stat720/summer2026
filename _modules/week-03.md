@@ -13,11 +13,11 @@ June 16
 
 June 17 
 : ((Online)) Hierarchical experiment designs: split-plot  
-  : [ ](https://stat720.github.io/summer2026/notes/practice-hierarchical-multilevel-designs.html) [](../scripts/06252025_splitplot_inclass.Rmd)
+  : [html](https://stat720.github.io/summer2026/notes/hierarchical-multilevel-designs-and-their-implementation-in-r.html) [](../scripts/06252025_splitplot_inclass.Rmd)
 
 June 18 
 : Practice with hierarchical experiment designs: split-plot 
-  : [ ](https://stat720.github.io/summer2026/notes/more-practice-hierarchical-multilevel-designs.html)  [](#)
+  : [html](https://stat720.github.io/summer2026/notes/review-hierarchical-multilevel-models.htmls) 
 
 June 19
 : Juneteenth -- no class 
