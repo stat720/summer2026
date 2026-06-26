@@ -11,11 +11,11 @@ June 30
   : [](https://stat720.github.io/summer2025/notes/power-analysis-ii.html)
 
 July 1 
-: ((Online)) Analysis and inference for the split plot analysis    
+: ((Online)) Planning an experiment I    
   : [](https://stat720.github.io/summer2025/notes/analysis-and-inference-for-a-split-plot-design.html)  [](../scripts/07032025_muffin_analysis.Rmd)
 
 July 2 
-: Split plot analysis of the muffin example - some repeated measures 
+: Planning an experiment II 
   : [](https://stat720.github.io/summer2025/notes/analysis-and-inference-for-a-split-plot-design---part-ii.html)
   : [**HW 4**](https://stat720.github.io/summer2025/assignments/Assignment4_YourLastName.pdf){: .label .label-green }
 
