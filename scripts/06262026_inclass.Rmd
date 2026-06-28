@@ -12,48 +12,25 @@ library(lme4)
 ```
 
 
-### Applied case I -- CRD
-
-A group of scientists ran an experiment to answer whether swine diets can affect the Serum haptoglobin concentration. The treatment structure was a $6 \times 2$ factorial with Diet (6 levels) and Moment (2 levels) as the treamtment factors. The design structure was a CRD with 16 repetitions.  
-The scientists measured Serum haptoglobin (mg/dL) as the response variable and wish to maintain this metric as high as possible.  
-
-```{r}
-url <- "https://raw.githubusercontent.com/stat720/summer2026/refs/heads/main/data/blood_study_pigs.csv"
-df <- read.csv(url) |> 
-  mutate(Trt = as.factor(Trt), Day = as.factor(Day))
-```
-
-Because this is a CRD, the model is 
-
-$$y_{ijk} = \mu_0 + T_i + D_j +(T\times D)_{ij} + \varepsilon_{ijk}, \\  \varepsilon_{ijk} \sim N(0, \sigma^2).$$
-
-```{r}
-m <- lm(Serum_haptoglobin_mg.dL ~ Trt*Day, data = df)
-
-performance::check_model(m,  check = c("normality", "homogeneity"))
-
-car::Anova(m, type =2)
-```
-
-
-### Biological significance (and others) matter as much as statistical significance  
-
-
-- [ASA's statement on p-values](https://www.tandfonline.com/doi/full/10.1080/00031305.2016.1154108) 
-
-```{r}
-means <- emmeans(m, ~ Trt , at = list(Day = factor(38)))
-plot(means)
-```
-
-How is the story behind ANOVA and the marginal means so different?
-
-
 ### Applied case II -- RCBD
 
 - Field experiment studying the effect of potassium on corn yield.
 - One treatment factor: Potassium fertilizer (one-way treatment structure).
 - Randomized Complete Block Design with 4 repetitions (design structure).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ```{r}
@@ -81,14 +58,41 @@ $$y_{ij} = \mu_0 + T_i + b_j + \varepsilon_{ij}, \\  \varepsilon_{ij} \sim N(0, 
 
 
 Blocks as fixed: 
+
+- very few blocks 
+- blocks were very different 
+
 ```{r}
 m_fixed <- lm(yield ~ K2O_lbac + rep, data = df2)
-emmeans(m_fixed, ~ K2O_lbac, contr = list(c(1, -1, 0, 0, 0)))
+
+summary(m_fixed)
+
+emmeans(m_fixed, ~ rep)
+
+emmeans(m_fixed, ~ K2O_lbac) |> 
+  as.data.frame() |> 
+  ggplot(aes(K2O_lbac , emmean))+
+  geom_errorbar(aes(ymin = lower.CL, ymax = upper.CL), width = 0)+
+  geom_point()
+emmeans(m_fixed, ~ K2O_lbac, contr = list(c(1, -1, 0, 0, 0), 
+                                          c(1, 0, -1, 0, 0)))
 ```
 
 Blocks as random: 
+
+$$b_j \sim N(0, \sigma^2_b)$$
+
+
 ```{r}
 m_random <- lmer(yield ~ K2O_lbac + (1|rep), data = df2)
+
+emmeans(m_random, ~ K2O_lbac) |> 
+  as.data.frame() |> 
+  ggplot(aes(K2O_lbac , emmean))+
+  geom_errorbar(aes(ymin = lower.CL, ymax = upper.CL), width = 0)+
+  geom_point()
+
+
 emmeans(m_random, ~ K2O_lbac, contr = list(c(1, -1, 0, 0, 0)))
 ```
 
@@ -102,6 +106,36 @@ Things to highlight:
   - Blocks as fixed/as random: $\sqrt{\frac{2 \sigma_{\varepsilon}^2 }{b}}$  
 
 
+B = Fixed 
+```{r}
+sigma2_fixed <- sigma(m_fixed)^2
+```
+
+B = Random
+```{r}
+sigma2_random <- sigma(m_random)^2
+sigma2b_random <- VarCorr(m_random)$rep[[1]]
+```
+
+SE MEAN (B = FIXED)
+$$\sqrt{\frac{\sigma_{\varepsilon}^2 }{b}}$$
+
+```{r}
+#means
+sqrt(sigma2_fixed/3)
+
+#diff
+sqrt(2*sigma2_fixed/3)
+```
+SE MEAN (B= RANDOM)
+$$\sqrt{\frac{\sigma_{\varepsilon}^2 + \sigma^2_{b}}{b}}$$ 
+```{r}
+#means
+sqrt((sigma2_random + sigma2b_random)/3)
+
+#diff
+sqrt(2*(sigma2_random)/3)
+```
 
 ## Applied case III -- split-plot design 
 
@@ -110,9 +144,26 @@ Things to highlight:
 - Split-plot design in an RCBD: Fungicide in the whole plot and genotype in the subplot.  
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 ```{r}
 agridat::durban.splitplot
 df3 <- durban.splitplot
+
+df3 |> #filter(fung == "F2", block == "B1") |> 
+  ggplot(aes(bed, row))+
+  geom_tile(aes(fill = fung))+
+  coord_fixed()
 ```
 
 
@@ -130,14 +181,26 @@ For differences at the split-plot level (gen): $se(\hat\mu-\mu') = \sqrt{\frac{2
 ```{r message=F}
 m3 <- lmer(yield ~ gen*fung + (1|block/fung), data = df3)
 
+
+m3 <- lmer(yield ~ gen+ fung +gen:fung + (1|block) + (1|block:fung), data = df3)
+
+
 emmeans(m3, ~fung, contr = list(c(1, -1)))$contr
+```
+
+
+```{r}
 emmeans(m3, ~gen, contr = list(c(1, -1, rep(0, 68))))$contr
 ```
 
+
+For differences at the whole-plot level (fung): $$se(\hat\mu-\mu') = \sqrt{\frac{2(\sigma^2_\varepsilon + g \ \sigma^2_{wp})}{b \cdot g}}$$
+
+For differences at the split-plot level (gen): $$se(\hat\mu-\mu') = \sqrt{\frac{2(\sigma^2_\varepsilon)}{b \cdot f}}$$ 
 ```{r}
 vc <- VarCorr(m3)
 sigma2_b <- vc$block[1]
-sigma2_wp <- vc$`fung:block`[1]
+sigma2_wp <- vc$`block:fung`[1]
 sigma2_epsilon <- sigma(m3)^2
 n_block <- n_distinct(df3$block)
 n_fung <- n_distinct(df3$fung)
@@ -149,5 +212,27 @@ sqrt( 2*(sigma2_epsilon + (n_gen*sigma2_wp)) / (n_block *n_gen) )
 #se gen difference 
 sqrt( 2*(sigma2_epsilon ) / (n_block *n_fung) )
 ```
+
+```{r}
+test.t.fung <-  0.548 / 8.63  
+
+(1 - pt(test.t.fung, df = 3))*2
+```
+```{r}
+
+(pt(-1.085, df = 414))*2
+
+  ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
+    stat_function(fun = dt, args = list(df = 414), color = "darkgreen", size = 1) +
+    labs(title = "Student's t-Distribution (df = 414)",
+         x = "t Value",
+         y = "Density") +
+  geom_point(aes(x= -1.085, y=0), shape =21, fill = "gold", size = 3)+
+    theme_minimal()
+```
+
+
+
+
 
 
