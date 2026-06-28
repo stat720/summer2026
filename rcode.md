@@ -25,7 +25,11 @@ Keep in mid that all the code to generate this website and the class notes can b
 - Day 10 -- 06/16 [[get R code](scripts/06162026_inclass.Rmd)] 
 - Day 11 -- 06/17 [[get R code](scripts/06172026_inclass.Rmd)] 
 
-## Mixed models and split-plot designs (week 4) 
+## Mixed models and designs review (week 4) 
 
 - Day 15 -- 06/24 [[get R code](scripts/06242026_inclass.Rmd)] 
 - Day 17 -- 06/26 [[get R code](scripts/06262026_inclass.Rmd)] 
+
+## Planning an experiment (week 5) 
+
+
