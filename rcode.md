@@ -27,4 +27,5 @@ Keep in mid that all the code to generate this website and the class notes can b
 
 ## Mixed models and split-plot designs (week 4) 
 
-- Day 17 -- 06/26 [[get R code](scripts/06172026_inclass.Rmd)] 
+- Day 15 -- 06/24 [[get R code](scripts/06242026_inclass.Rmd)] 
+- Day 17 -- 06/26 [[get R code](scripts/06262026_inclass.Rmd)] 
