@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Day 6 The treatment structure | STAT 720 - Design of Experiments</title>
-  <meta name="description" content="Day 6 The treatment structure | STAT 720 - Design of Experiments" />
+  <title>Day 17 Power and precision analyses | STAT 720 - Design of Experiments</title>
+  <meta name="description" content="Day 17 Power and precision analyses | STAT 720 - Design of Experiments" />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Day 6 The treatment structure | STAT 720 - Design of Experiments" />
+  <meta property="og:title" content="Day 17 Power and precision analyses | STAT 720 - Design of Experiments" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Day 6 The treatment structure | STAT 720 - Design of Experiments" />
+  <meta name="twitter:title" content="Day 17 Power and precision analyses | STAT 720 - Design of Experiments" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="review-organizing-data-and-other-helpful-tips.html"/>
-<link rel="next" href="what-you-ask-of-a-designed-experiment.html"/>
+<link rel="prev" href="review-rcbds-split-plot-designs-and-how-they-affect-standard-errors..html"/>
+<link rel="next" href="semester-project.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -360,108 +360,265 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="the-treatment-structure" class="section level1 hasAnchor" number="6">
-<h1><span class="header-section-number">Day 6</span> The treatment structure<a href="the-treatment-structure.html#the-treatment-structure" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>June 8th, 2025</p>
-<div id="announcements-2" class="section level2 hasAnchor" number="6.1">
-<h2><span class="header-section-number">6.1</span> Announcements<a href="the-treatment-structure.html#announcements-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="power-and-precision-analyses" class="section level1 hasAnchor" number="17">
+<h1><span class="header-section-number">Day 17</span> Power and precision analyses<a href="power-and-precision-analyses.html#power-and-precision-analyses" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="announcements-10" class="section level2 hasAnchor" number="17.1">
+<h2><span class="header-section-number">17.1</span> Announcements<a href="power-and-precision-analyses.html#announcements-10" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
-<li>Homework due this Friday<br />
-</li>
-<li>Project proposal due this Friday</li>
+<li>Find today’s recording in your K-State email inbox.</li>
+<li>HW2 grades are posted – you can resubmit <strong>once</strong> for full points.</li>
+<li>Some anxillary videos can be found in the STAT 720 channel now.</li>
 </ul>
 </div>
-<div id="review-2" class="section level2 hasAnchor" number="6.2">
-<h2><span class="header-section-number">6.2</span> Review<a href="the-treatment-structure.html#review-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="what-is-statistical-power" class="section level2 hasAnchor" number="17.2">
+<h2><span class="header-section-number">17.2</span> What is statistical power?<a href="power-and-precision-analyses.html#what-is-statistical-power" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
-<li>The sources of variability in an experiment:
+<li>Aims to represent the ability of an experiment to make a “scientific discovery”, provided there really is one to make.</li>
+<li>…We need experiments with power <span class="math inline">\(\geq\)</span> 80%.</li>
+<li>Typically used to define the number of repetitions needed to achieve enough power.</li>
+<li>Strongly influenced by the “hypothesis tests” mentality – blame <a href="https://en.wikipedia.org/wiki/Karl_Popper">Mr. Popper</a>!</li>
+<li>Also strongly influenced by the p&lt;0.05-chasing mentality – who’s to blame for this? Blame all of us!</li>
+<li>Often the “golden standard” when proposing an experiment.</li>
+<li>Can be replaced by a precision analysis, which is slightly less p-value based.</li>
+</ul>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-55"></span>
+<img src="../figures/error_types.jpg" alt="Error types in classic hypothesis testing." width="100%" />
+<p class="caption">
+Figure 17.1: Error types in classic hypothesis testing.
+</p>
+</div>
+<p>We normally control <span class="math inline">\(\alpha\)</span>, the probability of doing an error of type I.
+TO describe our experiment’s ability to detect scientific discoveries, we consider power: the <span class="math inline">\(P(\text{reject } H_0 | H_0 \text{ false}) = 1- \beta\)</span>.</p>
+</div>
+<div id="review-t-test" class="section level2 hasAnchor" number="17.3">
+<h2><span class="header-section-number">17.3</span> Review: t-test<a href="power-and-precision-analyses.html#review-t-test" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
-<li>Treatment</li>
-<li>Logistics (or design, or topographical)</li>
+<li>Used to evaluate differences between treatment effects or means.</li>
+<li>Example testing against zero: <span class="math inline">\(t^{\star} = \frac{\hat\theta - 0}{s.e.(\hat\theta)} = \frac{\hat\theta - 0}{s.d.(\hat\theta)/\sqrt{n}}\)</span></li>
+<li>Note the sensibility to sample size.</li>
+<li>Also, remember the <span class="math inline">\(s.e.(\hat\theta)\)</span> may differ depending on the design:
+<ul>
+<li><span class="math inline">\(s.e.(\hat\theta)\)</span> may depend on <span class="math inline">\(\sigma^2_\varepsilon\)</span> only (e.g., CRD, RCBD, mean comparisons between treatment levels of the treatment at the split-plot level), <span class="math inline">\(s.e.(\hat\theta) = \sqrt{\frac{2 \sigma^2_{\varepsilon}}{r}}\)</span>.</li>
+<li><span class="math inline">\(s.e.(\hat\theta)\)</span> may depend on <span class="math inline">\(\sigma^2_\varepsilon\)</span> and <span class="math inline">\(\sigma^2_{whole \ plot}\)</span> (e.g., mean comparisons between treatment levels of the treatment at the whole-plot level), <span class="math inline">\(s.e.(\hat\theta) = \sqrt{\frac{2 (\sigma^2_{\varepsilon} + b \cdot \sigma^2_w)}{b \cdot r}}\)</span></li>
 </ul></li>
 </ul>
 </div>
-<div id="treatment-structure" class="section level2 hasAnchor" number="6.3">
-<h2><span class="header-section-number">6.3</span> Treatment structure<a href="the-treatment-structure.html#treatment-structure" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The treatment structure in an experiment is directly connected to the research question, i.e. what the researchers want to study.</p>
-<div id="types-of-treatment-structures" class="section level3 hasAnchor" number="6.3.1">
-<h3><span class="header-section-number">6.3.1</span> Types of treatment structures<a href="the-treatment-structure.html#types-of-treatment-structures" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="power-calculations-analytic-approach" class="section level2 hasAnchor" number="17.4">
+<h2><span class="header-section-number">17.4</span> Power calculations – Analytic approach<a href="power-and-precision-analyses.html#power-calculations-analytic-approach" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="sample-size-calculation" class="section level3 hasAnchor" number="17.4.1">
+<h3><span class="header-section-number">17.4.1</span> Sample size calculation<a href="power-and-precision-analyses.html#sample-size-calculation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>To detect a difference</strong> <span class="math inline">\(\delta\)</span>:
+<span class="math display">\[r = \frac{2\hat{\sigma}^2}{\delta^2}[t_{\alpha/2, \nu} + t_{\beta, \nu}]^2,\]</span>
+where:</p>
 <ul>
-<li>One-way treatment structure: a set of <span class="math inline">\(t\)</span> treatments or populations where there is no assumed structure among the treatments.</li>
-</ul>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-20"></span>
-<img src="../figures/trtdesigns_oneway.PNG" alt="Schematic description of an experiment with a one-way treatment structure" width="100%" />
-<p class="caption">
-Figure 6.1: Schematic description of an experiment with a one-way treatment structure
-</p>
-</div>
-<ul>
-<li>Two-way treatment structure: a set of treatments constructed by combining the levels or possibilities of two factors. Two-way factorial treatment structure.
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-21"></span>
-<img src="../figures/trtdesigns_twoway.PNG" alt="Schematic description of an experiment with a two-way treatment structure" width="100%" />
-<p class="caption">
-Figure 6.2: Schematic description of an experiment with a two-way treatment structure
-</p>
-</div></li>
-<li>Factorial arrangement treatment structure: a set of treatments constructed by combining the levels or possibilities of two or more different factors.</li>
-</ul>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-22"></span>
-<img src="../figures/trtdesigns_threeway.PNG" alt="Schematic description of an experiment with a three-way treatment structure" width="100%" />
-<p class="caption">
-Figure 6.3: Schematic description of an experiment with a three-way treatment structure
-</p>
-</div>
-<ul>
-<li>Fractional factorial arrangement treatment structure: only a part, or fraction, of the possible treatment combinations in a factorial arrangement treatment structure.</li>
-</ul>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-23"></span>
-<img src="../figures/trtdesigns_twowayfract.PNG" alt="Schematic description of an experiment with a two-way fractional treatment structure" width="100%" />
-<p class="caption">
-Figure 6.4: Schematic description of an experiment with a two-way fractional treatment structure
-</p>
-</div>
-<ul>
-<li>Factorial arrangement treatment structure with one or more controls.</li>
-</ul>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-24"></span>
-<img src="../figures/trtdesigns_twoway_control.PNG" alt="Schematic description of an experiment with a two-way treatment structure with two controls" width="100%" />
-<p class="caption">
-Figure 6.5: Schematic description of an experiment with a two-way treatment structure with two controls
-</p>
-</div>
-<ul>
-<li>Examples on the whiteboard</li>
+<li><span class="math inline">\(r\)</span> is the sample size (i.e., number of reps),</li>
+<li><span class="math inline">\(\hat\sigma^2\)</span> is the estimate of <span class="math inline">\(\sigma^2\)</span> based on <span class="math inline">\(\nu\)</span> degrees of freedom,</li>
+<li><span class="math inline">\(\alpha\)</span> is the type I error rate,</li>
+<li><span class="math inline">\(\beta\)</span> is the type II error rate,</li>
+<li>And note that: <span class="math inline">\(Var(\delta)=2\sigma^2/r\)</span>, which leads to <span class="math inline">\(s.e.(\delta)=\sqrt{\frac{2\sigma^2}{r}}\)</span>.</li>
+<li>See page 455 in Milliken and Johnson.</li>
 </ul>
 </div>
+<div id="power-evaluation" class="section level3 hasAnchor" number="17.4.2">
+<h3><span class="header-section-number">17.4.2</span> Power evaluation<a href="power-and-precision-analyses.html#power-evaluation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The sample size calculation can be used to evaluate the power by solving for <span class="math inline">\(t_{\beta, \nu}\)</span> and then determining the power as <span class="math inline">\(1-\beta\)</span>. Then, the equation for <span class="math inline">\(t_{\beta, \nu}\)</span> is</p>
+<p><span class="math display">\[t_{\beta, \nu} = \sqrt{\frac{r \delta^2 }{2\sigma^2}} - t_{\alpha/2, \nu}\]</span></p>
 </div>
-<div id="where-is-the-treatment-structure-connected-to-the-statistical-model" class="section level2 hasAnchor" number="6.4">
-<h2><span class="header-section-number">6.4</span> Where is the treatment structure connected to the statistical model?<a href="the-treatment-structure.html#where-is-the-treatment-structure-connected-to-the-statistical-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Remember: the general advice is to divide the sources of variation into treatment and design (i.e., topographical).
-Normally, the treatments affect the expected value and the experiment design has created groups of data that were generated together.
-Those groups are groups of <em>similar</em> data and that’s why we say that they are correlated.
-For now, we’ll leave said correlation in the residual variance-covariance matrix <span class="math inline">\(\mathbf{R}\)</span>.</p>
+<div id="applied-case-i-from-last-week" class="section level3 hasAnchor" number="17.4.3">
+<h3><span class="header-section-number">17.4.3</span> Applied case I (from last week)<a href="power-and-precision-analyses.html#applied-case-i-from-last-week" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This was a CRD with <span class="math inline">\(\sigma^2_\varepsilon = 204\)</span>.</p>
+<p>Because this is a CRD, the model is</p>
+<p><span class="math display">\[y_{ijk} = \mu_0 + T_i + D_j +(T\times D)_{ij} + \varepsilon_{ijk}, \\  \varepsilon_{ijk} \sim N(0, \sigma^2).\]</span></p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="power-and-precision-analyses.html#cb75-1" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://raw.githubusercontent.com/stat720/summer2026/refs/heads/main/data/blood_study_pigs.csv&quot;</span></span>
+<span id="cb75-2"><a href="power-and-precision-analyses.html#cb75-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(url) <span class="sc">|&gt;</span>  <span class="fu">mutate</span>(<span class="at">Trt =</span> <span class="fu">as.factor</span>(Trt), <span class="at">Day =</span> <span class="fu">as.factor</span>(Day))</span>
+<span id="cb75-3"><a href="power-and-precision-analyses.html#cb75-3" tabindex="-1"></a></span>
+<span id="cb75-4"><a href="power-and-precision-analyses.html#cb75-4" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(Serum_haptoglobin_mg.dL <span class="sc">~</span> Trt<span class="sc">*</span>Day, <span class="at">data =</span> df)</span>
+<span id="cb75-5"><a href="power-and-precision-analyses.html#cb75-5" tabindex="-1"></a></span>
+<span id="cb75-6"><a href="power-and-precision-analyses.html#cb75-6" tabindex="-1"></a><span class="co"># this is all we need</span></span>
+<span id="cb75-7"><a href="power-and-precision-analyses.html#cb75-7" tabindex="-1"></a>(sigma2_m1 <span class="ot">&lt;-</span> <span class="fu">sigma</span>(m)<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 204.1743</code></pre>
+<p><strong>After-the-fact power analysis</strong></p>
+<p>We can assume:</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="power-and-precision-analyses.html#cb77-1" tabindex="-1"></a><span class="co"># get t_{alpha/2}</span></span>
+<span id="cb77-2"><a href="power-and-precision-analyses.html#cb77-2" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> .<span class="dv">05</span></span>
+<span id="cb77-3"><a href="power-and-precision-analyses.html#cb77-3" tabindex="-1"></a>df <span class="ot">&lt;-</span> m<span class="sc">$</span>df.residual</span>
+<span id="cb77-4"><a href="power-and-precision-analyses.html#cb77-4" tabindex="-1"></a></span>
+<span id="cb77-5"><a href="power-and-precision-analyses.html#cb77-5" tabindex="-1"></a><span class="fu">qt</span>(alpha<span class="sc">/</span><span class="dv">2</span>, df)</span></code></pre></div>
+<pre><code>## [1] -1.973231</code></pre>
 <ul>
-<li>One-way treatment structure</li>
+<li><span class="math inline">\(\sigma^2_\varepsilon = 204\)</span></li>
+<li><span class="math inline">\(\delta = 40\)</span></li>
+<li><span class="math inline">\(t_{\alpha/2, \nu} = 1.97\)</span> (see above)</li>
+<li><span class="math inline">\(r = 16\)</span></li>
 </ul>
-<p><span class="math display">\[\mathbf{y} \sim N(\boldsymbol{\mu}, \mathbf{R}), \\ \mu_{j} = \mu + \tau_j \]</span></p>
-<ul>
-<li>Two-way treatment structure</li>
-</ul>
-<p><span class="math display">\[\mathbf{y} \sim N(\boldsymbol{\mu}, \mathbf{R}), \\ \mu_{jk} = \mu + \tau_j + \rho_k +(\tau \rho)_{jk}\]</span></p>
-<ul>
-<li>Factorial treatment structure</li>
-</ul>
-<p><span class="math display">\[\mathbf{y} \sim N(\boldsymbol{\mu}, \mathbf{R}), \\ \mu_{jkl} = \mu + \tau_j + \rho_k + \gamma_l +(\tau \rho)_{jk}+(\tau \gamma)_{jl} + ( \rho \gamma)_{kl} + (\tau \rho \gamma)_{jkl}\]</span></p>
-<ul>
-<li>Fractional factorial treatment structure, factorial treatment structure with controls
-Some version of:</li>
-</ul>
-<p><span class="math display">\[\mathbf{y} \sim N(\boldsymbol{\mu}, \mathbf{R}), \\ \mu_{jk} = \mu + \tau_j + \rho_k +(\tau \rho)_{jk}\]</span></p>
+<p>Then,</p>
+<p><span class="math display">\[t_{\beta, \nu} = \sqrt{\frac{r \delta^2 }{2\sigma^2}} - t_{\alpha/2, \nu} = \sqrt{\frac{16\cdot 1600 }{408}} - 1.97 = 6.27.\]</span></p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="power-and-precision-analyses.html#cb79-1" tabindex="-1"></a>delta <span class="ot">&lt;-</span> <span class="dv">40</span></span>
+<span id="cb79-2"><a href="power-and-precision-analyses.html#cb79-2" tabindex="-1"></a>n_reps <span class="ot">&lt;-</span> <span class="dv">16</span></span>
+<span id="cb79-3"><a href="power-and-precision-analyses.html#cb79-3" tabindex="-1"></a>t_beta <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(n_reps<span class="sc">*</span>delta<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> (<span class="dv">2</span><span class="sc">*</span>sigma2_m1)) <span class="sc">-</span> <span class="fl">1.97</span></span>
+<span id="cb79-4"><a href="power-and-precision-analyses.html#cb79-4" tabindex="-1"></a>df <span class="ot">&lt;-</span> m<span class="sc">$</span>df.residual</span>
+<span id="cb79-5"><a href="power-and-precision-analyses.html#cb79-5" tabindex="-1"></a></span>
+<span id="cb79-6"><a href="power-and-precision-analyses.html#cb79-6" tabindex="-1"></a>(beta <span class="ot">&lt;-</span> <span class="fu">pt</span>(<span class="sc">-</span>t_beta, df))</span></code></pre></div>
+<pre><code>## [1] 6.921895e-09</code></pre>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="power-and-precision-analyses.html#cb81-1" tabindex="-1"></a>(power <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">-</span>beta)</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<p>Our study had a very large power to detect differences of 40 mg/dL.</p>
 </div>
-<div id="tomorrow-1" class="section level2 hasAnchor" number="6.5">
-<h2><span class="header-section-number">6.5</span> Tomorrow:<a href="the-treatment-structure.html#tomorrow-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="applied-case-ii" class="section level3 hasAnchor" number="17.4.4">
+<h3><span class="header-section-number">17.4.4</span> Applied case II<a href="power-and-precision-analyses.html#applied-case-ii" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Because this is an RCBD, the model is</p>
+<p><span class="math display">\[y_{ij} = \mu_0 + T_i + b_j + \varepsilon_{ij}, \\  \varepsilon_{ij} \sim N(0, \sigma^2).\]</span></p>
+<p>Let’s assume random blocks: <span class="math inline">\(b_j \sim N(0, \sigma^2_b)\)</span>.</p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="power-and-precision-analyses.html#cb83-1" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://raw.githubusercontent.com/stat720/summer2026/refs/heads/main/data/cochrancox_kfert.csv&quot;</span></span>
+<span id="cb83-2"><a href="power-and-precision-analyses.html#cb83-2" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(url) <span class="sc">|&gt;</span> </span>
+<span id="cb83-3"><a href="power-and-precision-analyses.html#cb83-3" tabindex="-1"></a>  <span class="fu">transmute</span>(<span class="at">K2O_lbac =</span> <span class="fu">as.factor</span>(K2O_lbac), <span class="at">rep =</span> <span class="fu">as.factor</span>(rep), yield)</span>
+<span id="cb83-4"><a href="power-and-precision-analyses.html#cb83-4" tabindex="-1"></a>m_random <span class="ot">&lt;-</span> <span class="fu">lmer</span>(yield <span class="sc">~</span> K2O_lbac <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>rep), <span class="at">data =</span> df2)</span></code></pre></div>
+<p><strong>After-the-fact power analysis</strong></p>
+<p>Remember that all we need is the <span class="math inline">\(\sigma^2_\varepsilon\)</span>, because the block variance is not part of the mean comparisons.</p>
+<p>We can assume:</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="power-and-precision-analyses.html#cb84-1" tabindex="-1"></a><span class="fu">sigma</span>(m_random)<span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
+<pre><code>## [1] 0.043685</code></pre>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="power-and-precision-analyses.html#cb86-1" tabindex="-1"></a><span class="co"># get t_{alpha/2}</span></span>
+<span id="cb86-2"><a href="power-and-precision-analyses.html#cb86-2" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> .<span class="dv">05</span></span>
+<span id="cb86-3"><a href="power-and-precision-analyses.html#cb86-3" tabindex="-1"></a>df <span class="ot">&lt;-</span> (<span class="fu">n_distinct</span>(df2<span class="sc">$</span>K2O_lbac) <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> (<span class="fu">n_distinct</span>(df2<span class="sc">$</span>rep) <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb86-4"><a href="power-and-precision-analyses.html#cb86-4" tabindex="-1"></a></span>
+<span id="cb86-5"><a href="power-and-precision-analyses.html#cb86-5" tabindex="-1"></a><span class="fu">qt</span>(alpha<span class="sc">/</span><span class="dv">2</span>, df)</span></code></pre></div>
+<pre><code>## [1] -2.306004</code></pre>
 <ul>
-<li>All this is in Chapter 4 in Milliken and Johnson.</li>
+<li><span class="math inline">\(\sigma^2_\varepsilon = 0.044\)</span></li>
+<li>Try <span class="math inline">\(\delta = 0.50\)</span> and <span class="math inline">\(\delta = 0.25\)</span></li>
+<li><span class="math inline">\(t_{\alpha/2, \nu} =  2.31\)</span> (see above)</li>
+<li><span class="math inline">\(r = 3\)</span></li>
+</ul>
+<p>Then,</p>
+<p><span class="math display">\[t_{\beta, \nu} = \sqrt{\frac{r \delta^2 }{2\sigma^2}} - t_{\alpha/2, \nu} = \sqrt{\frac{3 \cdot \delta^2 }{0.044}} - 2.31 = 2.27.\]</span></p>
+<p>Power for <span class="math inline">\(\delta = 0.50\)</span></p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="power-and-precision-analyses.html#cb88-1" tabindex="-1"></a>t_beta <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="dv">3</span><span class="sc">*</span>(.<span class="dv">50</span><span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> .<span class="dv">044</span>) <span class="sc">-</span> <span class="fl">2.31</span></span>
+<span id="cb88-2"><a href="power-and-precision-analyses.html#cb88-2" tabindex="-1"></a></span>
+<span id="cb88-3"><a href="power-and-precision-analyses.html#cb88-3" tabindex="-1"></a>(beta <span class="ot">&lt;-</span> <span class="fu">pt</span>(<span class="sc">-</span>t_beta, df))</span></code></pre></div>
+<pre><code>## [1] 0.05323888</code></pre>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="power-and-precision-analyses.html#cb90-1" tabindex="-1"></a>(power <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">-</span>beta)</span></code></pre></div>
+<pre><code>## [1] 0.9467611</code></pre>
+<p>Power for <span class="math inline">\(\delta = 0.25\)</span></p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="power-and-precision-analyses.html#cb92-1" tabindex="-1"></a>t_beta <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="dv">3</span><span class="sc">*</span>(.<span class="dv">25</span><span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> .<span class="dv">044</span>) <span class="sc">-</span> <span class="fl">2.31</span></span>
+<span id="cb92-2"><a href="power-and-precision-analyses.html#cb92-2" tabindex="-1"></a></span>
+<span id="cb92-3"><a href="power-and-precision-analyses.html#cb92-3" tabindex="-1"></a>(beta <span class="ot">&lt;-</span> <span class="fu">pt</span>(<span class="sc">-</span>t_beta, df))</span></code></pre></div>
+<pre><code>## [1] 0.5939471</code></pre>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="power-and-precision-analyses.html#cb94-1" tabindex="-1"></a>(power <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">-</span>beta)</span></code></pre></div>
+<pre><code>## [1] 0.4060529</code></pre>
+<p>Our study did not had enough statistical power to detect differences of 0.5, but not 0.25.</p>
+</div>
+<div id="applied-case-iii" class="section level3 hasAnchor" number="17.4.5">
+<h3><span class="header-section-number">17.4.5</span> Applied case III<a href="power-and-precision-analyses.html#applied-case-iii" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Because this is a split-plot design, the model is</p>
+<p><span class="math display">\[y_{ij} = \mu_0 + F_i + G_j + (F\times G)_{ij} + b_k + wp_{i(k)} + \varepsilon_{ij}, \\
+wp_{i(k)}, \sim N(0, \sigma_{wp}^2) \\ \varepsilon_{ij} \sim N(0, \sigma^2_\varepsilon).\]</span></p>
+<ul>
+<li>Like before, we can choose either fixed or random for <span class="math inline">\(b_k\)</span>.</li>
+<li>But now, the se(mean) depend on the level we are looking.</li>
+</ul>
+<p>For differences at the whole-plot level (fung) we had: <span class="math inline">\(se(\hat\mu-\mu&#39;) = \sqrt{\frac{2(\sigma^2_\varepsilon + g \ \sigma^2_{wp})}{b \cdot g}}\)</span>.
+For differences at the split-plot level (gen) we had: <span class="math inline">\(se(\hat\mu-\mu&#39;) = \sqrt{\frac{2(\sigma^2_\varepsilon)}{b \cdot f}}\)</span>.</p>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="power-and-precision-analyses.html#cb96-1" tabindex="-1"></a>df3 <span class="ot">&lt;-</span> durban.splitplot</span>
+<span id="cb96-2"><a href="power-and-precision-analyses.html#cb96-2" tabindex="-1"></a></span>
+<span id="cb96-3"><a href="power-and-precision-analyses.html#cb96-3" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> <span class="fu">lmer</span>(yield <span class="sc">~</span> fung<span class="sc">*</span>gen <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>block<span class="sc">/</span>fung), <span class="at">data =</span> df3)</span>
+<span id="cb96-4"><a href="power-and-precision-analyses.html#cb96-4" tabindex="-1"></a></span>
+<span id="cb96-5"><a href="power-and-precision-analyses.html#cb96-5" tabindex="-1"></a></span>
+<span id="cb96-6"><a href="power-and-precision-analyses.html#cb96-6" tabindex="-1"></a><span class="co"># degrees of freedom (from class)</span></span>
+<span id="cb96-7"><a href="power-and-precision-analyses.html#cb96-7" tabindex="-1"></a>m3_df <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">414</span>, <span class="dv">414</span>)</span>
+<span id="cb96-8"><a href="power-and-precision-analyses.html#cb96-8" tabindex="-1"></a><span class="fu">names</span>(m3_df) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;fung&quot;</span>, <span class="st">&quot;gen&quot;</span>, <span class="st">&quot;fung:gen&quot;</span>)</span></code></pre></div>
+<p><strong>After-the-fact power analysis at the split-plot level</strong></p>
+<p>Remember that all we need is the <span class="math inline">\(\sigma^2_\varepsilon\)</span>, because the block variance and whole-plot variance are not part of the mean comparisons at this level.</p>
+<p>Remember that <span class="math inline">\(Var(\hat\mu-\mu&#39;) = \frac{2(\sigma^2_\varepsilon)}{b \cdot f}\)</span> and <span class="math inline">\(se(\hat\mu-\mu&#39;) = \sqrt{\frac{2(\sigma^2_\varepsilon)}{b \cdot f}}\)</span>.
+We can assume:</p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="power-and-precision-analyses.html#cb97-1" tabindex="-1"></a>sigma2_m3 <span class="ot">&lt;-</span> <span class="fu">sigma</span>(m3)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb97-2"><a href="power-and-precision-analyses.html#cb97-2" tabindex="-1"></a></span>
+<span id="cb97-3"><a href="power-and-precision-analyses.html#cb97-3" tabindex="-1"></a><span class="co"># get t_{alpha/2}</span></span>
+<span id="cb97-4"><a href="power-and-precision-analyses.html#cb97-4" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> .<span class="dv">05</span></span>
+<span id="cb97-5"><a href="power-and-precision-analyses.html#cb97-5" tabindex="-1"></a>df_e <span class="ot">&lt;-</span> m3_df[<span class="st">&quot;gen&quot;</span>]</span>
+<span id="cb97-6"><a href="power-and-precision-analyses.html#cb97-6" tabindex="-1"></a></span>
+<span id="cb97-7"><a href="power-and-precision-analyses.html#cb97-7" tabindex="-1"></a><span class="fu">qt</span>(alpha<span class="sc">/</span><span class="dv">2</span>, df_e)</span></code></pre></div>
+<pre><code>## [1] -1.965711</code></pre>
+<ul>
+<li><span class="math inline">\(\sigma^2_\varepsilon = 0.08\)</span></li>
+<li><span class="math inline">\(\delta = 0.40\)</span></li>
+<li><span class="math inline">\(t_{\alpha/2, \nu} =  1.96\)</span> (see above)</li>
+<li><span class="math inline">\(r = blocks \cdot fung = 4 \cdot 2\)</span></li>
+</ul>
+<p>Then,</p>
+<p><span class="math display">\[t_{\beta, \nu} = \sqrt{\frac{r \delta^2 }{2\sigma^2}} - t_{\alpha/2, \nu} = \sqrt{\frac{8 \cdot \delta^2 }{0.16}} - 1.96 = 2.27.\]</span></p>
+<p>Power for <span class="math inline">\(\delta = 0.40\)</span></p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="power-and-precision-analyses.html#cb99-1" tabindex="-1"></a>diff <span class="ot">&lt;-</span> .<span class="dv">4</span></span>
+<span id="cb99-2"><a href="power-and-precision-analyses.html#cb99-2" tabindex="-1"></a>n_fung <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb99-3"><a href="power-and-precision-analyses.html#cb99-3" tabindex="-1"></a>n_reps <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb99-4"><a href="power-and-precision-analyses.html#cb99-4" tabindex="-1"></a></span>
+<span id="cb99-5"><a href="power-and-precision-analyses.html#cb99-5" tabindex="-1"></a>t_beta <span class="ot">&lt;-</span> <span class="fu">sqrt</span>((n_reps<span class="sc">*</span>n_fung)<span class="sc">*</span>(diff<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> (<span class="dv">2</span><span class="sc">*</span>sigma2_m3)) <span class="sc">-</span> <span class="fl">1.96</span></span>
+<span id="cb99-6"><a href="power-and-precision-analyses.html#cb99-6" tabindex="-1"></a></span>
+<span id="cb99-7"><a href="power-and-precision-analyses.html#cb99-7" tabindex="-1"></a>(beta <span class="ot">&lt;-</span> <span class="fu">pt</span>(<span class="sc">-</span>t_beta, df_e))</span></code></pre></div>
+<pre><code>## [1] 0.1883088</code></pre>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="power-and-precision-analyses.html#cb101-1" tabindex="-1"></a>(power <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">-</span>beta)</span></code></pre></div>
+<pre><code>## [1] 0.8116912</code></pre>
+<p><strong>After-the-fact power analysis at the whole-plot level</strong></p>
+<p>Now we need the <span class="math inline">\(\sigma^2_\varepsilon\)</span> AND <span class="math inline">\(\sigma^2_{wp}\)</span>, because the block variance variance is not part of the mean comparisons at this level, but the whole-plot variance is!</p>
+<p>Remember that <span class="math inline">\(Var(\hat\mu-\mu&#39;) = \frac{2(\sigma^2_\varepsilon + g \ \sigma^2_{wp})}{b \cdot g}\)</span> and <span class="math inline">\(se(\hat\mu-\mu&#39;) = \sqrt{\frac{2(\sigma^2_\varepsilon + g \ \sigma^2_{wp})}{b \cdot g}}\)</span>.</p>
+<p>We can assume:</p>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="power-and-precision-analyses.html#cb103-1" tabindex="-1"></a>sigma2_m3 <span class="ot">&lt;-</span> <span class="fu">sigma</span>(m3)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb103-2"><a href="power-and-precision-analyses.html#cb103-2" tabindex="-1"></a>sigma2wp_m3 <span class="ot">&lt;-</span> <span class="fu">VarCorr</span>(m3)<span class="sc">$</span><span class="st">`</span><span class="at">fung:block</span><span class="st">`</span>[<span class="dv">1</span>]</span>
+<span id="cb103-3"><a href="power-and-precision-analyses.html#cb103-3" tabindex="-1"></a></span>
+<span id="cb103-4"><a href="power-and-precision-analyses.html#cb103-4" tabindex="-1"></a></span>
+<span id="cb103-5"><a href="power-and-precision-analyses.html#cb103-5" tabindex="-1"></a><span class="co"># get t_{alpha/2}</span></span>
+<span id="cb103-6"><a href="power-and-precision-analyses.html#cb103-6" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> .<span class="dv">05</span></span>
+<span id="cb103-7"><a href="power-and-precision-analyses.html#cb103-7" tabindex="-1"></a>df_e <span class="ot">&lt;-</span> m3_df[<span class="st">&quot;fung&quot;</span>]</span>
+<span id="cb103-8"><a href="power-and-precision-analyses.html#cb103-8" tabindex="-1"></a></span>
+<span id="cb103-9"><a href="power-and-precision-analyses.html#cb103-9" tabindex="-1"></a>t_alpha <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>, df_e)</span></code></pre></div>
+<ul>
+<li><span class="math inline">\(\sigma^2_\varepsilon = 0.08\)</span></li>
+<li><span class="math inline">\(\sigma^2_{wp} = 0.014\)</span></li>
+<li><span class="math inline">\(\delta = 0.40\)</span></li>
+<li><span class="math inline">\(t_{\alpha/2, \nu} =  3.18\)</span> (see above)</li>
+<li><span class="math inline">\(r = blocks \cdot gen = 4 \cdot 70\)</span></li>
+</ul>
+<p>Then,</p>
+<p><span class="math display">\[t_{\beta, \nu} = \sqrt{\frac{r \delta^2 }{2(\sigma^2_\varepsilon + g \ \sigma^2_{wp}) }} - t_{\alpha/2, \nu} = \sqrt{\frac{280 \cdot \delta^2 }{2.09}} - 3.18 = 1.45.\]</span></p>
+<p>Power for <span class="math inline">\(\delta = 0.40\)</span></p>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="power-and-precision-analyses.html#cb104-1" tabindex="-1"></a>diff <span class="ot">&lt;-</span> .<span class="dv">4</span></span>
+<span id="cb104-2"><a href="power-and-precision-analyses.html#cb104-2" tabindex="-1"></a>n_gen <span class="ot">&lt;-</span> <span class="dv">70</span></span>
+<span id="cb104-3"><a href="power-and-precision-analyses.html#cb104-3" tabindex="-1"></a>n_reps <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb104-4"><a href="power-and-precision-analyses.html#cb104-4" tabindex="-1"></a></span>
+<span id="cb104-5"><a href="power-and-precision-analyses.html#cb104-5" tabindex="-1"></a>t_beta <span class="ot">&lt;-</span> <span class="fu">sqrt</span>((n_reps<span class="sc">*</span>n_gen)<span class="sc">*</span>(diff<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> (<span class="dv">2</span><span class="sc">*</span>(sigma2_m3 <span class="sc">+</span> n_gen<span class="sc">*</span>sigma2wp_m3))) <span class="sc">-</span> t_alpha</span>
+<span id="cb104-6"><a href="power-and-precision-analyses.html#cb104-6" tabindex="-1"></a></span>
+<span id="cb104-7"><a href="power-and-precision-analyses.html#cb104-7" tabindex="-1"></a>df_e <span class="ot">&lt;-</span> m3_df[<span class="st">&quot;fung&quot;</span>]</span>
+<span id="cb104-8"><a href="power-and-precision-analyses.html#cb104-8" tabindex="-1"></a></span>
+<span id="cb104-9"><a href="power-and-precision-analyses.html#cb104-9" tabindex="-1"></a>(beta <span class="ot">&lt;-</span> <span class="fu">pt</span>(<span class="sc">-</span>t_beta, df_e))</span></code></pre></div>
+<pre><code>## [1] 0.121355</code></pre>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="power-and-precision-analyses.html#cb106-1" tabindex="-1"></a>(power <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">-</span>beta)</span></code></pre></div>
+<pre><code>## [1] 0.878645</code></pre>
+</div>
+</div>
+<div id="precision-analysis-as-an-alternative-to-power-analysis" class="section level2 hasAnchor" number="17.5">
+<h2><span class="header-section-number">17.5</span> Precision analysis as an alternative to power analysis<a href="power-and-precision-analyses.html#precision-analysis-as-an-alternative-to-power-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Advantages:</p>
+<ul>
+<li>Relies less on the p-value&lt;0.05 paradigm.</li>
+<li>Does not depend on a pre-determined difference.
+<ul>
+<li>Otherwise, power is directly dependent on the effect size and we might be overconfident about our design.</li>
+</ul></li>
+</ul>
+<p>For example: for Model 1 (CRD)</p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="power-and-precision-analyses.html#cb108-1" tabindex="-1"></a>sigma2_m1 <span class="ot">&lt;-</span> <span class="fu">sigma</span>(m)</span>
+<span id="cb108-2"><a href="power-and-precision-analyses.html#cb108-2" tabindex="-1"></a>t_alpha_m1 <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="dv">1</span> <span class="sc">-</span> alpha<span class="sc">/</span><span class="dv">2</span>, m<span class="sc">$</span>df.residual)</span>
+<span id="cb108-3"><a href="power-and-precision-analyses.html#cb108-3" tabindex="-1"></a></span>
+<span id="cb108-4"><a href="power-and-precision-analyses.html#cb108-4" tabindex="-1"></a><span class="co">#get se</span></span>
+<span id="cb108-5"><a href="power-and-precision-analyses.html#cb108-5" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">2</span><span class="sc">*</span>sigma2_m1<span class="sc">/</span><span class="dv">16</span>) <span class="sc">*</span> t_alpha_m1</span></code></pre></div>
+<pre><code>## [1] 2.63714</code></pre>
+</div>
+<div id="tomorrow-4" class="section level2 hasAnchor" number="17.6">
+<h2><span class="header-section-number">17.6</span> Tomorrow<a href="power-and-precision-analyses.html#tomorrow-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Power analysis – simulation approach<br />
+</li>
+<li>In-class activity</li>
 </ul>
 
 </div>
@@ -471,8 +628,8 @@ Some version of:</li>
           </div>
         </div>
       </div>
-<a href="review-organizing-data-and-other-helpful-tips.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="what-you-ask-of-a-designed-experiment.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="review-rcbds-split-plot-designs-and-how-they-affect-standard-errors..html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="semester-project.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -503,7 +660,7 @@ gitbook.start({
     "size": 2
   },
   "edit": {
-    "link": "https://github.com/stat720/book2025/edit/main/06-trt_design.Rmd",
+    "link": "https://github.com/stat720/book2025/edit/main/18-power_1.Rmd",
     "text": "Edit"
   },
   "history": {
@@ -511,7 +668,7 @@ gitbook.start({
     "text": null
   },
   "view": {
-    "link": "https://github.com/stat720/book2025/blob/main/06-trt_design.Rmd",
+    "link": "https://github.com/stat720/book2025/blob/main/18-power_1.Rmd",
     "text": null
   },
   "download": null,

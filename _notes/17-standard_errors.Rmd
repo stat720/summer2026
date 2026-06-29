@@ -1,0 +1,8 @@
+# Review: RCBDs, split-plot designs, and how they affect standard errors.  
+
+June 26th 
+
+## Announcements 
+
+- Watch 2 recordings. 
+- See code in the [Rcode tab](https://stat720.github.io/summer2026/r-code/).

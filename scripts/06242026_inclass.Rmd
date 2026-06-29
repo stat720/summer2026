@@ -1,0 +1,40 @@
+---
+title: "Untitled"
+author: "J Lacasa"
+date: "2026-06-24"
+output: html_document
+---
+
+```{r}
+library(ggpubr)
+```
+
+```{r}
+ggarrange(
+  ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
+    stat_function(fun = dt, args = list(df = 9), color = "darkgreen", size = 1) +
+    labs(title = "Student's t-Distribution (df = 9)",
+         x = "t Value",
+         y = "Density") +
+    theme_minimal(),
+  ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
+    stat_function(fun = dt, args = list(df = 131), color = "tomato", size = 1) +
+    labs(title = "Student's t-Distribution (df = 131)",
+         x = "t Value",
+         y = "Density") +
+    theme_minimal(),
+  ncol =2)
+```
+
+```{r}
+ ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
+    stat_function(fun = dt, args = list(df = 9), color = "darkgreen", size = 1) +
+    stat_function(fun = dt, args = list(df = 10000031), color = "tomato", size = 1) +
+  geom_point(aes(x = qt(0.025, df = 9), y =0 ), color = "darkgreen")+
+  geom_point(aes(x = qt(0.025, df = 131), y =0 ), color = "tomato")+
+  geom_point(aes(x = qt(0.975, df = 9), y =0 ), color = "darkgreen")+
+  geom_point(aes(x = qt(0.975, df = 131), y =0 ), color = "tomato")+
+    labs(x = "t Value",
+         y = "Density") +
+    theme_minimal()
+```

@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Day 6 The treatment structure | STAT 720 - Design of Experiments</title>
-  <meta name="description" content="Day 6 The treatment structure | STAT 720 - Design of Experiments" />
+  <title>Day 15 Kahoot! | STAT 720 - Design of Experiments</title>
+  <meta name="description" content="Day 15 Kahoot! | STAT 720 - Design of Experiments" />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Day 6 The treatment structure | STAT 720 - Design of Experiments" />
+  <meta property="og:title" content="Day 15 Kahoot! | STAT 720 - Design of Experiments" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Day 6 The treatment structure | STAT 720 - Design of Experiments" />
+  <meta name="twitter:title" content="Day 15 Kahoot! | STAT 720 - Design of Experiments" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="review-organizing-data-and-other-helpful-tips.html"/>
-<link rel="next" href="what-you-ask-of-a-designed-experiment.html"/>
+<link rel="prev" href="statistical-inference-and-experiment-designs.html"/>
+<link rel="next" href="review-rcbds-split-plot-designs-and-how-they-affect-standard-errors..html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -360,119 +360,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="the-treatment-structure" class="section level1 hasAnchor" number="6">
-<h1><span class="header-section-number">Day 6</span> The treatment structure<a href="the-treatment-structure.html#the-treatment-structure" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>June 8th, 2025</p>
-<div id="announcements-2" class="section level2 hasAnchor" number="6.1">
-<h2><span class="header-section-number">6.1</span> Announcements<a href="the-treatment-structure.html#announcements-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li>Homework due this Friday<br />
-</li>
-<li>Project proposal due this Friday</li>
-</ul>
-</div>
-<div id="review-2" class="section level2 hasAnchor" number="6.2">
-<h2><span class="header-section-number">6.2</span> Review<a href="the-treatment-structure.html#review-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li>The sources of variability in an experiment:
-<ul>
-<li>Treatment</li>
-<li>Logistics (or design, or topographical)</li>
-</ul></li>
-</ul>
-</div>
-<div id="treatment-structure" class="section level2 hasAnchor" number="6.3">
-<h2><span class="header-section-number">6.3</span> Treatment structure<a href="the-treatment-structure.html#treatment-structure" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The treatment structure in an experiment is directly connected to the research question, i.e. what the researchers want to study.</p>
-<div id="types-of-treatment-structures" class="section level3 hasAnchor" number="6.3.1">
-<h3><span class="header-section-number">6.3.1</span> Types of treatment structures<a href="the-treatment-structure.html#types-of-treatment-structures" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ul>
-<li>One-way treatment structure: a set of <span class="math inline">\(t\)</span> treatments or populations where there is no assumed structure among the treatments.</li>
-</ul>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-20"></span>
-<img src="../figures/trtdesigns_oneway.PNG" alt="Schematic description of an experiment with a one-way treatment structure" width="100%" />
-<p class="caption">
-Figure 6.1: Schematic description of an experiment with a one-way treatment structure
-</p>
-</div>
-<ul>
-<li>Two-way treatment structure: a set of treatments constructed by combining the levels or possibilities of two factors. Two-way factorial treatment structure.
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-21"></span>
-<img src="../figures/trtdesigns_twoway.PNG" alt="Schematic description of an experiment with a two-way treatment structure" width="100%" />
-<p class="caption">
-Figure 6.2: Schematic description of an experiment with a two-way treatment structure
-</p>
-</div></li>
-<li>Factorial arrangement treatment structure: a set of treatments constructed by combining the levels or possibilities of two or more different factors.</li>
-</ul>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-22"></span>
-<img src="../figures/trtdesigns_threeway.PNG" alt="Schematic description of an experiment with a three-way treatment structure" width="100%" />
-<p class="caption">
-Figure 6.3: Schematic description of an experiment with a three-way treatment structure
-</p>
-</div>
-<ul>
-<li>Fractional factorial arrangement treatment structure: only a part, or fraction, of the possible treatment combinations in a factorial arrangement treatment structure.</li>
-</ul>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-23"></span>
-<img src="../figures/trtdesigns_twowayfract.PNG" alt="Schematic description of an experiment with a two-way fractional treatment structure" width="100%" />
-<p class="caption">
-Figure 6.4: Schematic description of an experiment with a two-way fractional treatment structure
-</p>
-</div>
-<ul>
-<li>Factorial arrangement treatment structure with one or more controls.</li>
-</ul>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-24"></span>
-<img src="../figures/trtdesigns_twoway_control.PNG" alt="Schematic description of an experiment with a two-way treatment structure with two controls" width="100%" />
-<p class="caption">
-Figure 6.5: Schematic description of an experiment with a two-way treatment structure with two controls
-</p>
-</div>
-<ul>
-<li>Examples on the whiteboard</li>
-</ul>
-</div>
-</div>
-<div id="where-is-the-treatment-structure-connected-to-the-statistical-model" class="section level2 hasAnchor" number="6.4">
-<h2><span class="header-section-number">6.4</span> Where is the treatment structure connected to the statistical model?<a href="the-treatment-structure.html#where-is-the-treatment-structure-connected-to-the-statistical-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Remember: the general advice is to divide the sources of variation into treatment and design (i.e., topographical).
-Normally, the treatments affect the expected value and the experiment design has created groups of data that were generated together.
-Those groups are groups of <em>similar</em> data and that’s why we say that they are correlated.
-For now, we’ll leave said correlation in the residual variance-covariance matrix <span class="math inline">\(\mathbf{R}\)</span>.</p>
-<ul>
-<li>One-way treatment structure</li>
-</ul>
-<p><span class="math display">\[\mathbf{y} \sim N(\boldsymbol{\mu}, \mathbf{R}), \\ \mu_{j} = \mu + \tau_j \]</span></p>
-<ul>
-<li>Two-way treatment structure</li>
-</ul>
-<p><span class="math display">\[\mathbf{y} \sim N(\boldsymbol{\mu}, \mathbf{R}), \\ \mu_{jk} = \mu + \tau_j + \rho_k +(\tau \rho)_{jk}\]</span></p>
-<ul>
-<li>Factorial treatment structure</li>
-</ul>
-<p><span class="math display">\[\mathbf{y} \sim N(\boldsymbol{\mu}, \mathbf{R}), \\ \mu_{jkl} = \mu + \tau_j + \rho_k + \gamma_l +(\tau \rho)_{jk}+(\tau \gamma)_{jl} + ( \rho \gamma)_{kl} + (\tau \rho \gamma)_{jkl}\]</span></p>
-<ul>
-<li>Fractional factorial treatment structure, factorial treatment structure with controls
-Some version of:</li>
-</ul>
-<p><span class="math display">\[\mathbf{y} \sim N(\boldsymbol{\mu}, \mathbf{R}), \\ \mu_{jk} = \mu + \tau_j + \rho_k +(\tau \rho)_{jk}\]</span></p>
-</div>
-<div id="tomorrow-1" class="section level2 hasAnchor" number="6.5">
-<h2><span class="header-section-number">6.5</span> Tomorrow:<a href="the-treatment-structure.html#tomorrow-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li>All this is in Chapter 4 in Milliken and Johnson.</li>
-</ul>
+<div id="kahoot" class="section level1 hasAnchor" number="15">
+<h1><span class="header-section-number">Day 15</span> Kahoot!<a href="kahoot.html#kahoot" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>June 25th</p>
 
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="review-organizing-data-and-other-helpful-tips.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="what-you-ask-of-a-designed-experiment.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="statistical-inference-and-experiment-designs.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="review-rcbds-split-plot-designs-and-how-they-affect-standard-errors..html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -503,7 +402,7 @@ gitbook.start({
     "size": 2
   },
   "edit": {
-    "link": "https://github.com/stat720/book2025/edit/main/06-trt_design.Rmd",
+    "link": "https://github.com/stat720/book2025/edit/main/16-kahoot2.Rmd",
     "text": "Edit"
   },
   "history": {
@@ -511,7 +410,7 @@ gitbook.start({
     "text": null
   },
   "view": {
-    "link": "https://github.com/stat720/book2025/blob/main/06-trt_design.Rmd",
+    "link": "https://github.com/stat720/book2025/blob/main/16-kahoot2.Rmd",
     "text": null
   },
   "download": null,
