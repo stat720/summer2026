@@ -1,4 +1,4 @@
-# Review: RCBDs, split-plot designs, and how they affect standard errors.  
+# Review: RCBDs, split-plot designs, and how they affect standard errors  
 
 June 26th 
 
