@@ -32,4 +32,5 @@ Keep in mid that all the code to generate this website and the class notes can b
 
 ## Planning an experiment (week 5) 
 
+- Day 19 -- 06/30 [[get R code](scripts/06302026_inclass.Rmd)] 
 
