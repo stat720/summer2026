@@ -8,7 +8,8 @@ June 29
 
 June 30 
 : Power analysis II 
-  : [](https://stat720.github.io/summer2026/notes/power-analysis-ii.html)
+  : [html](https://stat720.github.io/summer2026/notes/power-and-precision-analyses-ii.html)
+  : [**HW 3**](https://stat720.github.io/summer2026/assignments/Assignment3_YourLastName.pdf){: .label .label-green }
 
 July 1 
 : ((Online)) Planning an experiment I    
@@ -17,7 +18,7 @@ July 1
 July 2 
 : Planning an experiment II 
   : [](https://stat720.github.io/summer2026/notes/analysis-and-inference-for-a-split-plot-design---part-ii.html)
-  : [**HW 4**](https://stat720.github.io/summer2026/assignments/Assignment4_YourLastName.pdf){: .label .label-green }
+  : [](https://stat720.github.io/summer2026/assignments/Assignment4_YourLastName.pdf){: .label .label-green }
 
 July 3
 : Holiday -- no class

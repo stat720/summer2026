@@ -1,0 +1,23 @@
+---
+title: "In class activity"
+author: "STAT 720 | Summer 2026"
+date: "2026-06-30"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+You are working with a collaborator in planning a new greenhouse experiment to answer the research question "do plant growth promoting bacteria increase crop yields?". You are currently interested in testing 8 different bacteria, plus a control. Your response is yield (measured in $kg \ m^{-2}$). 
+
+You have data from a previous experiment, similar to the one you're envisioning to answer this research question, that had a 2 $\times$ 3 factorial treatment structure and was run in an RCBD with 5 repetitions. 
+Results from this experiment were $\hat\sigma^2_\varepsilon = 5 \ (kg \ m^{-2})^2$  and $\hat\sigma^2_{block} = 1 (kg \ m^{-2})^2$. No "significant differences" were found in terms of yield (measured in $kg \ m^{-2}$). 
+
+```{r eval=FALSE, include=FALSE}
+reps <- 10
+sqrt(2*5 / reps) * qt(.975, df = (9)*(reps-1))
+```
+
+**How many repetitions do you need now to obtain a precision that gives you a confidence interval that is at least $\hat\theta \pm 2 \ kg \ m^{-2}$?**
+
