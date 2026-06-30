@@ -14,7 +14,7 @@ Broadly, projects are expected to **identify a research problem** and **develop 
 ### Project proposal - Due Friday June 12 at 2pm CT
 Write a page-long project proposal that states your research problem and the objective of your project. An example of an appropriate project proposal can be found [here](https://stat720.github.io/summer2025/assignments/proposal_example.pdf).
 
-### Written report - Due Wednesday July 1 at 2pm CT for peer review 
+### Written report - Due Sunday July 12 at 2pm CT for peer review 
 Send a manuscript to one of your peers, including:
 
 - Introduction (background \& justification of the problem) 
