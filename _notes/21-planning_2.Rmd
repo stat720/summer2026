@@ -58,7 +58,7 @@ data.frame(reps,
 
 **Simulation-based approach:**
 
-- About simulations [[link](https://royalsocietypublishing.org/rsta/article/384/2321/20240616/481849/Simulations-in-statistical-workflows)]
+- About simulations [[link 1](https://royalsocietypublishing.org/rsta/article/384/2321/20240616/481849/Simulations-in-statistical-workflows)] [[link 2](https://onlinelibrary.wiley.com/doi/10.1002/sim.8086)]
 
 **Consider these competing designs:** 
 
@@ -151,9 +151,10 @@ hist(se_mu1_minus_mu3,
 ```{r}
 mean(p_mu1_minus_mu2<0.05) # power for a .15 difference in recipe
 mean(p_mu1_minus_mu3<0.05) # power for a .5 difference in temp
+mean(se_mu1_minus_mu3) # se for a .5 difference in temp
 ```
 
-### RCBD with 10 reps and 4 subsamples   
+### RCBD with 10 reps and 6 subsamples   
 
 Here, the data generating model is **literally** $y_{ijk} = \mu + T_i + o_j + s_{i(j)} + \varepsilon_{ijk}$, with $o_j \sim N(0, 0.05)$, $s_{i(j)} \sim N(0, 0.01)$ and $\varepsilon_{ijk} \sim N(0, 0.1)$.
 
@@ -198,7 +199,8 @@ for (i in 1:n_sims){
   
   m <- lmer(y ~ recipe + (1|rep/recipe), data = df_temp)
   
-  means.temp <- as.data.frame(emmeans(m, ~recipe, contr = list(c(1, -1, 0), 
+  means.temp <- as.data.frame(emmeans(m, ~recipe, 
+                                      contr = list(c(1, -1, 0), 
                                                                c(1, 0, -1)))$contrasts)
   
   p_mu1_minus_mu2[i] <- means.temp$p.value[1]
@@ -207,14 +209,14 @@ for (i in 1:n_sims){
   se_mu1_minus_mu3[i] <- means.temp$SE[2]
   }
 
-  
+  means.temp
 ```
 
 ```{r eval=TRUE, echo=FALSE}
-p_mu1_minus_mu2 |> write_rds("../../rds/p_mu1_minus_mu2_subs.rds")
-p_mu1_minus_mu3 |> write_rds("../../rds/p_mu1_minus_mu3_subs.rds")
-se_mu1_minus_mu2 |> write_rds("../../rds/se_mu1_minus_mu2_subs.rds")
-se_mu1_minus_mu3 |> write_rds("../../rds/se_mu1_minus_mu3_subs.rds")
+# p_mu1_minus_mu2 |> write_rds("../../rds/p_mu1_minus_mu2_subs.rds")
+# p_mu1_minus_mu3 |> write_rds("../../rds/p_mu1_minus_mu3_subs.rds")
+# se_mu1_minus_mu2 |> write_rds("../../rds/se_mu1_minus_mu2_subs.rds")
+# se_mu1_minus_mu3 |> write_rds("../../rds/se_mu1_minus_mu3_subs.rds")
 
 p_mu1_minus_mu2 <- read_rds("../../rds/p_mu1_minus_mu2_subs.rds")
 p_mu1_minus_mu3 <- read_rds("../../rds/p_mu1_minus_mu3_subs.rds")
