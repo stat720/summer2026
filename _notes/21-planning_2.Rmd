@@ -1,0 +1,247 @@
+# Planning an experiment II 
+
+July 2nd, 2026
+
+```{r include=FALSE}
+library(tidyverse)
+library(emmeans)
+library(latex2exp)
+library(lme4)
+```
+
+## Announcements 
+
+- Tomorrow is an observed holiday
+- HW 3 is due on Tuesday 
+- Projects are due July 12th. 
+
+## Planning an experiment 
+
+### Research question 
+
+- What is the best recipe to prepare banana muffins? 
+
+  - A: Baking soda only 
+  - B: Baking soda + baking powder 
+  - C: Baking powder only 
+
+- What if it was a different combination?
+
+### Experiment design 
+
+What we know: 
+
+- $\sigma^2_\varepsilon \approx 0.1$ 
+
+**Analytic approach:**
+
+```{r}
+reps <- 5:40
+sigma2_e <- .1
+alpha <- .05
+
+t_value <- qt(1-alpha/2, df = (reps-1)*2)
+se_thetahat <- sqrt(2*sigma2_e / reps)
+
+data.frame(reps, 
+           CI_width = t_value*se_thetahat) |> 
+  ggplot(aes(reps, CI_width))+
+  geom_point()+
+  coord_cartesian(ylim = c(0, .5))+
+  scale_x_continuous(breaks = 1:40)+
+  geom_hline(yintercept = .15)+
+  labs(x = "# reps", y = "CI width")+
+  theme_minimal()+
+  theme(aspect.ratio = .4)
+```
+
+
+**Simulation-based approach:**
+
+- About simulations [[link](https://royalsocietypublishing.org/rsta/article/384/2321/20240616/481849/Simulations-in-statistical-workflows)]
+
+**Consider these competing designs:** 
+
+- RCBD with 10 reps with its corresponding statistical model, $y_{ij} = \mu + T_i + o_j + \varepsilon_{ij}$ 
+- RCBD with 10 reps and subsampling with its corresponding statistical model, $y_{ij} = \mu + T_i + o_j + s_{i(j)} + \varepsilon_{ij}, s_{i(j)} \sim N(0, \sigma^2_o)$ 
+
+All examples below generate 100 designs with the means described above.   
+
+### RCBD with 10 reps 
+
+```{r warning=FALSE, message=FALSE}
+n_reps <- 10
+
+df_rcbd <- expand.grid(recipe = c("A", "B", "C"), 
+                      rep = 1:n_reps)
+df_rcbd$rep_f <- as.factor(df_rcbd$rep)
+df_rcbd <- df_rcbd %>%
+  mutate(mu = case_when(recipe == "A" ~ 0, 
+                        recipe == "B" ~ .15, 
+                        recipe == "C" ~ .5))
+
+sigma_epsilon <- sqrt(.1)
+sigma_rep <- sqrt(.05)
+
+
+n_sims <- 100
+p_mu1_minus_mu2 <- numeric(n_sims)
+p_mu1_minus_mu3 <- numeric(n_sims)
+se_mu1_minus_mu2 <- numeric(n_sims)
+se_mu1_minus_mu3 <- numeric(n_sims)
+
+n <- nrow(df_rcbd)
+```
+
+
+```{r warning=FALSE, message=FALSE, echo=TRUE, eval=FALSE}
+set.seed(42)
+
+for (i in 1:n_sims){
+  oven_eff <- rnorm(n_reps, 0, sigma_rep)
+  df_temp <- df_rcbd |> mutate(y = mu + oven_eff[rep] + rnorm(n, 0, sigma_epsilon))
+  
+  m <- lm(y ~ recipe + rep_f, data = df_temp)
+  means.temp <- as.data.frame(emmeans(m, ~recipe, contr = list(c(1, -1, 0), 
+                                                               c(1, 0, -1)))$contrasts)
+  
+  p_mu1_minus_mu2[i] <- means.temp$p.value[1]
+  p_mu1_minus_mu3[i] <- means.temp$p.value[2]
+  se_mu1_minus_mu2[i] <- means.temp$SE[1]
+  se_mu1_minus_mu3[i] <- means.temp$SE[2]}
+```
+
+```{r eval=TRUE, echo=FALSE}
+# p_mu1_minus_mu2 |> write_rds("../../rds/p_mu1_minus_mu2.rds")
+# p_mu1_minus_mu3 |> write_rds("../../rds/p_mu1_minus_mu3.rds")
+# se_mu1_minus_mu2 |> write_rds("../../rds/se_mu1_minus_mu2.rds")
+# se_mu1_minus_mu3 |> write_rds("../../rds/se_mu1_minus_mu3.rds")
+
+p_mu1_minus_mu2 <- read_rds("../../rds/p_mu1_minus_mu2.rds")
+p_mu1_minus_mu3 <- read_rds("../../rds/p_mu1_minus_mu3.rds")
+se_mu1_minus_mu2 <- read_rds("../../rds/se_mu1_minus_mu2.rds")
+se_mu1_minus_mu3 <- read_rds("../../rds/se_mu1_minus_mu3.rds")
+```
+
+
+```{r warning=FALSE, message=FALSE}
+hist(p_mu1_minus_mu2,
+     xlim = c(0, 1),
+     xlab = TeX("p-value for $\\hat{\\mu}_{1} - \\hat{\\mu}_{2}$"),
+     main = TeX("p-value for $\\hat{\\mu}_{1} - \\hat{\\mu}_{2}$"))
+hist(p_mu1_minus_mu3, 
+     xlim = c(0, 1),
+     xlab = TeX("p-value for $\\hat{\\mu}_{1} - \\hat{\\mu}_{3}$"),
+     main = TeX("p-value for $\\hat{\\mu}_{1} - \\hat{\\mu}_{3}$"))
+
+
+hist(se_mu1_minus_mu2,
+     xlim = c(0, .3),
+     xlab = TeX("se($\\hat{\\mu}_{1} - \\hat{\\mu}_{2})$"),
+     main = TeX("se($\\hat{\\mu}_{1} - \\hat{\\mu}_{2})$"))
+hist(se_mu1_minus_mu3, 
+     xlim = c(0, .3),
+     xlab = TeX("se($\\hat{\\mu}_{1} - \\hat{\\mu}_{3})$"),
+     main = TeX("se($\\hat{\\mu}_{1} - \\hat{\\mu}_{3})$"))
+```
+
+```{r}
+mean(p_mu1_minus_mu2<0.05) # power for a .15 difference in recipe
+mean(p_mu1_minus_mu3<0.05) # power for a .5 difference in temp
+```
+
+### RCBD with 10 reps and 4 subsamples   
+
+
+```{r warning=FALSE, message=FALSE}
+n_reps <- 10
+n_subsamps <- 2
+
+df_rcbd <- expand.grid(recipe = c("A", "B", "C"), 
+                      rep = 1:n_reps, 
+                      subsamp = 1:n_subsamps)
+df_rcbd$rep_f <- as.factor(df_rcbd$rep)
+
+df_rcbd <- df_rcbd %>%
+  mutate(mu = case_when(recipe == "A" ~ 0, 
+                        recipe == "B" ~ .15, 
+                        recipe == "C" ~ .5))
+
+sigma_epsilon <- sqrt(.3)
+sigma_rep <- sqrt(.15)
+
+n_sims <- 100
+p_mu1_minus_mu2 <- numeric(n_sims)
+p_mu1_minus_mu3 <- numeric(n_sims)
+se_mu1_minus_mu2 <- numeric(n_sims)
+se_mu1_minus_mu3 <- numeric(n_sims)
+
+n <- nrow(df_rcbd)
+```
+
+
+```{r warning=FALSE, message=FALSE, echo=TRUE, eval=FALSE}
+set.seed(42)
+
+for (i in 1:n_sims){
+  oven_eff <- rnorm(n_reps, 0, sigma_rep)
+  df_temp <- df_rcbd |> mutate(y = mu + oven_eff[rep] + rnorm(n, 0, sigma_epsilon))
+  
+  m <- lmer(y ~ recipe + (1|rep/subsamp), data = df_temp)
+  m_wrong <- lm(y ~ recipe + rep, data = df_temp)
+  means.temp <- as.data.frame(emmeans(m, ~recipe, contr = list(c(1, -1, 0), 
+                                                               c(1, 0, -1)))$contrasts)
+  
+  means.temp_wrong <- 
+    as.data.frame(emmeans(m_wrong, ~recipe, contr = list(c(1, -1, 0),
+                                                   c(1, 0, -1)))$contrasts)
+  
+  p_mu1_minus_mu2[i] <- means.temp$p.value[1]
+  p_mu1_minus_mu3[i] <- means.temp$p.value[2]
+  se_mu1_minus_mu2[i] <- means.temp$SE[1]
+  se_mu1_minus_mu3[i] <- means.temp$SE[2]
+  }
+
+  
+```
+
+```{r eval=TRUE, echo=FALSE}
+# p_mu1_minus_mu2 |> write_rds("../../rds/p_mu1_minus_mu2_subs.rds")
+# p_mu1_minus_mu3 |> write_rds("../../rds/p_mu1_minus_mu3_subs.rds")
+# se_mu1_minus_mu2 |> write_rds("../../rds/se_mu1_minus_mu2_subs.rds")
+# se_mu1_minus_mu3 |> write_rds("../../rds/se_mu1_minus_mu3_subs.rds")
+
+p_mu1_minus_mu2 <- read_rds("../../rds/p_mu1_minus_mu2_subs.rds")
+p_mu1_minus_mu3 <- read_rds("../../rds/p_mu1_minus_mu3_subs.rds")
+se_mu1_minus_mu2 <- read_rds("../../rds/se_mu1_minus_mu2_subs.rds")
+se_mu1_minus_mu3 <- read_rds("../../rds/se_mu1_minus_mu3_subs.rds")
+```
+
+
+```{r warning=FALSE, message=FALSE}
+hist(p_mu1_minus_mu2,
+     xlim = c(0, 1),
+     xlab = TeX("p-value for $\\hat{\\mu}_{1} - \\hat{\\mu}_{2}$"),
+     main = TeX("p-value for $\\hat{\\mu}_{1} - \\hat{\\mu}_{2}$"))
+hist(p_mu1_minus_mu3, 
+     xlim = c(0, 1),
+     xlab = TeX("p-value for $\\hat{\\mu}_{1} - \\hat{\\mu}_{3}$"),
+     main = TeX("p-value for $\\hat{\\mu}_{1} - \\hat{\\mu}_{3}$"))
+
+
+hist(se_mu1_minus_mu2,
+     xlim = c(0, .3),
+     xlab = TeX("se($\\hat{\\mu}_{1} - \\hat{\\mu}_{2})$"),
+     main = TeX("se($\\hat{\\mu}_{1} - \\hat{\\mu}_{2})$"))
+```
+
+```{r}
+mean(p_mu1_minus_mu2<0.05) # power for a .15 difference 
+mean(p_mu1_minus_mu3<0.05) # power for a .5 difference  
+mean(se_mu1_minus_mu3) # se for a .15 difference 
+```
+
+
+
+
+

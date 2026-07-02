@@ -1,0 +1,30 @@
+# Planning an experiment I 
+
+July 1st, 2026
+
+```{r include=FALSE}
+library(tidyverse)
+```
+
+## Announcements 
+
+- Find today's recording in your KSU inbox. 
+
+
+```{r}
+reps <- 5:40
+sigma2_e <- .1
+alpha <- .05
+
+t_value <- qt(1-alpha/2, df = (reps-1)*2)
+se_thetahat <- sqrt(2*sigma2_e / reps)
+
+data.frame(reps, 
+           CI_width = t_value*se_thetahat) |> 
+  ggplot(aes(reps, CI_width))+
+  geom_point()+
+  coord_cartesian(ylim = c(0, .5))+
+  scale_x_continuous(breaks = 1:40)+
+  geom_hline(yintercept = .15)
+```
+

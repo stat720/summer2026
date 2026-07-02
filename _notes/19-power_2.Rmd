@@ -1,5 +1,7 @@
 # Power and precision analyses II
 
+June 30th, 2026
+
 ```{r include=FALSE}
 library(tidyverse)
 library(lme4)
