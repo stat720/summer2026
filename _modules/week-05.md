@@ -13,12 +13,11 @@ June 30
 
 July 1 
 : ((Online)) Planning an experiment I    
-  : [](https://stat720.github.io/summer2026/notes/analysis-and-inference-for-a-split-plot-design.html)  [](../scripts/07032025_muffin_analysis.Rmd)
+  : [html](https://stat720.github.io/summer2026/notes/planning-an-experiment-i.html)
 
 July 2 
 : Planning an experiment II 
-  : [](https://stat720.github.io/summer2026/notes/analysis-and-inference-for-a-split-plot-design---part-ii.html)
-  : [](https://stat720.github.io/summer2026/assignments/Assignment4_YourLastName.pdf){: .label .label-green }
+  : [html](https://stat720.github.io/summer2026/notes/planning-an-experiment-ii.html)
 
 July 3
 : Holiday -- no class
