@@ -363,6 +363,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="20.2.3" data-path="planning-an-experiment-ii.html"><a href="planning-an-experiment-ii.html#rcbd-with-10-reps"><i class="fa fa-check"></i><b>20.2.3</b> RCBD with 10 reps</a></li>
 <li class="chapter" data-level="20.2.4" data-path="planning-an-experiment-ii.html"><a href="planning-an-experiment-ii.html#rcbd-with-10-reps-and-4-subsamples"><i class="fa fa-check"></i><b>20.2.4</b> RCBD with 10 reps and 4 subsamples</a></li>
 </ul></li>
+<li class="chapter" data-level="20.3" data-path="planning-an-experiment-ii.html"><a href="planning-an-experiment-ii.html#take-home-messages"><i class="fa fa-check"></i><b>20.3</b> Take-home messages</a></li>
 </ul></li>
 <li class="chapter" data-level="21" data-path="semester-project.html"><a href="semester-project.html"><i class="fa fa-check"></i><b>21</b> Semester Project</a>
 <ul>
@@ -438,7 +439,7 @@ The scientists measured Serum haptoglobin (mg/dL) as the response variable and w
 <div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="statistical-inference-and-experiment-designs.html#cb53-1" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(Serum_haptoglobin_mg.dL <span class="sc">~</span> Trt<span class="sc">*</span>Day, <span class="at">data =</span> df)</span>
 <span id="cb53-2"><a href="statistical-inference-and-experiment-designs.html#cb53-2" tabindex="-1"></a></span>
 <span id="cb53-3"><a href="statistical-inference-and-experiment-designs.html#cb53-3" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">check_model</span>(m,  <span class="at">check =</span> <span class="fu">c</span>(<span class="st">&quot;normality&quot;</span>, <span class="st">&quot;homogeneity&quot;</span>))</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-183-1.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-96-1.png" alt="" width="672" /></p>
 <div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="statistical-inference-and-experiment-designs.html#cb54-1" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">Anova</span>(m, <span class="at">type =</span><span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## Anova Table (Type II tests)
 ## 
@@ -459,7 +460,7 @@ The scientists measured Serum haptoglobin (mg/dL) as the response variable and w
 <div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="statistical-inference-and-experiment-designs.html#cb56-1" tabindex="-1"></a>means <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(m, <span class="sc">~</span> Trt , <span class="at">at =</span> <span class="fu">list</span>(<span class="at">Day =</span> <span class="fu">factor</span>(<span class="dv">38</span>)))</span></code></pre></div>
 <pre><code>## NOTE: Results may be misleading due to involvement in interactions</code></pre>
 <div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="statistical-inference-and-experiment-designs.html#cb58-1" tabindex="-1"></a><span class="fu">plot</span>(means)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-184-1.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-97-1.png" alt="" width="672" /></p>
 <p>How is the story behind ANOVA and the marginal means so different?</p>
 </div>
 <div id="applied-case-ii-rcbd" class="section level3 hasAnchor" number="14.2.5">
@@ -741,10 +742,8 @@ For differences at the split-plot level (gen): <span class="math inline">\(se(\h
 ## Results are averaged over the levels of: gen 
 ## Degrees-of-freedom method: kenward-roger</code></pre>
 <div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="statistical-inference-and-experiment-designs.html#cb69-1" tabindex="-1"></a><span class="fu">emmeans</span>(m3, <span class="sc">~</span>gen, <span class="at">contr =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">68</span>))))<span class="sc">$</span>contr</span></code></pre></div>
-<pre><code>##  contrast                                                        estimate    SE
-##  c(1, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,    -0.152 0.141
-##   df t.ratio p.value
-##  414  -1.085  0.2787
+<pre><code>##  contrast                                                        estimate    SE  df t.ratio p.value
+##  c(1, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,    -0.152 0.141 414  -1.085  0.2787
 ## 
 ## Results are averaged over the levels of: fung 
 ## Degrees-of-freedom method: kenward-roger</code></pre>

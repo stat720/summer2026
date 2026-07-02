@@ -363,6 +363,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="20.2.3" data-path="planning-an-experiment-ii.html"><a href="planning-an-experiment-ii.html#rcbd-with-10-reps"><i class="fa fa-check"></i><b>20.2.3</b> RCBD with 10 reps</a></li>
 <li class="chapter" data-level="20.2.4" data-path="planning-an-experiment-ii.html"><a href="planning-an-experiment-ii.html#rcbd-with-10-reps-and-4-subsamples"><i class="fa fa-check"></i><b>20.2.4</b> RCBD with 10 reps and 4 subsamples</a></li>
 </ul></li>
+<li class="chapter" data-level="20.3" data-path="planning-an-experiment-ii.html"><a href="planning-an-experiment-ii.html#take-home-messages"><i class="fa fa-check"></i><b>20.3</b> Take-home messages</a></li>
 </ul></li>
 <li class="chapter" data-level="21" data-path="semester-project.html"><a href="semester-project.html"><i class="fa fa-check"></i><b>21</b> Semester Project</a>
 <ul>
@@ -424,20 +425,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb33-2"><a href="review-hierarchical-multilevel-models.html#cb33-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(col, row))<span class="sc">+</span></span>
 <span id="cb33-3"><a href="review-hierarchical-multilevel-models.html#cb33-3" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="fu">aes</span>(<span class="at">fill =</span> block))<span class="sc">+</span></span>
 <span id="cb33-4"><a href="review-hierarchical-multilevel-models.html#cb33-4" tabindex="-1"></a>  <span class="fu">coord_fixed</span>()</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-175-1.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-88-1.png" alt="" width="672" /></p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="review-hierarchical-multilevel-models.html#cb34-1" tabindex="-1"></a>df <span class="sc">|&gt;</span> </span>
 <span id="cb34-2"><a href="review-hierarchical-multilevel-models.html#cb34-2" tabindex="-1"></a>  <span class="fu">filter</span>(block <span class="sc">==</span> <span class="st">&quot;B1&quot;</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb34-3"><a href="review-hierarchical-multilevel-models.html#cb34-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(col, row))<span class="sc">+</span></span>
 <span id="cb34-4"><a href="review-hierarchical-multilevel-models.html#cb34-4" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="fu">aes</span>(<span class="at">fill =</span> gen), <span class="at">color =</span> <span class="st">&quot;black&quot;</span>)<span class="sc">+</span></span>
 <span id="cb34-5"><a href="review-hierarchical-multilevel-models.html#cb34-5" tabindex="-1"></a>  <span class="fu">coord_fixed</span>()</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-175-2.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-88-2.png" alt="" width="672" /></p>
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="review-hierarchical-multilevel-models.html#cb35-1" tabindex="-1"></a>df <span class="sc">|&gt;</span> </span>
 <span id="cb35-2"><a href="review-hierarchical-multilevel-models.html#cb35-2" tabindex="-1"></a>  <span class="fu">filter</span>(block <span class="sc">==</span> <span class="st">&quot;B1&quot;</span>, gen <span class="sc">==</span> <span class="st">&quot;Mindum&quot;</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb35-3"><a href="review-hierarchical-multilevel-models.html#cb35-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(col, row))<span class="sc">+</span></span>
 <span id="cb35-4"><a href="review-hierarchical-multilevel-models.html#cb35-4" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="fu">aes</span>(<span class="at">fill =</span> <span class="fu">paste</span>(dust, dry)), <span class="at">color =</span> <span class="st">&quot;black&quot;</span>)<span class="sc">+</span></span>
 <span id="cb35-5"><a href="review-hierarchical-multilevel-models.html#cb35-5" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">fill =</span> inoc), <span class="at">shape =</span><span class="dv">21</span>, <span class="at">size =</span> <span class="dv">3</span>)<span class="sc">+</span></span>
 <span id="cb35-6"><a href="review-hierarchical-multilevel-models.html#cb35-6" tabindex="-1"></a>  <span class="fu">coord_fixed</span>()</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-175-3.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-88-3.png" alt="" width="672" /></p>
 </div>
 <div id="designed-experiment" class="section level3 hasAnchor" number="12.1.2">
 <h3><span class="header-section-number">12.1.2</span> Designed experiment<a href="review-hierarchical-multilevel-models.html#designed-experiment" class="anchor-section" aria-label="Anchor link to header"></a></h3>

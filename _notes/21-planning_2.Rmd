@@ -69,6 +69,9 @@ All examples below generate 100 designs with the means described above.
 
 ### RCBD with 10 reps 
 
+
+The data generating model is **literally** $y_{ij} = \mu + T_i + o_j + \varepsilon_{ij}$, with $o_j \sim N(0, 0.05)$ and $\varepsilon_{ij} \sim N(0, 0.1)$.
+
 ```{r warning=FALSE, message=FALSE}
 n_reps <- 10
 
@@ -152,23 +155,27 @@ mean(p_mu1_minus_mu3<0.05) # power for a .5 difference in temp
 
 ### RCBD with 10 reps and 4 subsamples   
 
+Here, the data generating model is **literally** $y_{ijk} = \mu + T_i + o_j + s_{i(j)} + \varepsilon_{ijk}$, with $o_j \sim N(0, 0.05)$, $s_{i(j)} \sim N(0, 0.01)$ and $\varepsilon_{ijk} \sim N(0, 0.1)$.
+
 
 ```{r warning=FALSE, message=FALSE}
 n_reps <- 10
-n_subsamps <- 2
+n_subsamps <- 6
 
 df_rcbd <- expand.grid(recipe = c("A", "B", "C"), 
                       rep = 1:n_reps, 
                       subsamp = 1:n_subsamps)
-df_rcbd$rep_f <- as.factor(df_rcbd$rep)
 
 df_rcbd <- df_rcbd %>%
   mutate(mu = case_when(recipe == "A" ~ 0, 
                         recipe == "B" ~ .15, 
-                        recipe == "C" ~ .5))
+                        recipe == "C" ~ .5), 
+         rep_f = as.factor(rep), 
+         ss = as.numeric(as.factor(paste(rep, recipe))))
 
 sigma_epsilon <- sqrt(.3)
-sigma_rep <- sqrt(.15)
+sigma_ss <- sqrt(.01)
+sigma_rep <- sqrt(.05)
 
 n_sims <- 100
 p_mu1_minus_mu2 <- numeric(n_sims)
@@ -185,16 +192,14 @@ set.seed(42)
 
 for (i in 1:n_sims){
   oven_eff <- rnorm(n_reps, 0, sigma_rep)
-  df_temp <- df_rcbd |> mutate(y = mu + oven_eff[rep] + rnorm(n, 0, sigma_epsilon))
+  ss_eff <- rnorm(n_reps*n_subsamps, 0, sigma_ss)
+  df_temp <- df_rcbd |> 
+    mutate(y = mu + oven_eff[rep] + ss_eff[ss] + rnorm(n, 0, sigma_epsilon))
   
-  m <- lmer(y ~ recipe + (1|rep/subsamp), data = df_temp)
-  m_wrong <- lm(y ~ recipe + rep, data = df_temp)
+  m <- lmer(y ~ recipe + (1|rep/recipe), data = df_temp)
+  
   means.temp <- as.data.frame(emmeans(m, ~recipe, contr = list(c(1, -1, 0), 
                                                                c(1, 0, -1)))$contrasts)
-  
-  means.temp_wrong <- 
-    as.data.frame(emmeans(m_wrong, ~recipe, contr = list(c(1, -1, 0),
-                                                   c(1, 0, -1)))$contrasts)
   
   p_mu1_minus_mu2[i] <- means.temp$p.value[1]
   p_mu1_minus_mu3[i] <- means.temp$p.value[2]
@@ -206,10 +211,10 @@ for (i in 1:n_sims){
 ```
 
 ```{r eval=TRUE, echo=FALSE}
-# p_mu1_minus_mu2 |> write_rds("../../rds/p_mu1_minus_mu2_subs.rds")
-# p_mu1_minus_mu3 |> write_rds("../../rds/p_mu1_minus_mu3_subs.rds")
-# se_mu1_minus_mu2 |> write_rds("../../rds/se_mu1_minus_mu2_subs.rds")
-# se_mu1_minus_mu3 |> write_rds("../../rds/se_mu1_minus_mu3_subs.rds")
+p_mu1_minus_mu2 |> write_rds("../../rds/p_mu1_minus_mu2_subs.rds")
+p_mu1_minus_mu3 |> write_rds("../../rds/p_mu1_minus_mu3_subs.rds")
+se_mu1_minus_mu2 |> write_rds("../../rds/se_mu1_minus_mu2_subs.rds")
+se_mu1_minus_mu3 |> write_rds("../../rds/se_mu1_minus_mu3_subs.rds")
 
 p_mu1_minus_mu2 <- read_rds("../../rds/p_mu1_minus_mu2_subs.rds")
 p_mu1_minus_mu3 <- read_rds("../../rds/p_mu1_minus_mu3_subs.rds")
@@ -242,6 +247,10 @@ mean(se_mu1_minus_mu3) # se for a .15 difference
 ```
 
 
+## Take-home messages 
 
+- Two approaches to planning experiments and evaluating hypotheticals. 
+- For a more complex example, check out [this example comparing RCBD and two different types of split-plot designs](https://stat720.github.io/summer2026/assignments/report_example_muffins.pdf).
+- Read: Casler, M.D. (2015), Fundamentals of Experimental Design: Guidelines for Designing Successful Experiments. Agronomy Journal, 107: 692-705. [https://doi.org/10.2134/agronj2013.0114](https://doi.org/10.2134/agronj2013.0114)
 
 

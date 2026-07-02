@@ -363,6 +363,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="20.2.3" data-path="planning-an-experiment-ii.html"><a href="planning-an-experiment-ii.html#rcbd-with-10-reps"><i class="fa fa-check"></i><b>20.2.3</b> RCBD with 10 reps</a></li>
 <li class="chapter" data-level="20.2.4" data-path="planning-an-experiment-ii.html"><a href="planning-an-experiment-ii.html#rcbd-with-10-reps-and-4-subsamples"><i class="fa fa-check"></i><b>20.2.4</b> RCBD with 10 reps and 4 subsamples</a></li>
 </ul></li>
+<li class="chapter" data-level="20.3" data-path="planning-an-experiment-ii.html"><a href="planning-an-experiment-ii.html#take-home-messages"><i class="fa fa-check"></i><b>20.3</b> Take-home messages</a></li>
 </ul></li>
 <li class="chapter" data-level="21" data-path="semester-project.html"><a href="semester-project.html"><i class="fa fa-check"></i><b>21</b> Semester Project</a>
 <ul>
@@ -444,7 +445,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb173-15"><a href="planning-an-experiment-ii.html#cb173-15" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;# reps&quot;</span>, <span class="at">y =</span> <span class="st">&quot;CI width&quot;</span>)<span class="sc">+</span></span>
 <span id="cb173-16"><a href="planning-an-experiment-ii.html#cb173-16" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
 <span id="cb173-17"><a href="planning-an-experiment-ii.html#cb173-17" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">aspect.ratio =</span> .<span class="dv">4</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-247-1.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-160-1.png" alt="" width="672" /></p>
 <p><strong>Simulation-based approach:</strong></p>
 <ul>
 <li>About simulations [<a href="https://royalsocietypublishing.org/rsta/article/384/2321/20240616/481849/Simulations-in-statistical-workflows">link</a>]</li>
@@ -458,6 +459,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="rcbd-with-10-reps" class="section level3 hasAnchor" number="20.2.3">
 <h3><span class="header-section-number">20.2.3</span> RCBD with 10 reps<a href="planning-an-experiment-ii.html#rcbd-with-10-reps" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The data generating model is <strong>literally</strong> <span class="math inline">\(y_{ij} = \mu + T_i + o_j + \varepsilon_{ij}\)</span>, with <span class="math inline">\(o_j \sim N(0, 0.05)\)</span> and <span class="math inline">\(\varepsilon_{ij} \sim N(0, 0.1)\)</span>.</p>
 <div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="planning-an-experiment-ii.html#cb174-1" tabindex="-1"></a>n_reps <span class="ot">&lt;-</span> <span class="dv">10</span></span>
 <span id="cb174-2"><a href="planning-an-experiment-ii.html#cb174-2" tabindex="-1"></a></span>
 <span id="cb174-3"><a href="planning-an-experiment-ii.html#cb174-3" tabindex="-1"></a>df_rcbd <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">recipe =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>), </span>
@@ -497,22 +499,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb176-2"><a href="planning-an-experiment-ii.html#cb176-2" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
 <span id="cb176-3"><a href="planning-an-experiment-ii.html#cb176-3" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="fu">TeX</span>(<span class="st">&quot;p-value for $</span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{1} - </span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{2}$&quot;</span>),</span>
 <span id="cb176-4"><a href="planning-an-experiment-ii.html#cb176-4" tabindex="-1"></a>     <span class="at">main =</span> <span class="fu">TeX</span>(<span class="st">&quot;p-value for $</span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{1} - </span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{2}$&quot;</span>))</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-251-1.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-164-1.png" alt="" width="672" /></p>
 <div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="planning-an-experiment-ii.html#cb177-1" tabindex="-1"></a><span class="fu">hist</span>(p_mu1_minus_mu3, </span>
 <span id="cb177-2"><a href="planning-an-experiment-ii.html#cb177-2" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
 <span id="cb177-3"><a href="planning-an-experiment-ii.html#cb177-3" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="fu">TeX</span>(<span class="st">&quot;p-value for $</span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{1} - </span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{3}$&quot;</span>),</span>
 <span id="cb177-4"><a href="planning-an-experiment-ii.html#cb177-4" tabindex="-1"></a>     <span class="at">main =</span> <span class="fu">TeX</span>(<span class="st">&quot;p-value for $</span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{1} - </span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{3}$&quot;</span>))</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-251-2.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-164-2.png" alt="" width="672" /></p>
 <div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="planning-an-experiment-ii.html#cb178-1" tabindex="-1"></a><span class="fu">hist</span>(se_mu1_minus_mu2,</span>
 <span id="cb178-2"><a href="planning-an-experiment-ii.html#cb178-2" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, .<span class="dv">3</span>),</span>
 <span id="cb178-3"><a href="planning-an-experiment-ii.html#cb178-3" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="fu">TeX</span>(<span class="st">&quot;se($</span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{1} - </span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{2})$&quot;</span>),</span>
 <span id="cb178-4"><a href="planning-an-experiment-ii.html#cb178-4" tabindex="-1"></a>     <span class="at">main =</span> <span class="fu">TeX</span>(<span class="st">&quot;se($</span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{1} - </span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{2})$&quot;</span>))</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-251-3.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-164-3.png" alt="" width="672" /></p>
 <div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="planning-an-experiment-ii.html#cb179-1" tabindex="-1"></a><span class="fu">hist</span>(se_mu1_minus_mu3, </span>
 <span id="cb179-2"><a href="planning-an-experiment-ii.html#cb179-2" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, .<span class="dv">3</span>),</span>
 <span id="cb179-3"><a href="planning-an-experiment-ii.html#cb179-3" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="fu">TeX</span>(<span class="st">&quot;se($</span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{1} - </span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{3})$&quot;</span>),</span>
 <span id="cb179-4"><a href="planning-an-experiment-ii.html#cb179-4" tabindex="-1"></a>     <span class="at">main =</span> <span class="fu">TeX</span>(<span class="st">&quot;se($</span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{1} - </span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{3})$&quot;</span>))</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-251-4.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-164-4.png" alt="" width="672" /></p>
 <div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="planning-an-experiment-ii.html#cb180-1" tabindex="-1"></a><span class="fu">mean</span>(p_mu1_minus_mu2<span class="sc">&lt;</span><span class="fl">0.05</span>) <span class="co"># power for a .15 difference in recipe</span></span></code></pre></div>
 <pre><code>## [1] 0.24</code></pre>
 <div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="planning-an-experiment-ii.html#cb182-1" tabindex="-1"></a><span class="fu">mean</span>(p_mu1_minus_mu3<span class="sc">&lt;</span><span class="fl">0.05</span>) <span class="co"># power for a .5 difference in temp</span></span></code></pre></div>
@@ -520,72 +522,81 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="rcbd-with-10-reps-and-4-subsamples" class="section level3 hasAnchor" number="20.2.4">
 <h3><span class="header-section-number">20.2.4</span> RCBD with 10 reps and 4 subsamples<a href="planning-an-experiment-ii.html#rcbd-with-10-reps-and-4-subsamples" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Here, the data generating model is <strong>literally</strong> <span class="math inline">\(y_{ijk} = \mu + T_i + o_j + s_{i(j)} + \varepsilon_{ijk}\)</span>, with <span class="math inline">\(o_j \sim N(0, 0.05)\)</span>, <span class="math inline">\(s_{i(j)} \sim N(0, 0.01)\)</span> and <span class="math inline">\(\varepsilon_{ijk} \sim N(0, 0.1)\)</span>.</p>
 <div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="planning-an-experiment-ii.html#cb184-1" tabindex="-1"></a>n_reps <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb184-2"><a href="planning-an-experiment-ii.html#cb184-2" tabindex="-1"></a>n_subsamps <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb184-2"><a href="planning-an-experiment-ii.html#cb184-2" tabindex="-1"></a>n_subsamps <span class="ot">&lt;-</span> <span class="dv">6</span></span>
 <span id="cb184-3"><a href="planning-an-experiment-ii.html#cb184-3" tabindex="-1"></a></span>
 <span id="cb184-4"><a href="planning-an-experiment-ii.html#cb184-4" tabindex="-1"></a>df_rcbd <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">recipe =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>), </span>
 <span id="cb184-5"><a href="planning-an-experiment-ii.html#cb184-5" tabindex="-1"></a>                      <span class="at">rep =</span> <span class="dv">1</span><span class="sc">:</span>n_reps, </span>
 <span id="cb184-6"><a href="planning-an-experiment-ii.html#cb184-6" tabindex="-1"></a>                      <span class="at">subsamp =</span> <span class="dv">1</span><span class="sc">:</span>n_subsamps)</span>
-<span id="cb184-7"><a href="planning-an-experiment-ii.html#cb184-7" tabindex="-1"></a>df_rcbd<span class="sc">$</span>rep_f <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(df_rcbd<span class="sc">$</span>rep)</span>
-<span id="cb184-8"><a href="planning-an-experiment-ii.html#cb184-8" tabindex="-1"></a></span>
-<span id="cb184-9"><a href="planning-an-experiment-ii.html#cb184-9" tabindex="-1"></a>df_rcbd <span class="ot">&lt;-</span> df_rcbd <span class="sc">%&gt;%</span></span>
-<span id="cb184-10"><a href="planning-an-experiment-ii.html#cb184-10" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mu =</span> <span class="fu">case_when</span>(recipe <span class="sc">==</span> <span class="st">&quot;A&quot;</span> <span class="sc">~</span> <span class="dv">0</span>, </span>
-<span id="cb184-11"><a href="planning-an-experiment-ii.html#cb184-11" tabindex="-1"></a>                        recipe <span class="sc">==</span> <span class="st">&quot;B&quot;</span> <span class="sc">~</span> .<span class="dv">15</span>, </span>
-<span id="cb184-12"><a href="planning-an-experiment-ii.html#cb184-12" tabindex="-1"></a>                        recipe <span class="sc">==</span> <span class="st">&quot;C&quot;</span> <span class="sc">~</span> .<span class="dv">5</span>))</span>
-<span id="cb184-13"><a href="planning-an-experiment-ii.html#cb184-13" tabindex="-1"></a></span>
-<span id="cb184-14"><a href="planning-an-experiment-ii.html#cb184-14" tabindex="-1"></a>sigma_epsilon <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(.<span class="dv">3</span>)</span>
-<span id="cb184-15"><a href="planning-an-experiment-ii.html#cb184-15" tabindex="-1"></a>sigma_rep <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(.<span class="dv">15</span>)</span>
-<span id="cb184-16"><a href="planning-an-experiment-ii.html#cb184-16" tabindex="-1"></a></span>
-<span id="cb184-17"><a href="planning-an-experiment-ii.html#cb184-17" tabindex="-1"></a>n_sims <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb184-18"><a href="planning-an-experiment-ii.html#cb184-18" tabindex="-1"></a>p_mu1_minus_mu2 <span class="ot">&lt;-</span> <span class="fu">numeric</span>(n_sims)</span>
-<span id="cb184-19"><a href="planning-an-experiment-ii.html#cb184-19" tabindex="-1"></a>p_mu1_minus_mu3 <span class="ot">&lt;-</span> <span class="fu">numeric</span>(n_sims)</span>
-<span id="cb184-20"><a href="planning-an-experiment-ii.html#cb184-20" tabindex="-1"></a>se_mu1_minus_mu2 <span class="ot">&lt;-</span> <span class="fu">numeric</span>(n_sims)</span>
-<span id="cb184-21"><a href="planning-an-experiment-ii.html#cb184-21" tabindex="-1"></a>se_mu1_minus_mu3 <span class="ot">&lt;-</span> <span class="fu">numeric</span>(n_sims)</span>
-<span id="cb184-22"><a href="planning-an-experiment-ii.html#cb184-22" tabindex="-1"></a></span>
-<span id="cb184-23"><a href="planning-an-experiment-ii.html#cb184-23" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(df_rcbd)</span></code></pre></div>
+<span id="cb184-7"><a href="planning-an-experiment-ii.html#cb184-7" tabindex="-1"></a></span>
+<span id="cb184-8"><a href="planning-an-experiment-ii.html#cb184-8" tabindex="-1"></a>df_rcbd <span class="ot">&lt;-</span> df_rcbd <span class="sc">%&gt;%</span></span>
+<span id="cb184-9"><a href="planning-an-experiment-ii.html#cb184-9" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mu =</span> <span class="fu">case_when</span>(recipe <span class="sc">==</span> <span class="st">&quot;A&quot;</span> <span class="sc">~</span> <span class="dv">0</span>, </span>
+<span id="cb184-10"><a href="planning-an-experiment-ii.html#cb184-10" tabindex="-1"></a>                        recipe <span class="sc">==</span> <span class="st">&quot;B&quot;</span> <span class="sc">~</span> .<span class="dv">15</span>, </span>
+<span id="cb184-11"><a href="planning-an-experiment-ii.html#cb184-11" tabindex="-1"></a>                        recipe <span class="sc">==</span> <span class="st">&quot;C&quot;</span> <span class="sc">~</span> .<span class="dv">5</span>), </span>
+<span id="cb184-12"><a href="planning-an-experiment-ii.html#cb184-12" tabindex="-1"></a>         <span class="at">rep_f =</span> <span class="fu">as.factor</span>(rep), </span>
+<span id="cb184-13"><a href="planning-an-experiment-ii.html#cb184-13" tabindex="-1"></a>         <span class="at">ss =</span> <span class="fu">as.numeric</span>(<span class="fu">as.factor</span>(<span class="fu">paste</span>(rep, recipe))))</span>
+<span id="cb184-14"><a href="planning-an-experiment-ii.html#cb184-14" tabindex="-1"></a></span>
+<span id="cb184-15"><a href="planning-an-experiment-ii.html#cb184-15" tabindex="-1"></a>sigma_epsilon <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(.<span class="dv">3</span>)</span>
+<span id="cb184-16"><a href="planning-an-experiment-ii.html#cb184-16" tabindex="-1"></a>sigma_ss <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(.<span class="dv">01</span>)</span>
+<span id="cb184-17"><a href="planning-an-experiment-ii.html#cb184-17" tabindex="-1"></a>sigma_rep <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(.<span class="dv">05</span>)</span>
+<span id="cb184-18"><a href="planning-an-experiment-ii.html#cb184-18" tabindex="-1"></a></span>
+<span id="cb184-19"><a href="planning-an-experiment-ii.html#cb184-19" tabindex="-1"></a>n_sims <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb184-20"><a href="planning-an-experiment-ii.html#cb184-20" tabindex="-1"></a>p_mu1_minus_mu2 <span class="ot">&lt;-</span> <span class="fu">numeric</span>(n_sims)</span>
+<span id="cb184-21"><a href="planning-an-experiment-ii.html#cb184-21" tabindex="-1"></a>p_mu1_minus_mu3 <span class="ot">&lt;-</span> <span class="fu">numeric</span>(n_sims)</span>
+<span id="cb184-22"><a href="planning-an-experiment-ii.html#cb184-22" tabindex="-1"></a>se_mu1_minus_mu2 <span class="ot">&lt;-</span> <span class="fu">numeric</span>(n_sims)</span>
+<span id="cb184-23"><a href="planning-an-experiment-ii.html#cb184-23" tabindex="-1"></a>se_mu1_minus_mu3 <span class="ot">&lt;-</span> <span class="fu">numeric</span>(n_sims)</span>
+<span id="cb184-24"><a href="planning-an-experiment-ii.html#cb184-24" tabindex="-1"></a></span>
+<span id="cb184-25"><a href="planning-an-experiment-ii.html#cb184-25" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(df_rcbd)</span></code></pre></div>
 <div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="planning-an-experiment-ii.html#cb185-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
 <span id="cb185-2"><a href="planning-an-experiment-ii.html#cb185-2" tabindex="-1"></a></span>
 <span id="cb185-3"><a href="planning-an-experiment-ii.html#cb185-3" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n_sims){</span>
 <span id="cb185-4"><a href="planning-an-experiment-ii.html#cb185-4" tabindex="-1"></a>  oven_eff <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n_reps, <span class="dv">0</span>, sigma_rep)</span>
-<span id="cb185-5"><a href="planning-an-experiment-ii.html#cb185-5" tabindex="-1"></a>  df_temp <span class="ot">&lt;-</span> df_rcbd <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">y =</span> mu <span class="sc">+</span> oven_eff[rep] <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="dv">0</span>, sigma_epsilon))</span>
-<span id="cb185-6"><a href="planning-an-experiment-ii.html#cb185-6" tabindex="-1"></a>  </span>
-<span id="cb185-7"><a href="planning-an-experiment-ii.html#cb185-7" tabindex="-1"></a>  m <span class="ot">&lt;-</span> <span class="fu">lmer</span>(y <span class="sc">~</span> recipe <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>rep<span class="sc">/</span>subsamp), <span class="at">data =</span> df_temp)</span>
-<span id="cb185-8"><a href="planning-an-experiment-ii.html#cb185-8" tabindex="-1"></a>  m_wrong <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> recipe <span class="sc">+</span> rep, <span class="at">data =</span> df_temp)</span>
-<span id="cb185-9"><a href="planning-an-experiment-ii.html#cb185-9" tabindex="-1"></a>  means.temp <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">emmeans</span>(m, <span class="sc">~</span>recipe, <span class="at">contr =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>), </span>
-<span id="cb185-10"><a href="planning-an-experiment-ii.html#cb185-10" tabindex="-1"></a>                                                               <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="sc">-</span><span class="dv">1</span>)))<span class="sc">$</span>contrasts)</span>
-<span id="cb185-11"><a href="planning-an-experiment-ii.html#cb185-11" tabindex="-1"></a>  </span>
-<span id="cb185-12"><a href="planning-an-experiment-ii.html#cb185-12" tabindex="-1"></a>  means.temp_wrong <span class="ot">&lt;-</span> </span>
-<span id="cb185-13"><a href="planning-an-experiment-ii.html#cb185-13" tabindex="-1"></a>    <span class="fu">as.data.frame</span>(<span class="fu">emmeans</span>(m_wrong, <span class="sc">~</span>recipe, <span class="at">contr =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>),</span>
-<span id="cb185-14"><a href="planning-an-experiment-ii.html#cb185-14" tabindex="-1"></a>                                                   <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="sc">-</span><span class="dv">1</span>)))<span class="sc">$</span>contrasts)</span>
-<span id="cb185-15"><a href="planning-an-experiment-ii.html#cb185-15" tabindex="-1"></a>  </span>
-<span id="cb185-16"><a href="planning-an-experiment-ii.html#cb185-16" tabindex="-1"></a>  p_mu1_minus_mu2[i] <span class="ot">&lt;-</span> means.temp<span class="sc">$</span>p.value[<span class="dv">1</span>]</span>
-<span id="cb185-17"><a href="planning-an-experiment-ii.html#cb185-17" tabindex="-1"></a>  p_mu1_minus_mu3[i] <span class="ot">&lt;-</span> means.temp<span class="sc">$</span>p.value[<span class="dv">2</span>]</span>
-<span id="cb185-18"><a href="planning-an-experiment-ii.html#cb185-18" tabindex="-1"></a>  se_mu1_minus_mu2[i] <span class="ot">&lt;-</span> means.temp<span class="sc">$</span>SE[<span class="dv">1</span>]</span>
-<span id="cb185-19"><a href="planning-an-experiment-ii.html#cb185-19" tabindex="-1"></a>  se_mu1_minus_mu3[i] <span class="ot">&lt;-</span> means.temp<span class="sc">$</span>SE[<span class="dv">2</span>]</span>
-<span id="cb185-20"><a href="planning-an-experiment-ii.html#cb185-20" tabindex="-1"></a>  }</span></code></pre></div>
+<span id="cb185-5"><a href="planning-an-experiment-ii.html#cb185-5" tabindex="-1"></a>  ss_eff <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n_reps<span class="sc">*</span>n_subsamps, <span class="dv">0</span>, sigma_ss)</span>
+<span id="cb185-6"><a href="planning-an-experiment-ii.html#cb185-6" tabindex="-1"></a>  df_temp <span class="ot">&lt;-</span> df_rcbd <span class="sc">|&gt;</span> </span>
+<span id="cb185-7"><a href="planning-an-experiment-ii.html#cb185-7" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">y =</span> mu <span class="sc">+</span> oven_eff[rep] <span class="sc">+</span> ss_eff[ss] <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="dv">0</span>, sigma_epsilon))</span>
+<span id="cb185-8"><a href="planning-an-experiment-ii.html#cb185-8" tabindex="-1"></a>  </span>
+<span id="cb185-9"><a href="planning-an-experiment-ii.html#cb185-9" tabindex="-1"></a>  m <span class="ot">&lt;-</span> <span class="fu">lmer</span>(y <span class="sc">~</span> recipe <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>rep<span class="sc">/</span>recipe), <span class="at">data =</span> df_temp)</span>
+<span id="cb185-10"><a href="planning-an-experiment-ii.html#cb185-10" tabindex="-1"></a>  </span>
+<span id="cb185-11"><a href="planning-an-experiment-ii.html#cb185-11" tabindex="-1"></a>  means.temp <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">emmeans</span>(m, <span class="sc">~</span>recipe, <span class="at">contr =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>), </span>
+<span id="cb185-12"><a href="planning-an-experiment-ii.html#cb185-12" tabindex="-1"></a>                                                               <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="sc">-</span><span class="dv">1</span>)))<span class="sc">$</span>contrasts)</span>
+<span id="cb185-13"><a href="planning-an-experiment-ii.html#cb185-13" tabindex="-1"></a>  </span>
+<span id="cb185-14"><a href="planning-an-experiment-ii.html#cb185-14" tabindex="-1"></a>  p_mu1_minus_mu2[i] <span class="ot">&lt;-</span> means.temp<span class="sc">$</span>p.value[<span class="dv">1</span>]</span>
+<span id="cb185-15"><a href="planning-an-experiment-ii.html#cb185-15" tabindex="-1"></a>  p_mu1_minus_mu3[i] <span class="ot">&lt;-</span> means.temp<span class="sc">$</span>p.value[<span class="dv">2</span>]</span>
+<span id="cb185-16"><a href="planning-an-experiment-ii.html#cb185-16" tabindex="-1"></a>  se_mu1_minus_mu2[i] <span class="ot">&lt;-</span> means.temp<span class="sc">$</span>SE[<span class="dv">1</span>]</span>
+<span id="cb185-17"><a href="planning-an-experiment-ii.html#cb185-17" tabindex="-1"></a>  se_mu1_minus_mu3[i] <span class="ot">&lt;-</span> means.temp<span class="sc">$</span>SE[<span class="dv">2</span>]</span>
+<span id="cb185-18"><a href="planning-an-experiment-ii.html#cb185-18" tabindex="-1"></a>  }</span></code></pre></div>
 <div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="planning-an-experiment-ii.html#cb186-1" tabindex="-1"></a><span class="fu">hist</span>(p_mu1_minus_mu2,</span>
 <span id="cb186-2"><a href="planning-an-experiment-ii.html#cb186-2" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
 <span id="cb186-3"><a href="planning-an-experiment-ii.html#cb186-3" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="fu">TeX</span>(<span class="st">&quot;p-value for $</span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{1} - </span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{2}$&quot;</span>),</span>
 <span id="cb186-4"><a href="planning-an-experiment-ii.html#cb186-4" tabindex="-1"></a>     <span class="at">main =</span> <span class="fu">TeX</span>(<span class="st">&quot;p-value for $</span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{1} - </span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{2}$&quot;</span>))</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-256-1.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-169-1.png" alt="" width="672" /></p>
 <div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="planning-an-experiment-ii.html#cb187-1" tabindex="-1"></a><span class="fu">hist</span>(p_mu1_minus_mu3, </span>
 <span id="cb187-2"><a href="planning-an-experiment-ii.html#cb187-2" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
 <span id="cb187-3"><a href="planning-an-experiment-ii.html#cb187-3" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="fu">TeX</span>(<span class="st">&quot;p-value for $</span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{1} - </span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{3}$&quot;</span>),</span>
 <span id="cb187-4"><a href="planning-an-experiment-ii.html#cb187-4" tabindex="-1"></a>     <span class="at">main =</span> <span class="fu">TeX</span>(<span class="st">&quot;p-value for $</span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{1} - </span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{3}$&quot;</span>))</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-256-2.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-169-2.png" alt="" width="672" /></p>
 <div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="planning-an-experiment-ii.html#cb188-1" tabindex="-1"></a><span class="fu">hist</span>(se_mu1_minus_mu2,</span>
 <span id="cb188-2"><a href="planning-an-experiment-ii.html#cb188-2" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, .<span class="dv">3</span>),</span>
 <span id="cb188-3"><a href="planning-an-experiment-ii.html#cb188-3" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="fu">TeX</span>(<span class="st">&quot;se($</span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{1} - </span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{2})$&quot;</span>),</span>
 <span id="cb188-4"><a href="planning-an-experiment-ii.html#cb188-4" tabindex="-1"></a>     <span class="at">main =</span> <span class="fu">TeX</span>(<span class="st">&quot;se($</span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{1} - </span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{2})$&quot;</span>))</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-256-3.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-169-3.png" alt="" width="672" /></p>
 <div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="planning-an-experiment-ii.html#cb189-1" tabindex="-1"></a><span class="fu">mean</span>(p_mu1_minus_mu2<span class="sc">&lt;</span><span class="fl">0.05</span>) <span class="co"># power for a .15 difference </span></span></code></pre></div>
-<pre><code>## [1] 0.16</code></pre>
+<pre><code>## [1] 1</code></pre>
 <div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="planning-an-experiment-ii.html#cb191-1" tabindex="-1"></a><span class="fu">mean</span>(p_mu1_minus_mu3<span class="sc">&lt;</span><span class="fl">0.05</span>) <span class="co"># power for a .5 difference  </span></span></code></pre></div>
-<pre><code>## [1] 0.79</code></pre>
+<pre><code>## [1] 1</code></pre>
 <div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="planning-an-experiment-ii.html#cb193-1" tabindex="-1"></a><span class="fu">mean</span>(se_mu1_minus_mu3) <span class="co"># se for a .15 difference </span></span></code></pre></div>
-<pre><code>## [1] 0.1690875</code></pre>
-
+<pre><code>## [1] 0</code></pre>
 </div>
+</div>
+<div id="take-home-messages" class="section level2 hasAnchor" number="20.3">
+<h2><span class="header-section-number">20.3</span> Take-home messages<a href="planning-an-experiment-ii.html#take-home-messages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Two approaches to planning experiments and evaluating hypotheticals.</li>
+<li>For a more complex example, check out <a href="https://stat720.github.io/summer2026/assignments/report_example_muffins.pdf">this example comparing RCBD and two different types of split-plot designs</a>.</li>
+<li>Read: Casler, M.D. (2015), Fundamentals of Experimental Design: Guidelines for Designing Successful Experiments. Agronomy Journal, 107: 692-705. <a href="https://doi.org/10.2134/agronj2013.0114">https://doi.org/10.2134/agronj2013.0114</a></li>
+</ul>
+
 </div>
 </div>
             </section>
