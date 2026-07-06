@@ -21,4 +21,4 @@ July 9
 
 July 10
 : Kahoot!   
-  : **HW 4 due**{: .label .label-red }
+
