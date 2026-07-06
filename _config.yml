@@ -73,5 +73,5 @@ compress_html:
   profile: false
 
 liquid:
-  error_mode: strict
+  error_mode: lax
   strict_filters: true
