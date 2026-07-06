@@ -208,8 +208,6 @@ for (i in 1:n_sims){
   se_mu1_minus_mu2[i] <- means.temp$SE[1]
   se_mu1_minus_mu3[i] <- means.temp$SE[2]
   }
-
-  means.temp
 ```
 
 ```{r eval=TRUE, echo=FALSE}
