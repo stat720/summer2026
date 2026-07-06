@@ -1,0 +1,254 @@
+# Optimal designs I 
+
+July 7th, 2026
+
+## Announcements 
+
+- Find today's recording in your KSU inbox. 
+- Homework is due tonight. 
+
+## Precision, power, and inference 
+
+The most common model we use can be generally described as 
+
+$$y_{i} \sim N(\mu_i, \sigma^2),$$
+where $y_{i}$ is the $i$th observation with expected value $\mu_i$ and variance $\sigma^2$. Generally speaking, we can say $\boldsymbol\mu = \mathbf{X} \boldsymbol{\beta}$, where $\mathbf{X}$ is the design matrix (i.e., contains info on all treatments, etc) and $\boldsymbol{\beta}$ is a vector containing all parameters. 
+
+The assumptions we make are 
+
+- normality,
+- independence,
+- constant variance.
+
+A few properties arise as a consequence:
+
+- $\hat{\boldsymbol{\beta}}$ is an unbiased estimator of $\boldsymbol{\beta}$.
+- $\hat{\boldsymbol{\beta}}$ is also the unbiased estimator with the smallest variance. 
+- Precision of the estimates: $Var(\hat{\boldsymbol{\beta}}) = \frac{\sigma^2}{\mathbf{X}^\top \mathbf{X}}$.
+- Standard error of the estimates: $se(\hat{\boldsymbol{\beta}}) = \sqrt{\frac{\sigma^2}{\mathbf{X}^\top \mathbf{X}}}$. 
+- Also, looking directly at treatment means $\mu_j$: $se(\hat{\mu_j}) =\sqrt\frac{\sigma^2}{r}$, where $r$ is the number of repetitions. 
+- Variance of $\hat{y}$: $Var(\hat{y}) = \sigma^2 \mathbf{X} (\mathbf{X}^\top \mathbf{X})^{-1} \mathbf{X}^\top$. 
+- See 'Review' above to understand what $\mathbf{X}^\top \mathbf{X}$ does. 
+
+### Inference 
+
+- What in the model were we interested about? 
+- A confidence interval of $\hat{\boldsymbol{\beta}}$: $CI_{95\%\ \hat{\boldsymbol{\beta}}} = \hat{\boldsymbol{\beta}} \pm t_{1-\alpha/2, df} \cdot se(\hat{\boldsymbol{\beta}})$. 
+- What is the most accurate confidence interval? 
+- What is the best confidence interval?
+
+
+
+```{r echo=FALSE, out.width= "90%", fig.align='center', fig.cap="Mindmap: experiment design and data analysis in the context of a research question."}
+knitr::include_graphics("../figures/mindmap2.jpg")
+```
+
+
+#### Precision  
+
+We wish to maximize the information about the estimates: this means having a narrow range of values where we have high confidence contain the true value.  
+
+Recall:
+
+$$CI_{95\%\ \hat{\beta_j}} = \hat{\beta_j} \pm t_{1-\alpha/2, df} \cdot se(\hat{\beta_j}).$$ 
+
+**What happens when we increase the number of observations:**
+
+- $t_{1-\alpha/2,\ df_1} \rightarrow t_{1-\alpha/2,\ df_2}$
+- $se(\hat{\beta_j}) = \sqrt{\frac{\sigma^2}{(\mathbf{X}^\top \mathbf{X})^{-1}_{jj}}} = \sqrt{\frac{\sigma^2}{n\cdot s^2_x}}$ 
+- Discuss increasing $r$ versus increasing $J$ (i.e., total number of treatments). 
+
+#### Power 
+
+- Statistical power is directly connected to hypothesis tests. 
+- Hypothesis tests are directly connected to the standard error of the estimates. 
+
+**Strategies to increase power**
+
+Elements of ANOVA 
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANOVA table for the cookie split-plot experiment.</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+
+<body>
+
+<table>
+    <tr>
+        <th>Source</th>
+        <th>df</th>
+        <th>SS</th>
+        <th>MS</th>
+        <th>EMS</th>
+    </tr>
+    <tr>
+        <td>Block</td>
+        <td>$b-1$</td>
+        <td> </td>
+        <td> </td>
+        <td>$$\sigma^2_{\varepsilon}+g\sigma^2_w+tg\sigma^2_d$$</td>
+    </tr>
+    <tr>
+        <td>Fungicide</td>
+        <td>$t-1$</td>
+        <td>$SS_{F}$</td>
+        <td>$\frac{SS_{F}}{b-1}$</td>
+        <td>$$\sigma^2_{\varepsilon}+g\sigma^2_w+\phi^2(\alpha)$$</td>
+    </tr>
+    <tr>
+        <td>Error(whole plot)</td>
+        <td>$(b-1)(t-1)$</td>
+        <td> </td>
+        <td> </td>
+        <td>$$\sigma^2_{\varepsilon}+g\sigma^2_w$$</td>
+    </tr>
+    <tr>
+        <td>Genotype</td>
+        <td>$g-1$</td>
+        <td>$SS_{G}$</td>
+        <td>$\frac{SS_{G}}{g-1}$</td>
+        <td>$$\sigma^2_{\varepsilon}+\phi^2(\gamma)$$</td>
+    </tr>
+    <tr>
+        <td>$T \times G$</td>
+        <td>$(t-1)(g-1)$</td>
+        <td>$SS_{F \times G}$</td>
+        <td>$\frac{SS_{F \times G}}{(t-1)(g-1)}$</td>
+        <td>$$\sigma^2_{\varepsilon}+\phi^2(\alpha \gamma)$$</td>
+    </tr>
+    <tr>
+        <td>Error(split plot)</td>
+        <td>$t(b-1)(g-1)$</td>
+        <td>$SSE$</td>
+        <td>$\frac{SSE}{t(b-1)(g-1)}$</td>
+        <td>$$\sigma^2_{\varepsilon}$$</td>
+    </tr>
+
+</table>
+</body>
+
+
+\bigskip
+
+**Example:** ANOVA with varying number of repetitions 
+
+
+```{r}
+#| echo: false
+
+set.seed(4)
+n <- 3
+groups <- c("A", "B", "C")
+data_low_n <- data.frame(
+  treatment = rep(groups, each = n),
+  value = c(rnorm(n, 10, 2), rnorm(n, 10, 2), rnorm(n, 13.5, 2))
+)
+
+anova_baseline <- aov(value ~ treatment, data = data_low_n)
+knitr::kable(summary(anova_baseline)[[1]], 
+             caption = "Baseline: Low #reps (3), Low #trts (3)")
+```
+
+\bigskip
+
+```{r echo=FALSE}
+set.seed(2)
+n <- 7
+groups <- c("A", "B", "C")
+data_low_n <- data.frame(
+  treatment = rep(groups, each = n),
+  value = c(rnorm(n, 10, 2), rnorm(n, 10, 2), rnorm(n, 13.5, 2))
+)
+
+anova_baseline <- aov(value ~ treatment, data = data_low_n)
+knitr::kable(summary(anova_baseline)[[1]], 
+             caption = "Baseline: More #reps (6), Low #trts (3)")
+```
+
+\bigskip
+
+```{r echo=FALSE}
+set.seed(88)
+n <- 3
+groups <- c("A", "B", "C", "D", "E", "F", "G")
+data_low_n <- data.frame(
+  treatment = rep(groups, each = n),
+  value = c(rnorm(n, 10, 2), rnorm(n, 10, 2), rnorm(n, 10, 2), 
+             rnorm(n, 10, 2), 
+            rnorm(n, 10, 2), rnorm(n, 10, 2), rnorm(n, 13.5, 2))
+)
+
+anova_baseline <- aov(value ~ treatment, data = data_low_n)
+knitr::kable(summary(anova_baseline)[[1]], 
+             caption = "Baseline: Low #reps (3), More #trts (6)")
+
+```
+
+### Blocks 
+
+Blocks (or local control) are included to increase precision --> increase power. 
+
+- How are blocks applied nowadays? 
+- What does 'convenience blocking' generate? See [Stroup (2002)](https://link.springer.com/article/10.1198/108571102780).  
+
+**Incomplete Block Designs**
+
+- More likely to recover spatial variability because they're smaller. 
+- `ibd` R package [[link](https://cran.r-project.org/web/packages/ibd/index.html)]
+
+
+## Optimal designs 
+
+Considering the items above, we can confidently say that **our design affects** $\mathbf{X}$ **and thus, precision, power, and inference.** 
+
+There is a big body of literature studying the different designs that optimize different outcomes (e.g., precision, power, inference, etc.).
+
+Optimality criteria summarize how good a design is in a single number. Optimal designs just optimize those criteria. 
+
+### Some optimality criteria with emphasis on estimation 
+
+**D-optimality** 
+
+- Perhaps the most common.  
+- Emphasis on the quality of the parameter estimates. 
+- Minimize $({\mathbf{X}^\top \mathbf{X}})^{-1}$ (i.e., maximize the determinant of the information matrix ${\mathbf{X}^\top \mathbf{X}}$). 
+- Maximizes the differential Shannon information content of the parameter estimates. 
+
+
+**C-optimality** 
+
+- Minimizes the variance of a predetermined linear combination of parameters. 
+
+
+### Other interesting optimality criteria with emphasis on prediction 
+
+**G-optimality** 
+- Minimizes the maximum variance of the predicted values across the design region. 
+**I-optimality** 
+- Minimizes the average prediction variance over the design region. 
+
+
+## Tomorrow  
+
+- Bring your muffins! 
