@@ -235,6 +235,36 @@ Optimality criteria summarize how good a design is in a single number. Optimal d
 - Minimize $({\mathbf{X}^\top \mathbf{X}})^{-1}$ (i.e., maximize the determinant of the information matrix ${\mathbf{X}^\top \mathbf{X}}$). 
 - Maximizes the differential Shannon information content of the parameter estimates. 
 
+The table below shows a D-optimal arrangement to compare all means and test if $\mu_A = \mu_B = \mu_C = \mu_D$ (Table 4.19 in Milliken and Johnson). 
+
+```{r echo=FALSE}
+table1 <- data.frame(
+  blocks = 1:6,
+  A = rep(c("X", ""), each =3),
+  B = c("X", "", "", "X", "X", ""),
+  C = c("", "X", "", "X","",  "X"),
+  D = c("", "", "X", "", "X","X")
+)
+
+knitr::kable(table1, 
+             caption = "Assignment of Four Treatments to Six Blocks of Two Experimental
+Units. Balanced Incomplete Block Example.")
+```
+
+The table below shows a D-optimal arrangement to compare A to B, C, and D, and test if $\mu_A = \mu_B, \mu_A = \mu_C, \mu_A = \mu_D$ (Table 4.22 in Milliken and Johnson). 
+```{r echo=FALSE}
+table2 <- data.frame(
+  blocks = 1:6,
+  A = rep("X", 6),
+  B = c("X", "", "", "X", "", ""),
+  C = c("", "X", "", "",  "X", ""),
+  D = c("", "", "X", "", "","X")
+)
+
+knitr::kable(table2, 
+             caption = "Assignment of Four Treatments to Six Blocks of Two Experimental
+Units. Unbalanced Incomplete Block Example.")
+```
 
 **C-optimality** 
 

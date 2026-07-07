@@ -461,7 +461,7 @@ where <span class="math inline">\(y_{i}\)</span> is the <span class="math inline
 <li>What is the most accurate confidence interval?</li>
 <li>What is the best confidence interval?</li>
 </ul>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-117"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-121"></span>
 <img src="../figures/mindmap2.jpg" alt="Mindmap: experiment design and data analysis in the context of a research question." width="90%" />
 <p class="caption">
 Figure 22.1: Mindmap: experiment design and data analysis in the context of a research question.
@@ -634,7 +634,7 @@ Error(split plot)
 </body>
 <p><strong>Example:</strong> ANOVA with varying number of repetitions</p>
 <table>
-<caption><span id="tab:unnamed-chunk-118">Table 22.1: </span>Baseline: Low #reps (3), Low #trts (3)</caption>
+<caption><span id="tab:unnamed-chunk-122">Table 22.1: </span>Baseline: Low #reps (3), Low #trts (3)</caption>
 <thead>
 <tr class="header">
 <th align="left"></th>
@@ -665,7 +665,7 @@ Error(split plot)
 </tbody>
 </table>
 <table>
-<caption><span id="tab:unnamed-chunk-119">Table 22.2: </span>Baseline: More #reps (6), Low #trts (3)</caption>
+<caption><span id="tab:unnamed-chunk-123">Table 22.2: </span>Baseline: More #reps (6), Low #trts (3)</caption>
 <thead>
 <tr class="header">
 <th align="left"></th>
@@ -696,7 +696,7 @@ Error(split plot)
 </tbody>
 </table>
 <table>
-<caption><span id="tab:unnamed-chunk-120">Table 22.3: </span>Baseline: Low #reps (3), More #trts (6)</caption>
+<caption><span id="tab:unnamed-chunk-124">Table 22.3: </span>Baseline: Low #reps (3), More #trts (6)</caption>
 <thead>
 <tr class="header">
 <th align="left"></th>
@@ -757,6 +757,122 @@ Error(split plot)
 <li>Minimize <span class="math inline">\(({\mathbf{X}^\top \mathbf{X}})^{-1}\)</span> (i.e., maximize the determinant of the information matrix <span class="math inline">\({\mathbf{X}^\top \mathbf{X}}\)</span>).</li>
 <li>Maximizes the differential Shannon information content of the parameter estimates.</li>
 </ul>
+<p>The table below shows a D-optimal arrangement to compare all means and test if <span class="math inline">\(\mu_A = \mu_B = \mu_C = \mu_D\)</span> (Table 4.19 in Milliken and Johnson).</p>
+<table>
+<caption><span id="tab:unnamed-chunk-125">Table 22.4: </span>Assignment of Four Treatments to Six Blocks of Two Experimental
+Units. Balanced Incomplete Block Example.</caption>
+<thead>
+<tr class="header">
+<th align="right">blocks</th>
+<th align="left">A</th>
+<th align="left">B</th>
+<th align="left">C</th>
+<th align="left">D</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">X</td>
+<td align="left">X</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="left">X</td>
+<td align="left"></td>
+<td align="left">X</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="left">X</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">X</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="left"></td>
+<td align="left">X</td>
+<td align="left">X</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="left"></td>
+<td align="left">X</td>
+<td align="left"></td>
+<td align="left">X</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">X</td>
+<td align="left">X</td>
+</tr>
+</tbody>
+</table>
+<p>The table below shows a D-optimal arrangement to compare A to B, C, and D, and test if <span class="math inline">\(\mu_A = \mu_B, \mu_A = \mu_C, \mu_A = \mu_D\)</span> (Table 4.22 in Milliken and Johnson).</p>
+<table>
+<caption><span id="tab:unnamed-chunk-126">Table 22.5: </span>Assignment of Four Treatments to Six Blocks of Two Experimental
+Units. Unbalanced Incomplete Block Example.</caption>
+<thead>
+<tr class="header">
+<th align="right">blocks</th>
+<th align="left">A</th>
+<th align="left">B</th>
+<th align="left">C</th>
+<th align="left">D</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">X</td>
+<td align="left">X</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="left">X</td>
+<td align="left"></td>
+<td align="left">X</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="left">X</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">X</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="left">X</td>
+<td align="left">X</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="left">X</td>
+<td align="left"></td>
+<td align="left">X</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="left">X</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">X</td>
+</tr>
+</tbody>
+</table>
 <p><strong>C-optimality</strong></p>
 <ul>
 <li>Minimizes the variance of a predetermined linear combination of parameters.</li>

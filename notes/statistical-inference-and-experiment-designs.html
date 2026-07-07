@@ -465,7 +465,7 @@ The scientists measured Serum haptoglobin (mg/dL) as the response variable and w
 <div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="statistical-inference-and-experiment-designs.html#cb53-1" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(Serum_haptoglobin_mg.dL <span class="sc">~</span> Trt<span class="sc">*</span>Day, <span class="at">data =</span> df)</span>
 <span id="cb53-2"><a href="statistical-inference-and-experiment-designs.html#cb53-2" tabindex="-1"></a></span>
 <span id="cb53-3"><a href="statistical-inference-and-experiment-designs.html#cb53-3" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">check_model</span>(m,  <span class="at">check =</span> <span class="fu">c</span>(<span class="st">&quot;normality&quot;</span>, <span class="st">&quot;homogeneity&quot;</span>))</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-36-1.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-40-1.png" alt="" width="672" /></p>
 <div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="statistical-inference-and-experiment-designs.html#cb54-1" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">Anova</span>(m, <span class="at">type =</span><span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## Anova Table (Type II tests)
 ## 
@@ -486,7 +486,7 @@ The scientists measured Serum haptoglobin (mg/dL) as the response variable and w
 <div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="statistical-inference-and-experiment-designs.html#cb56-1" tabindex="-1"></a>means <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(m, <span class="sc">~</span> Trt , <span class="at">at =</span> <span class="fu">list</span>(<span class="at">Day =</span> <span class="fu">factor</span>(<span class="dv">38</span>)))</span></code></pre></div>
 <pre><code>## NOTE: Results may be misleading due to involvement in interactions</code></pre>
 <div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="statistical-inference-and-experiment-designs.html#cb58-1" tabindex="-1"></a><span class="fu">plot</span>(means)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-37-1.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-41-1.png" alt="" width="672" /></p>
 <p>How is the story behind ANOVA and the marginal means so different?</p>
 </div>
 <div id="applied-case-ii-rcbd" class="section level3 hasAnchor" number="14.2.5">
