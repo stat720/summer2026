@@ -9,7 +9,7 @@ July 6
 July 7 
 : ((Online)) Optimal designs I    
   : **HW 3 due**{: .label .label-red }
-  : [](https://stat720.github.io/summer2026/notes/split-plot-designs.html)
+  : [html](https://stat720.github.io/summer2026/notes/optimal-designs-i.html)
 
 July 8 
 : RCBD experiment & Optimal designs    
