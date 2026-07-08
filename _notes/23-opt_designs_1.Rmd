@@ -28,7 +28,6 @@ A few properties arise as a consequence:
 - Standard error of the estimates: $se(\hat{\boldsymbol{\beta}}) = \sqrt{\frac{\sigma^2}{\mathbf{X}^\top \mathbf{X}}}$. 
 - Also, looking directly at treatment means $\mu_j$: $se(\hat{\mu_j}) =\sqrt\frac{\sigma^2}{r}$, where $r$ is the number of repetitions. 
 - Variance of $\hat{y}$: $Var(\hat{y}) = \sigma^2 \mathbf{X} (\mathbf{X}^\top \mathbf{X})^{-1} \mathbf{X}^\top$. 
-- See 'Review' above to understand what $\mathbf{X}^\top \mathbf{X}$ does. 
 
 ### Inference 
 

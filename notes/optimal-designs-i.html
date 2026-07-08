@@ -30,7 +30,7 @@
   
   
 <link rel="prev" href="randomized-complete-block-designs.html"/>
-<link rel="next" href="semester-project.html"/>
+<link rel="next" href="analyzing-the-in-class-experiment.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -391,16 +391,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="22.4" data-path="optimal-designs-i.html"><a href="optimal-designs-i.html#tomorrow-6"><i class="fa fa-check"></i><b>22.4</b> Tomorrow</a></li>
 </ul></li>
-<li class="chapter" data-level="23" data-path="semester-project.html"><a href="semester-project.html"><i class="fa fa-check"></i><b>23</b> Semester Project</a>
+<li class="chapter" data-level="23" data-path="analyzing-the-in-class-experiment.html"><a href="analyzing-the-in-class-experiment.html"><i class="fa fa-check"></i><b>23</b> Analyzing the in-class experiment</a>
 <ul>
-<li class="chapter" data-level="23.1" data-path="semester-project.html"><a href="semester-project.html#learning-objectives"><i class="fa fa-check"></i><b>23.1</b> Learning objectives</a></li>
-<li class="chapter" data-level="23.2" data-path="semester-project.html"><a href="semester-project.html#partial-deadlines"><i class="fa fa-check"></i><b>23.2</b> Partial deadlines</a>
+<li class="chapter" data-level="23.1" data-path="analyzing-the-in-class-experiment.html"><a href="analyzing-the-in-class-experiment.html#our-designed-experiment"><i class="fa fa-check"></i><b>23.1</b> Our designed experiment</a></li>
+<li class="chapter" data-level="23.2" data-path="analyzing-the-in-class-experiment.html"><a href="analyzing-the-in-class-experiment.html#a-few-extra-anticipated-comments"><i class="fa fa-check"></i><b>23.2</b> A few extra (anticipated) comments</a></li>
+<li class="chapter" data-level="23.3" data-path="analyzing-the-in-class-experiment.html"><a href="analyzing-the-in-class-experiment.html#tomorrow-7"><i class="fa fa-check"></i><b>23.3</b> Tomorrow</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="semester-project.html"><a href="semester-project.html"><i class="fa fa-check"></i><b>24</b> Semester Project</a>
 <ul>
-<li class="chapter" data-level="23.2.1" data-path="semester-project.html"><a href="semester-project.html#project-proposal---due-friday-june-12-at-2pm-ct"><i class="fa fa-check"></i><b>23.2.1</b> Project proposal - Due Friday June 12 at 2pm CT</a></li>
-<li class="chapter" data-level="23.2.2" data-path="semester-project.html"><a href="semester-project.html#written-report---due-sunday-july-12-at-2pm-ct-for-peer-review"><i class="fa fa-check"></i><b>23.2.2</b> Written report - Due Sunday July 12 at 2pm CT for peer review</a></li>
-<li class="chapter" data-level="23.2.3" data-path="semester-project.html"><a href="semester-project.html#oral-presentation---somewhere-between-july-8---july-14"><i class="fa fa-check"></i><b>23.2.3</b> Oral presentation - Somewhere between July 8 - July 14</a></li>
-<li class="chapter" data-level="23.2.4" data-path="semester-project.html"><a href="semester-project.html#final-written-report---due-wednesday-july-16-at-1159pm-ct"><i class="fa fa-check"></i><b>23.2.4</b> FINAL written report - Due Wednesday July 16 at 11:59pm CT</a></li>
-<li class="chapter" data-level="23.2.5" data-path="semester-project.html"><a href="semester-project.html#practical-reads"><i class="fa fa-check"></i><b>23.2.5</b> Practical reads</a></li>
+<li class="chapter" data-level="24.1" data-path="semester-project.html"><a href="semester-project.html#learning-objectives"><i class="fa fa-check"></i><b>24.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="24.2" data-path="semester-project.html"><a href="semester-project.html#partial-deadlines"><i class="fa fa-check"></i><b>24.2</b> Partial deadlines</a>
+<ul>
+<li class="chapter" data-level="24.2.1" data-path="semester-project.html"><a href="semester-project.html#project-proposal---due-friday-june-12-at-2pm-ct"><i class="fa fa-check"></i><b>24.2.1</b> Project proposal - Due Friday June 12 at 2pm CT</a></li>
+<li class="chapter" data-level="24.2.2" data-path="semester-project.html"><a href="semester-project.html#written-report---due-sunday-july-12-at-2pm-ct-for-peer-review"><i class="fa fa-check"></i><b>24.2.2</b> Written report - Due Sunday July 12 at 2pm CT for peer review</a></li>
+<li class="chapter" data-level="24.2.3" data-path="semester-project.html"><a href="semester-project.html#oral-presentation---somewhere-between-july-8---july-14"><i class="fa fa-check"></i><b>24.2.3</b> Oral presentation - Somewhere between July 8 - July 14</a></li>
+<li class="chapter" data-level="24.2.4" data-path="semester-project.html"><a href="semester-project.html#final-written-report---due-wednesday-july-16-at-1159pm-ct"><i class="fa fa-check"></i><b>24.2.4</b> FINAL written report - Due Wednesday July 16 at 11:59pm CT</a></li>
+<li class="chapter" data-level="24.2.5" data-path="semester-project.html"><a href="semester-project.html#practical-reads"><i class="fa fa-check"></i><b>24.2.5</b> Practical reads</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -451,7 +457,6 @@ where <span class="math inline">\(y_{i}\)</span> is the <span class="math inline
 <li>Standard error of the estimates: <span class="math inline">\(se(\hat{\boldsymbol{\beta}}) = \sqrt{\frac{\sigma^2}{\mathbf{X}^\top \mathbf{X}}}\)</span>.</li>
 <li>Also, looking directly at treatment means <span class="math inline">\(\mu_j\)</span>: <span class="math inline">\(se(\hat{\mu_j}) =\sqrt\frac{\sigma^2}{r}\)</span>, where <span class="math inline">\(r\)</span> is the number of repetitions.</li>
 <li>Variance of <span class="math inline">\(\hat{y}\)</span>: <span class="math inline">\(Var(\hat{y}) = \sigma^2 \mathbf{X} (\mathbf{X}^\top \mathbf{X})^{-1} \mathbf{X}^\top\)</span>.</li>
-<li>See ‘Review’ above to understand what <span class="math inline">\(\mathbf{X}^\top \mathbf{X}\)</span> does.</li>
 </ul>
 <div id="inference" class="section level3 hasAnchor" number="22.2.1">
 <h3><span class="header-section-number">22.2.1</span> Inference<a href="optimal-designs-i.html#inference" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -900,7 +905,7 @@ Units. Unbalanced Incomplete Block Example.</caption>
         </div>
       </div>
 <a href="randomized-complete-block-designs.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="semester-project.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="analyzing-the-in-class-experiment.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

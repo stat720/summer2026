@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>STAT 720 - Design of Experiments</title>
-  <meta name="description" content="STAT 720 - Design of Experiments" />
+  <title>Day 23 Analyzing the in-class experiment | STAT 720 - Design of Experiments</title>
+  <meta name="description" content="Day 23 Analyzing the in-class experiment | STAT 720 - Design of Experiments" />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="STAT 720 - Design of Experiments" />
+  <meta property="og:title" content="Day 23 Analyzing the in-class experiment | STAT 720 - Design of Experiments" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="STAT 720 - Design of Experiments" />
+  <meta name="twitter:title" content="Day 23 Analyzing the in-class experiment | STAT 720 - Design of Experiments" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="basic-types-of-designed-experiments.html"/>
+<link rel="prev" href="optimal-designs-i.html"/>
+<link rel="next" href="semester-project.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -428,104 +428,102 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">STAT 720 - Design of Experiments</h1>
-<p class="author"><em>Josefina Lacasa</em></p>
-<p class="date"><em>Summer 2026</em></p>
+<div id="analyzing-the-in-class-experiment" class="section level1 hasAnchor" number="23">
+<h1><span class="header-section-number">Day 23</span> Analyzing the in-class experiment<a href="analyzing-the-in-class-experiment.html#analyzing-the-in-class-experiment" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>July 8th, 2026</p>
+<div id="our-designed-experiment" class="section level2 hasAnchor" number="23.1">
+<h2><span class="header-section-number">23.1</span> Our designed experiment<a href="analyzing-the-in-class-experiment.html#our-designed-experiment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>RCBD with 10 reps and 6 subsamples</p>
+<p>The data generating model is now <span class="math inline">\(y_{ijk} = \mu + T_i + o_j + s_{i(j)} + \varepsilon_{ijk}\)</span>, with <span class="math inline">\(o_j \sim N(0, 0.15)\)</span>, <span class="math inline">\(s_{i(j)} \sim N(0, 0.02)\)</span> and <span class="math inline">\(\varepsilon_{ijk} \sim N(0, 0.1)\)</span>. Note that <span class="math inline">\(\sigma^2_{oven}\)</span> is now large, because it now captures the variability between ovens and houses, and we expect that to be a bit larger.</p>
+<p><strong>What can we expect?</strong></p>
+<p>-&gt; Simulate data with <span class="math inline">\(j = 1, 2, \dots, 11\)</span>, and <span class="math inline">\(k = 1, 2, \dots, 4\)</span>.</p>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="analyzing-the-in-class-experiment.html#cb208-1" tabindex="-1"></a>n_reps <span class="ot">&lt;-</span> <span class="dv">11</span></span>
+<span id="cb208-2"><a href="analyzing-the-in-class-experiment.html#cb208-2" tabindex="-1"></a>n_subsamps <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb208-3"><a href="analyzing-the-in-class-experiment.html#cb208-3" tabindex="-1"></a></span>
+<span id="cb208-4"><a href="analyzing-the-in-class-experiment.html#cb208-4" tabindex="-1"></a>df_rcbd <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">recipe =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>), </span>
+<span id="cb208-5"><a href="analyzing-the-in-class-experiment.html#cb208-5" tabindex="-1"></a>                      <span class="at">rep =</span> <span class="dv">1</span><span class="sc">:</span>n_reps, </span>
+<span id="cb208-6"><a href="analyzing-the-in-class-experiment.html#cb208-6" tabindex="-1"></a>                      <span class="at">subsamp =</span> <span class="dv">1</span><span class="sc">:</span>n_subsamps)</span>
+<span id="cb208-7"><a href="analyzing-the-in-class-experiment.html#cb208-7" tabindex="-1"></a></span>
+<span id="cb208-8"><a href="analyzing-the-in-class-experiment.html#cb208-8" tabindex="-1"></a>df_rcbd <span class="ot">&lt;-</span> df_rcbd <span class="sc">%&gt;%</span></span>
+<span id="cb208-9"><a href="analyzing-the-in-class-experiment.html#cb208-9" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mu =</span> <span class="fu">case_when</span>(recipe <span class="sc">==</span> <span class="st">&quot;A&quot;</span> <span class="sc">~</span> <span class="dv">0</span>, </span>
+<span id="cb208-10"><a href="analyzing-the-in-class-experiment.html#cb208-10" tabindex="-1"></a>                        recipe <span class="sc">==</span> <span class="st">&quot;B&quot;</span> <span class="sc">~</span> .<span class="dv">15</span>, </span>
+<span id="cb208-11"><a href="analyzing-the-in-class-experiment.html#cb208-11" tabindex="-1"></a>                        recipe <span class="sc">==</span> <span class="st">&quot;C&quot;</span> <span class="sc">~</span> .<span class="dv">5</span>), </span>
+<span id="cb208-12"><a href="analyzing-the-in-class-experiment.html#cb208-12" tabindex="-1"></a>         <span class="at">rep_f =</span> <span class="fu">as.factor</span>(rep), </span>
+<span id="cb208-13"><a href="analyzing-the-in-class-experiment.html#cb208-13" tabindex="-1"></a>         <span class="at">ss =</span> <span class="fu">as.numeric</span>(<span class="fu">as.factor</span>(<span class="fu">paste</span>(rep, recipe))))</span>
+<span id="cb208-14"><a href="analyzing-the-in-class-experiment.html#cb208-14" tabindex="-1"></a></span>
+<span id="cb208-15"><a href="analyzing-the-in-class-experiment.html#cb208-15" tabindex="-1"></a>sigma_epsilon <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(.<span class="dv">3</span>)</span>
+<span id="cb208-16"><a href="analyzing-the-in-class-experiment.html#cb208-16" tabindex="-1"></a>sigma_ss <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(.<span class="dv">02</span>)</span>
+<span id="cb208-17"><a href="analyzing-the-in-class-experiment.html#cb208-17" tabindex="-1"></a>sigma_rep <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(.<span class="dv">15</span>)</span>
+<span id="cb208-18"><a href="analyzing-the-in-class-experiment.html#cb208-18" tabindex="-1"></a></span>
+<span id="cb208-19"><a href="analyzing-the-in-class-experiment.html#cb208-19" tabindex="-1"></a>n_sims <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb208-20"><a href="analyzing-the-in-class-experiment.html#cb208-20" tabindex="-1"></a>p_mu1_minus_mu2 <span class="ot">&lt;-</span> <span class="fu">numeric</span>(n_sims)</span>
+<span id="cb208-21"><a href="analyzing-the-in-class-experiment.html#cb208-21" tabindex="-1"></a>p_mu1_minus_mu3 <span class="ot">&lt;-</span> <span class="fu">numeric</span>(n_sims)</span>
+<span id="cb208-22"><a href="analyzing-the-in-class-experiment.html#cb208-22" tabindex="-1"></a>se_mu1_minus_mu2 <span class="ot">&lt;-</span> <span class="fu">numeric</span>(n_sims)</span>
+<span id="cb208-23"><a href="analyzing-the-in-class-experiment.html#cb208-23" tabindex="-1"></a>se_mu1_minus_mu3 <span class="ot">&lt;-</span> <span class="fu">numeric</span>(n_sims)</span>
+<span id="cb208-24"><a href="analyzing-the-in-class-experiment.html#cb208-24" tabindex="-1"></a></span>
+<span id="cb208-25"><a href="analyzing-the-in-class-experiment.html#cb208-25" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(df_rcbd)</span></code></pre></div>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="analyzing-the-in-class-experiment.html#cb209-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb209-2"><a href="analyzing-the-in-class-experiment.html#cb209-2" tabindex="-1"></a></span>
+<span id="cb209-3"><a href="analyzing-the-in-class-experiment.html#cb209-3" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n_sims){</span>
+<span id="cb209-4"><a href="analyzing-the-in-class-experiment.html#cb209-4" tabindex="-1"></a>  oven_eff <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n_reps, <span class="dv">0</span>, sigma_rep)</span>
+<span id="cb209-5"><a href="analyzing-the-in-class-experiment.html#cb209-5" tabindex="-1"></a>  ss_eff <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n_reps<span class="sc">*</span>n_subsamps, <span class="dv">0</span>, sigma_ss)</span>
+<span id="cb209-6"><a href="analyzing-the-in-class-experiment.html#cb209-6" tabindex="-1"></a>  df_temp <span class="ot">&lt;-</span> df_rcbd <span class="sc">|&gt;</span> </span>
+<span id="cb209-7"><a href="analyzing-the-in-class-experiment.html#cb209-7" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">y =</span> mu <span class="sc">+</span> oven_eff[rep] <span class="sc">+</span> ss_eff[ss] <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="dv">0</span>, sigma_epsilon))</span>
+<span id="cb209-8"><a href="analyzing-the-in-class-experiment.html#cb209-8" tabindex="-1"></a>  </span>
+<span id="cb209-9"><a href="analyzing-the-in-class-experiment.html#cb209-9" tabindex="-1"></a>  m <span class="ot">&lt;-</span> <span class="fu">lmer</span>(y <span class="sc">~</span> recipe <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>rep<span class="sc">/</span>recipe), <span class="at">data =</span> df_temp)</span>
+<span id="cb209-10"><a href="analyzing-the-in-class-experiment.html#cb209-10" tabindex="-1"></a>  </span>
+<span id="cb209-11"><a href="analyzing-the-in-class-experiment.html#cb209-11" tabindex="-1"></a>  means.temp <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">emmeans</span>(m, <span class="sc">~</span>recipe, </span>
+<span id="cb209-12"><a href="analyzing-the-in-class-experiment.html#cb209-12" tabindex="-1"></a>                                      <span class="at">contr =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>), </span>
+<span id="cb209-13"><a href="analyzing-the-in-class-experiment.html#cb209-13" tabindex="-1"></a>                                                               <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="sc">-</span><span class="dv">1</span>)))<span class="sc">$</span>contrasts)</span>
+<span id="cb209-14"><a href="analyzing-the-in-class-experiment.html#cb209-14" tabindex="-1"></a>  </span>
+<span id="cb209-15"><a href="analyzing-the-in-class-experiment.html#cb209-15" tabindex="-1"></a>  p_mu1_minus_mu2[i] <span class="ot">&lt;-</span> means.temp<span class="sc">$</span>p.value[<span class="dv">1</span>]</span>
+<span id="cb209-16"><a href="analyzing-the-in-class-experiment.html#cb209-16" tabindex="-1"></a>  p_mu1_minus_mu3[i] <span class="ot">&lt;-</span> means.temp<span class="sc">$</span>p.value[<span class="dv">2</span>]</span>
+<span id="cb209-17"><a href="analyzing-the-in-class-experiment.html#cb209-17" tabindex="-1"></a>  se_mu1_minus_mu2[i] <span class="ot">&lt;-</span> means.temp<span class="sc">$</span>SE[<span class="dv">1</span>]</span>
+<span id="cb209-18"><a href="analyzing-the-in-class-experiment.html#cb209-18" tabindex="-1"></a>  se_mu1_minus_mu3[i] <span class="ot">&lt;-</span> means.temp<span class="sc">$</span>SE[<span class="dv">2</span>]</span>
+<span id="cb209-19"><a href="analyzing-the-in-class-experiment.html#cb209-19" tabindex="-1"></a>  }</span></code></pre></div>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="analyzing-the-in-class-experiment.html#cb210-1" tabindex="-1"></a><span class="fu">hist</span>(p_mu1_minus_mu2,</span>
+<span id="cb210-2"><a href="analyzing-the-in-class-experiment.html#cb210-2" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb210-3"><a href="analyzing-the-in-class-experiment.html#cb210-3" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="fu">TeX</span>(<span class="st">&quot;p-value for $</span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{1} - </span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{2}$&quot;</span>),</span>
+<span id="cb210-4"><a href="analyzing-the-in-class-experiment.html#cb210-4" tabindex="-1"></a>     <span class="at">main =</span> <span class="fu">TeX</span>(<span class="st">&quot;p-value for $</span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{1} - </span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{2}$&quot;</span>))</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-131-1.png" alt="" width="672" /></p>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="analyzing-the-in-class-experiment.html#cb211-1" tabindex="-1"></a><span class="fu">hist</span>(p_mu1_minus_mu3, </span>
+<span id="cb211-2"><a href="analyzing-the-in-class-experiment.html#cb211-2" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb211-3"><a href="analyzing-the-in-class-experiment.html#cb211-3" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="fu">TeX</span>(<span class="st">&quot;p-value for $</span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{1} - </span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{3}$&quot;</span>),</span>
+<span id="cb211-4"><a href="analyzing-the-in-class-experiment.html#cb211-4" tabindex="-1"></a>     <span class="at">main =</span> <span class="fu">TeX</span>(<span class="st">&quot;p-value for $</span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{1} - </span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{3}$&quot;</span>))</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-131-2.png" alt="" width="672" /></p>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="analyzing-the-in-class-experiment.html#cb212-1" tabindex="-1"></a><span class="fu">hist</span>(se_mu1_minus_mu2,</span>
+<span id="cb212-2"><a href="analyzing-the-in-class-experiment.html#cb212-2" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, .<span class="dv">3</span>),</span>
+<span id="cb212-3"><a href="analyzing-the-in-class-experiment.html#cb212-3" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="fu">TeX</span>(<span class="st">&quot;se($</span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{1} - </span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{2})$&quot;</span>),</span>
+<span id="cb212-4"><a href="analyzing-the-in-class-experiment.html#cb212-4" tabindex="-1"></a>     <span class="at">main =</span> <span class="fu">TeX</span>(<span class="st">&quot;se($</span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{1} - </span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{2})$&quot;</span>))</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-131-3.png" alt="" width="672" /></p>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="analyzing-the-in-class-experiment.html#cb213-1" tabindex="-1"></a><span class="fu">mean</span>(p_mu1_minus_mu2<span class="sc">&lt;</span><span class="fl">0.05</span>) <span class="co"># power for a .15 difference </span></span></code></pre></div>
+<pre><code>## [1] 0.16</code></pre>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="analyzing-the-in-class-experiment.html#cb215-1" tabindex="-1"></a><span class="fu">mean</span>(p_mu1_minus_mu3<span class="sc">&lt;</span><span class="fl">0.05</span>) <span class="co"># power for a .5 difference  </span></span></code></pre></div>
+<pre><code>## [1] 0.93</code></pre>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="analyzing-the-in-class-experiment.html#cb217-1" tabindex="-1"></a><span class="fu">mean</span>(se_mu1_minus_mu3) <span class="co"># se for a .15 difference </span></span></code></pre></div>
+<pre><code>## [1] 0.1342872</code></pre>
 </div>
-<div id="welcome-to-stat-720" class="section level1 hasAnchor" number="1">
-<h1><span class="header-section-number">Day 1</span> Welcome to STAT 720!<a href="index.html#welcome-to-stat-720" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>June 1st, 2026</p>
-<div id="about-this-course" class="section level2 hasAnchor" number="1.1">
-<h2><span class="header-section-number">1.1</span> About this course:<a href="index.html#about-this-course" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="a-few-extra-anticipated-comments" class="section level2 hasAnchor" number="23.2">
+<h2><span class="header-section-number">23.2</span> A few extra (anticipated) comments<a href="analyzing-the-in-class-experiment.html#a-few-extra-anticipated-comments" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
-<li><a href="https://jlacasa.github.io/">About me</a></li>
-<li>About you:</li>
-</ul>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-5-1.png" alt="" width="672" /></p>
+<li>Postblocking
 <ul>
-<li><p>In rounds: What’s your major, what do you expect to learn?</p></li>
-<li><p>From 2025 TEVALs: “What advice would you give to future students of this course?”</p>
+<li>Include blocks (i.e., groups of similar EUs) that were identified after randomization</li>
+<li>Typically we need to know the source of the post-blocks</li>
+<li>This is a slightly controversial topic en DoE – see <a href="https://www.jstor.org/stable/2531948?seq=1">Ainsley et al. (1987)</a></li>
+<li>See <a href="https://acsess.onlinelibrary.wiley.com/doi/full/10.1002/agj2.21450">Tadese and Piepho (2023)</a></li>
+</ul></li>
+<li>Modeling unbalanced data using mixed models
 <ul>
-<li>Come to class ready to learn and engage in lecture to get the most out of it. The summer goes by fast, so use the 1 on 1 time too.</li>
-<li>Engage. Ask and answer questions. Don’t be afraid to speak up. Dr. Lacasa is great about making it a safe environment for you to get things wrong. That’s how you learn.</li>
-<li>I would advise future students to actively participate by discussing ideas positively and asking thoughtful questions during class. This approach helps connect the course material to real-world problems in experimental design and deepens understanding.</li>
+<li>See <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/j.1439-037X.2004.00120.x">Spilke et al. (2005)</a></li>
 </ul></li>
 </ul>
-<div id="logistics" class="section level3 hasAnchor" number="1.1.1">
-<h3><span class="header-section-number">1.1.1</span> Logistics<a href="index.html#logistics" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="tomorrow-7" class="section level2 hasAnchor" number="23.3">
+<h2><span class="header-section-number">23.3</span> Tomorrow<a href="analyzing-the-in-class-experiment.html#tomorrow-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
-<li><a href="https://stat720.github.io/summer2026">Website</a></li>
-<li>Syllabus</li>
-<li>Statistical programming requirements<br />
-</li>
-<li>Rough mindmap of the course (on whiteboard)<br />
-</li>
-<li><a href="https://stat720.github.io/summer2026/notes/semester-project.html">Semester project - design your own experiment.</a><br />
-</li>
-<li>Grades: A (100-89.999999999(!!!)), B (89.99-79.99), C (79.99-69.99), D (69.99-59.99), F (&lt;59.99).</li>
-<li>Attendance policies<br />
-</li>
-<li>Semester projects</li>
-</ul>
-</div>
-</div>
-<div id="learning-goals" class="section level2 hasAnchor" number="1.2">
-<h2><span class="header-section-number">1.2</span> Learning goals<a href="index.html#learning-goals" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>By the end of this course, you should be able to:</p>
-<ul>
-<li>Be able to identify the treatment design, experiment design, experimental unit and observational unit.<br />
-</li>
-<li>Be able to write the statistical model that corresponds to (simple) designed experiments.<br />
-</li>
-<li>Be able to write the Materials and Methods section in a paper (or thesis) that describes the designed experiment.<br />
-</li>
-<li>Distinguish the benefits/disadvantages of different experiment designs.</li>
-</ul>
-</div>
-<div id="on-notation" class="section level2 hasAnchor" number="1.3">
-<h2><span class="header-section-number">1.3</span> On notation<a href="index.html#on-notation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li>scalars: <span class="math inline">\(y\)</span>, <span class="math inline">\(\sigma\)</span>, <span class="math inline">\(\beta_0\)</span><br />
-</li>
-<li>vectors: <span class="math inline">\(\mathbf{y} \equiv [y_1, y_2, ..., y_n]&#39;\)</span>, <span class="math inline">\(\boldsymbol{\beta} \equiv [\beta_1, \beta_2, ..., \beta_p]&#39;\)</span>, <span class="math inline">\(\boldsymbol{u}\)</span><br />
-</li>
-<li>matrices: <span class="math inline">\(\mathbf{X}\)</span>, <span class="math inline">\(\Sigma\)</span><br />
-</li>
-<li>probability distribution: <span class="math inline">\(y \sim N(0, \sigma^2)\)</span>, <span class="math inline">\(\mathbf{y} \sim N(\boldsymbol{0}, \sigma^2\mathbf{I})\)</span>.</li>
-</ul>
-</div>
-<div id="why-do-designed-experiments-exist" class="section level2 hasAnchor" number="1.4">
-<h2><span class="header-section-number">1.4</span> Why do designed experiments exist?<a href="index.html#why-do-designed-experiments-exist" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="example" class="section level3 hasAnchor" number="1.4.1">
-<h3><span class="header-section-number">1.4.1</span> Example<a href="index.html#example" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>You want to bake cookies with a certain diameter (to fit the box) and are not sure about the amount of baking powder vs. baking soda.</p>
-<ul>
-<li>more baking powder = smaller, more cakey cookies<br />
-</li>
-<li>more baking soda = larger, crispier cookies</li>
-</ul>
-<p>How can we estimate the cookie diameter</p>
-<blockquote>
-<p><strong>Case A:</strong><br />
-Bake 3 cookies, each with a different levels of baking powder:baking soda ratio.</p>
-<p><strong>Case B:</strong><br />
-- On Monday: Bake 3 cookies, each with a different levels of baking powder:baking soda ratio.<br />
-- On Tuesday: Bake 3 cookies, each with a different levels of baking powder:baking soda ratio.<br />
-- On Wednesday: Bake 3 cookies, each with a different levels of baking powder:baking soda ratio.</p>
-<p><strong>Case C:</strong><br />
-- On Monday: Bake 3 cookies with the first level of baking powder:baking soda ratio.<br />
-- On Tuesday: Bake 3 cookies with the second level of baking powder:baking soda ratio.<br />
-- On Wednesday: Bake 3 cookies with the third level of baking powder:baking soda ratio.</p>
-<p>Group discussion: which is preferrable?</p>
-</blockquote>
-</div>
-</div>
-<div id="for-tomorrow" class="section level2 hasAnchor" number="1.5">
-<h2><span class="header-section-number">1.5</span> For tomorrow<a href="index.html#for-tomorrow" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li>Install R and RStudio.</li>
-<li>Answer <a href="https://forms.gle/Cr6Nc3ZThJjqqtM36">this short survey</a> to figure out if we need to move 1-1.5 weeks of class to Zoom.</li>
+<li>Online</li>
+<li>Work on your projects!</li>
 </ul>
 
 </div>
@@ -535,8 +533,8 @@ Bake 3 cookies, each with a different levels of baking powder:baking soda ratio.
           </div>
         </div>
       </div>
-
-<a href="basic-types-of-designed-experiments.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="optimal-designs-i.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="semester-project.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -567,7 +565,7 @@ gitbook.start({
     "size": 2
   },
   "edit": {
-    "link": "https://github.com/stat720/book2025/edit/main/index.Rmd",
+    "link": "https://github.com/stat720/book2025/edit/main/24-muffins.Rmd",
     "text": "Edit"
   },
   "history": {
@@ -575,7 +573,7 @@ gitbook.start({
     "text": null
   },
   "view": {
-    "link": "https://github.com/stat720/book2025/blob/main/index.Rmd",
+    "link": "https://github.com/stat720/book2025/blob/main/24-muffins.Rmd",
     "text": null
   },
   "download": null,
