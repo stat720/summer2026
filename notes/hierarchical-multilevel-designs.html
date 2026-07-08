@@ -393,9 +393,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="23" data-path="analyzing-the-in-class-experiment.html"><a href="analyzing-the-in-class-experiment.html"><i class="fa fa-check"></i><b>23</b> Analyzing the in-class experiment</a>
 <ul>
-<li class="chapter" data-level="23.1" data-path="analyzing-the-in-class-experiment.html"><a href="analyzing-the-in-class-experiment.html#our-designed-experiment"><i class="fa fa-check"></i><b>23.1</b> Our designed experiment</a></li>
-<li class="chapter" data-level="23.2" data-path="analyzing-the-in-class-experiment.html"><a href="analyzing-the-in-class-experiment.html#a-few-extra-anticipated-comments"><i class="fa fa-check"></i><b>23.2</b> A few extra (anticipated) comments</a></li>
-<li class="chapter" data-level="23.3" data-path="analyzing-the-in-class-experiment.html"><a href="analyzing-the-in-class-experiment.html#tomorrow-7"><i class="fa fa-check"></i><b>23.3</b> Tomorrow</a></li>
+<li class="chapter" data-level="23.1" data-path="analyzing-the-in-class-experiment.html"><a href="analyzing-the-in-class-experiment.html#announcements-16"><i class="fa fa-check"></i><b>23.1</b> Announcements</a></li>
+<li class="chapter" data-level="23.2" data-path="analyzing-the-in-class-experiment.html"><a href="analyzing-the-in-class-experiment.html#our-designed-experiment"><i class="fa fa-check"></i><b>23.2</b> Our designed experiment</a></li>
+<li class="chapter" data-level="23.3" data-path="analyzing-the-in-class-experiment.html"><a href="analyzing-the-in-class-experiment.html#a-few-extra-anticipated-comments"><i class="fa fa-check"></i><b>23.3</b> A few extra (anticipated) comments</a></li>
+<li class="chapter" data-level="23.4" data-path="analyzing-the-in-class-experiment.html"><a href="analyzing-the-in-class-experiment.html#tomorrow-7"><i class="fa fa-check"></i><b>23.4</b> Tomorrow</a></li>
 </ul></li>
 <li class="chapter" data-level="24" data-path="semester-project.html"><a href="semester-project.html"><i class="fa fa-check"></i><b>24</b> Semester Project</a>
 <ul>
@@ -447,13 +448,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Sometimes we find that there are different sizes of experimental units.</li>
 <li>In such cases, it is important to identify the different experimental units and the randomization scheme. We may be in front of a multilevel design.</li>
 </ul>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-26"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-22"></span>
 <img src="../figures/designs_splitplot.PNG" alt="Schematic description of a field experiment with a split-plot design" width="100%" />
 <p class="caption">
 Figure 10.1: Schematic description of a field experiment with a split-plot design
 </p>
 </div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-27"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-23"></span>
 <img src="../figures/pigs_splitplot.PNG" alt="Schematic description of a swine experiment with a split-plot design" width="70%" />
 <p class="caption">
 Figure 10.2: Schematic description of a swine experiment with a split-plot design
@@ -503,7 +504,7 @@ Figure 10.2: Schematic description of a swine experiment with a split-plot desig
 <span id="cb31-29"><a href="hierarchical-multilevel-designs.html#cb31-29" tabindex="-1"></a>  <span class="fu">coord_fixed</span>()</span>
 <span id="cb31-30"><a href="hierarchical-multilevel-designs.html#cb31-30" tabindex="-1"></a></span>
 <span id="cb31-31"><a href="hierarchical-multilevel-designs.html#cb31-31" tabindex="-1"></a><span class="fu">ggarrange</span>(p_blocks, p_wholeplot, p_splitplot, <span class="at">ncol =</span> <span class="dv">1</span>, <span class="at">nrow =</span> <span class="dv">3</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-28-1.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-24-1.png" alt="" width="672" /></p>
 <p>Rows and beds (aka columns) probably looked somewhat like this:</p>
 <p><img src="https://www.pnw.coop/images/651/images/strip4.jpg" /></p>
 <p><strong>Discuss:</strong></p>
@@ -520,13 +521,13 @@ Figure 10.2: Schematic description of a swine experiment with a split-plot desig
 <h2><span class="header-section-number">10.3</span> Building the ANOVA skeleton using design (aka topographical) and treatment elements<a href="hierarchical-multilevel-designs.html#building-the-anova-skeleton-using-design-aka-topographical-and-treatment-elements" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <table class="kable_wrapper">
 <caption>
-<span id="tab:unnamed-chunk-29">Table 10.1: </span>Constructing the ANOVA skeleton
+<span id="tab:unnamed-chunk-25">Table 10.1: </span>Constructing the ANOVA skeleton
 </caption>
 <tbody>
 <tr>
 <td>
 <table>
-<caption><span id="tab:unnamed-chunk-29">Table 10.1: </span>Experiment or Topographical</caption>
+<caption><span id="tab:unnamed-chunk-25">Table 10.1: </span>Experiment or Topographical</caption>
 <thead>
 <tr class="header">
 <th align="left">Source</th>
@@ -567,7 +568,7 @@ Figure 10.2: Schematic description of a swine experiment with a split-plot desig
 </td>
 <td>
 <table>
-<caption><span id="tab:unnamed-chunk-29">Table 10.1: </span>Treatment</caption>
+<caption><span id="tab:unnamed-chunk-25">Table 10.1: </span>Treatment</caption>
 <thead>
 <tr class="header">
 <th align="left">Source</th>
@@ -608,7 +609,7 @@ Figure 10.2: Schematic description of a swine experiment with a split-plot desig
 </td>
 <td>
 <table>
-<caption><span id="tab:unnamed-chunk-29">Table 10.1: </span>Combined Table</caption>
+<caption><span id="tab:unnamed-chunk-25">Table 10.1: </span>Combined Table</caption>
 <thead>
 <tr class="header">
 <th align="left">Source</th>

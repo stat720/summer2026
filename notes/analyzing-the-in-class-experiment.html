@@ -393,9 +393,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="23" data-path="analyzing-the-in-class-experiment.html"><a href="analyzing-the-in-class-experiment.html"><i class="fa fa-check"></i><b>23</b> Analyzing the in-class experiment</a>
 <ul>
-<li class="chapter" data-level="23.1" data-path="analyzing-the-in-class-experiment.html"><a href="analyzing-the-in-class-experiment.html#our-designed-experiment"><i class="fa fa-check"></i><b>23.1</b> Our designed experiment</a></li>
-<li class="chapter" data-level="23.2" data-path="analyzing-the-in-class-experiment.html"><a href="analyzing-the-in-class-experiment.html#a-few-extra-anticipated-comments"><i class="fa fa-check"></i><b>23.2</b> A few extra (anticipated) comments</a></li>
-<li class="chapter" data-level="23.3" data-path="analyzing-the-in-class-experiment.html"><a href="analyzing-the-in-class-experiment.html#tomorrow-7"><i class="fa fa-check"></i><b>23.3</b> Tomorrow</a></li>
+<li class="chapter" data-level="23.1" data-path="analyzing-the-in-class-experiment.html"><a href="analyzing-the-in-class-experiment.html#announcements-16"><i class="fa fa-check"></i><b>23.1</b> Announcements</a></li>
+<li class="chapter" data-level="23.2" data-path="analyzing-the-in-class-experiment.html"><a href="analyzing-the-in-class-experiment.html#our-designed-experiment"><i class="fa fa-check"></i><b>23.2</b> Our designed experiment</a></li>
+<li class="chapter" data-level="23.3" data-path="analyzing-the-in-class-experiment.html"><a href="analyzing-the-in-class-experiment.html#a-few-extra-anticipated-comments"><i class="fa fa-check"></i><b>23.3</b> A few extra (anticipated) comments</a></li>
+<li class="chapter" data-level="23.4" data-path="analyzing-the-in-class-experiment.html"><a href="analyzing-the-in-class-experiment.html#tomorrow-7"><i class="fa fa-check"></i><b>23.4</b> Tomorrow</a></li>
 </ul></li>
 <li class="chapter" data-level="24" data-path="semester-project.html"><a href="semester-project.html"><i class="fa fa-check"></i><b>24</b> Semester Project</a>
 <ul>
@@ -431,8 +432,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="analyzing-the-in-class-experiment" class="section level1 hasAnchor" number="23">
 <h1><span class="header-section-number">Day 23</span> Analyzing the in-class experiment<a href="analyzing-the-in-class-experiment.html#analyzing-the-in-class-experiment" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>July 8th, 2026</p>
-<div id="our-designed-experiment" class="section level2 hasAnchor" number="23.1">
-<h2><span class="header-section-number">23.1</span> Our designed experiment<a href="analyzing-the-in-class-experiment.html#our-designed-experiment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="announcements-16" class="section level2 hasAnchor" number="23.1">
+<h2><span class="header-section-number">23.1</span> Announcements<a href="analyzing-the-in-class-experiment.html#announcements-16" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Make sure you find a classmate to do peer review with</li>
+<li>Please leave your feedback in <a href="https://forms.gle/YdiV4B3kFfNJtmkLA">this form</a> if you want to have some influence on next week’s topics.</li>
+</ul>
+</div>
+<div id="our-designed-experiment" class="section level2 hasAnchor" number="23.2">
+<h2><span class="header-section-number">23.2</span> Our designed experiment<a href="analyzing-the-in-class-experiment.html#our-designed-experiment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>RCBD with 10 reps and 6 subsamples</p>
 <p>The data generating model is now <span class="math inline">\(y_{ijk} = \mu + T_i + o_j + s_{i(j)} + \varepsilon_{ijk}\)</span>, with <span class="math inline">\(o_j \sim N(0, 0.15)\)</span>, <span class="math inline">\(s_{i(j)} \sim N(0, 0.02)\)</span> and <span class="math inline">\(\varepsilon_{ijk} \sim N(0, 0.1)\)</span>. Note that <span class="math inline">\(\sigma^2_{oven}\)</span> is now large, because it now captures the variability between ovens and houses, and we expect that to be a bit larger.</p>
 <p><strong>What can we expect?</strong></p>
@@ -485,17 +493,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb210-2"><a href="analyzing-the-in-class-experiment.html#cb210-2" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
 <span id="cb210-3"><a href="analyzing-the-in-class-experiment.html#cb210-3" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="fu">TeX</span>(<span class="st">&quot;p-value for $</span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{1} - </span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{2}$&quot;</span>),</span>
 <span id="cb210-4"><a href="analyzing-the-in-class-experiment.html#cb210-4" tabindex="-1"></a>     <span class="at">main =</span> <span class="fu">TeX</span>(<span class="st">&quot;p-value for $</span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{1} - </span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{2}$&quot;</span>))</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-131-1.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-127-1.png" alt="" width="672" /></p>
 <div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="analyzing-the-in-class-experiment.html#cb211-1" tabindex="-1"></a><span class="fu">hist</span>(p_mu1_minus_mu3, </span>
 <span id="cb211-2"><a href="analyzing-the-in-class-experiment.html#cb211-2" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
 <span id="cb211-3"><a href="analyzing-the-in-class-experiment.html#cb211-3" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="fu">TeX</span>(<span class="st">&quot;p-value for $</span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{1} - </span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{3}$&quot;</span>),</span>
 <span id="cb211-4"><a href="analyzing-the-in-class-experiment.html#cb211-4" tabindex="-1"></a>     <span class="at">main =</span> <span class="fu">TeX</span>(<span class="st">&quot;p-value for $</span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{1} - </span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{3}$&quot;</span>))</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-131-2.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-127-2.png" alt="" width="672" /></p>
 <div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="analyzing-the-in-class-experiment.html#cb212-1" tabindex="-1"></a><span class="fu">hist</span>(se_mu1_minus_mu2,</span>
 <span id="cb212-2"><a href="analyzing-the-in-class-experiment.html#cb212-2" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, .<span class="dv">3</span>),</span>
 <span id="cb212-3"><a href="analyzing-the-in-class-experiment.html#cb212-3" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="fu">TeX</span>(<span class="st">&quot;se($</span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{1} - </span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{2})$&quot;</span>),</span>
 <span id="cb212-4"><a href="analyzing-the-in-class-experiment.html#cb212-4" tabindex="-1"></a>     <span class="at">main =</span> <span class="fu">TeX</span>(<span class="st">&quot;se($</span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{1} - </span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mu}_{2})$&quot;</span>))</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-131-3.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-127-3.png" alt="" width="672" /></p>
 <div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="analyzing-the-in-class-experiment.html#cb213-1" tabindex="-1"></a><span class="fu">mean</span>(p_mu1_minus_mu2<span class="sc">&lt;</span><span class="fl">0.05</span>) <span class="co"># power for a .15 difference </span></span></code></pre></div>
 <pre><code>## [1] 0.16</code></pre>
 <div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="analyzing-the-in-class-experiment.html#cb215-1" tabindex="-1"></a><span class="fu">mean</span>(p_mu1_minus_mu3<span class="sc">&lt;</span><span class="fl">0.05</span>) <span class="co"># power for a .5 difference  </span></span></code></pre></div>
@@ -503,8 +511,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="analyzing-the-in-class-experiment.html#cb217-1" tabindex="-1"></a><span class="fu">mean</span>(se_mu1_minus_mu3) <span class="co"># se for a .15 difference </span></span></code></pre></div>
 <pre><code>## [1] 0.1342872</code></pre>
 </div>
-<div id="a-few-extra-anticipated-comments" class="section level2 hasAnchor" number="23.2">
-<h2><span class="header-section-number">23.2</span> A few extra (anticipated) comments<a href="analyzing-the-in-class-experiment.html#a-few-extra-anticipated-comments" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="a-few-extra-anticipated-comments" class="section level2 hasAnchor" number="23.3">
+<h2><span class="header-section-number">23.3</span> A few extra (anticipated) comments<a href="analyzing-the-in-class-experiment.html#a-few-extra-anticipated-comments" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>Postblocking
 <ul>
@@ -519,8 +527,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul>
 </div>
-<div id="tomorrow-7" class="section level2 hasAnchor" number="23.3">
-<h2><span class="header-section-number">23.3</span> Tomorrow<a href="analyzing-the-in-class-experiment.html#tomorrow-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="tomorrow-7" class="section level2 hasAnchor" number="23.4">
+<h2><span class="header-section-number">23.4</span> Tomorrow<a href="analyzing-the-in-class-experiment.html#tomorrow-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>Online</li>
 <li>Work on your projects!</li>

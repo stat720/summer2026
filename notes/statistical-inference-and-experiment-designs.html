@@ -393,9 +393,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="23" data-path="analyzing-the-in-class-experiment.html"><a href="analyzing-the-in-class-experiment.html"><i class="fa fa-check"></i><b>23</b> Analyzing the in-class experiment</a>
 <ul>
-<li class="chapter" data-level="23.1" data-path="analyzing-the-in-class-experiment.html"><a href="analyzing-the-in-class-experiment.html#our-designed-experiment"><i class="fa fa-check"></i><b>23.1</b> Our designed experiment</a></li>
-<li class="chapter" data-level="23.2" data-path="analyzing-the-in-class-experiment.html"><a href="analyzing-the-in-class-experiment.html#a-few-extra-anticipated-comments"><i class="fa fa-check"></i><b>23.2</b> A few extra (anticipated) comments</a></li>
-<li class="chapter" data-level="23.3" data-path="analyzing-the-in-class-experiment.html"><a href="analyzing-the-in-class-experiment.html#tomorrow-7"><i class="fa fa-check"></i><b>23.3</b> Tomorrow</a></li>
+<li class="chapter" data-level="23.1" data-path="analyzing-the-in-class-experiment.html"><a href="analyzing-the-in-class-experiment.html#announcements-16"><i class="fa fa-check"></i><b>23.1</b> Announcements</a></li>
+<li class="chapter" data-level="23.2" data-path="analyzing-the-in-class-experiment.html"><a href="analyzing-the-in-class-experiment.html#our-designed-experiment"><i class="fa fa-check"></i><b>23.2</b> Our designed experiment</a></li>
+<li class="chapter" data-level="23.3" data-path="analyzing-the-in-class-experiment.html"><a href="analyzing-the-in-class-experiment.html#a-few-extra-anticipated-comments"><i class="fa fa-check"></i><b>23.3</b> A few extra (anticipated) comments</a></li>
+<li class="chapter" data-level="23.4" data-path="analyzing-the-in-class-experiment.html"><a href="analyzing-the-in-class-experiment.html#tomorrow-7"><i class="fa fa-check"></i><b>23.4</b> Tomorrow</a></li>
 </ul></li>
 <li class="chapter" data-level="24" data-path="semester-project.html"><a href="semester-project.html"><i class="fa fa-check"></i><b>24</b> Semester Project</a>
 <ul>
@@ -471,7 +472,7 @@ The scientists measured Serum haptoglobin (mg/dL) as the response variable and w
 <div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="statistical-inference-and-experiment-designs.html#cb53-1" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(Serum_haptoglobin_mg.dL <span class="sc">~</span> Trt<span class="sc">*</span>Day, <span class="at">data =</span> df)</span>
 <span id="cb53-2"><a href="statistical-inference-and-experiment-designs.html#cb53-2" tabindex="-1"></a></span>
 <span id="cb53-3"><a href="statistical-inference-and-experiment-designs.html#cb53-3" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">check_model</span>(m,  <span class="at">check =</span> <span class="fu">c</span>(<span class="st">&quot;normality&quot;</span>, <span class="st">&quot;homogeneity&quot;</span>))</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-40-1.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-36-1.png" alt="" width="672" /></p>
 <div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="statistical-inference-and-experiment-designs.html#cb54-1" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">Anova</span>(m, <span class="at">type =</span><span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## Anova Table (Type II tests)
 ## 
@@ -492,7 +493,7 @@ The scientists measured Serum haptoglobin (mg/dL) as the response variable and w
 <div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="statistical-inference-and-experiment-designs.html#cb56-1" tabindex="-1"></a>means <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(m, <span class="sc">~</span> Trt , <span class="at">at =</span> <span class="fu">list</span>(<span class="at">Day =</span> <span class="fu">factor</span>(<span class="dv">38</span>)))</span></code></pre></div>
 <pre><code>## NOTE: Results may be misleading due to involvement in interactions</code></pre>
 <div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="statistical-inference-and-experiment-designs.html#cb58-1" tabindex="-1"></a><span class="fu">plot</span>(means)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-41-1.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-37-1.png" alt="" width="672" /></p>
 <p>How is the story behind ANOVA and the marginal means so different?</p>
 </div>
 <div id="applied-case-ii-rcbd" class="section level3 hasAnchor" number="14.2.5">
