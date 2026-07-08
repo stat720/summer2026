@@ -1,0 +1,61 @@
+---
+title: "Untitled"
+author: "J Lacasa"
+date: "2026-07-08"
+output: html_document
+---
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+library(lme4)
+library(emmeans)
+```
+
+```{r}
+url <- "https://raw.githubusercontent.com/stat720/summer2026/refs/heads/main/data/stat720_muffins_2026.csv"
+dat <- read.csv(url) |>
+  filter(!is.na(height_cm)) |> 
+  mutate(block = as.factor(block) |> as.numeric())
+
+unique(dat$block)
+
+dat |> 
+  group_by(block, recipe) |> 
+  summarise(n())
+```
+
+```{r}
+dat |> 
+  ggplot(aes(recipe, height_cm))+
+  geom_point(aes(color = factor(block)))
+```
+
+```{r}
+m <- lmer(height_cm ~ 1 + recipe + (1|block) + (1|block:recipe), 
+     data = dat)
+
+summary(m)
+
+performance::check_model(m, check = c("normality", "homogeneity"))
+```
+
+```{r}
+summary(m)
+```
+
+```{r}
+(means <- emmeans(m, ~recipe))
+```
+
+```{r}
+plot(means)
+```
+
+```{r}
+emmeans(m, ~recipe, 
+        contr = list(c(1, -1, 0), 
+                     c(1, 0, -1), 
+                     c(0, 1, -1)))
+```
+
+
