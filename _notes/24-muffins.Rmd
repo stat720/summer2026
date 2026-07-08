@@ -113,6 +113,11 @@ mean(p_mu1_minus_mu3<0.05) # power for a .5 difference
 mean(se_mu1_minus_mu3) # se for a .15 difference 
 ```
 
+## Analyzing the data 
+
+Please record your heights [here](https://docs.google.com/spreadsheets/d/1QwZa2PYWWgIimBQGz-0NU3eGcBONF82hwy2U0HV6dDU/edit?usp=sharing).
+
+
 ## A few extra (anticipated) comments 
 
 - Postblocking 

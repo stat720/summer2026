@@ -202,6 +202,7 @@ tomorrow-6
 analyzing-the-in-class-experiment
 announcements-16
 our-designed-experiment
+analyzing-the-data
 a-few-extra-anticipated-comments
 tomorrow-7
 semester-project
