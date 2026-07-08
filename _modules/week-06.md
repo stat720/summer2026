@@ -13,7 +13,7 @@ July 7
 
 July 8 
 : RCBD experiment & Optimal designs    
-  : [](https://stat720.github.io/summer2026/notes/more-multilevel-designs.html)
+  : [html](https://stat720.github.io/summer2026/notes/analyzing-the-in-class-experiment.html)
 
 July 9 
 : ((Online)) Optimal designs II  
