@@ -1,5 +1,5 @@
 ---
-title: "Untitled"
+title: "STAT 720 -- Anlyzing the muffin experiment"
 author: "J Lacasa"
 date: "2026-07-08"
 output: html_document
