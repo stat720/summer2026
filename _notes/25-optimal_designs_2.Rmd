@@ -1,0 +1,119 @@
+# Optimal designs II 
+
+## Announcements 
+
+- Tomorrow: In-person Kahoot!
+
+## Optimal designs 
+
+### Case study: incomplete block designs 
+
+- We can know the treatment structure + design structure and still not know everything about the experiment design! 
+
+**For example:** 
+
+- One-way treatment structure + incomplete block design 
+- There are multiple options to arrange the treatments in the incomplete blocks, leading to different advantages/disadvantages 
+  
+- Case study: One-way treatment structure with 4 levels + incomplete block design with block size = 2.
+
+**Balanced incomplete block designs**  
+
+- $Var (T_i - T_{i'})$ is constant 
+- Each pair of treatments occur together (i.e., in the same block) $\lambda$ times 
+- Not all designs (i.e., combination of block size, #reps, and #treatments) can make this possible 
+
+Assume: 
+
+- $t=$ number of treatments, 
+- $b=$ number of blocks, 
+- $k=$ block size, 
+- $r=$ number of repetitions,
+- Thus, $N=kb$ (where $N$ is the number of total observations)
+- To have balance (i.e., "each pair of treatments occur $\lambda$ times in the same block"):
+  - $\lambda = \frac{r(k-1)}{t-1}$ 
+  - BIBDs can be built with the `ibd` R package [[link](https://cran.r-project.org/web/packages/ibd/index.html)] 
+
+  
+This is easy for this case with $t=4, \ b=6, \ k =2, r =3$:
+
+- $\lambda = \frac{3(2-1)}{4-1} = \frac{3}{3}=1$. 
+- See below.
+
+```{r echo=FALSE}
+table1 <- data.frame(
+  blocks = 1:6,
+  A = rep(c("X", ""), each =3),
+  B = c("X", "", "", "X", "X", ""),
+  C = c("", "X", "", "X","",  "X"),
+  D = c("", "", "X", "", "X","X")
+)
+table1 <- as.data.frame(t(table1))[-1,]
+colnames(table1) <- paste("Block ", 1:6)
+
+knitr::kable(table1, 
+             caption = "Assignment of Four Treatments to Six Blocks of Two Experimental
+Units. Balanced Incomplete Block Example. [Adapted from Table 4.19 in Milliken and Johnson]")
+```
+
+The $\mathbf{X}$ matrix above minimizes $(\mathbf{X}^T\mathbf{X})^{-1}$:
+
+$$\mathbf{X} = \begin{bmatrix} 1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0\\
+1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0\\
+1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0\\
+0 & 1 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0\\
+0 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 0\\
+0 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 0\\
+\vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots \\
+0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 1
+\end{bmatrix}$$
+
+With that, we minimize the variance to test $\mu_A =\mu_B =\mu_C =\mu_D$.
+
+
+**Unbalanced incomplete block designs**  
+
+- $Var (T_i - T_{i'})$ is not constant 
+- Each pair of treatments do not occur together (i.e., in the same block) the same number of times 
+- Prioritize the comparisons of interest 
+
+See below: D-optimal experiment to test if $\mu_A = \mu_B, \mu_A = \mu_C, \mu_A = \mu_D$.
+
+```{r echo=FALSE}
+table2 <- data.frame(
+  blocks = 1:6,
+  A = rep("X", 6),
+  B = c("X", "", "", "X", "", ""),
+  C = c("", "X", "", "",  "X", ""),
+  D = c("", "", "X", "", "","X")
+)
+table2 <- as.data.frame(t(table2))[-1,]
+colnames(table2) <- paste("Block ", 1:6)
+
+
+knitr::kable(table2, 
+             caption = "Assignment of Four Treatments to Six Blocks of Two Experimental
+Units. Unbalanced Incomplete Block Example. [Adapted from Table 4.22 in Milliken and Johnson]")
+```
+
+**Disconnected unbalanced incomplete block designs**  
+
+- See below. Neither Treatment A nor Treatment B occur in a block with either treatment C or D.
+
+```{r echo=FALSE}
+table3 <- data.frame(
+  blocks = 1:6,
+  A = c("X", "", "X", "", "X", ""),
+  B = c("X", "", "X", "", "X", ""),
+  C = c("", "X", "", "X", "",  "X"),
+  D = c("", "X", "", "X", "",  "X")
+)
+table3 <- as.data.frame(t(table3))[-1,]
+colnames(table3) <- paste("Block ", 1:6)
+
+
+knitr::kable(table3, 
+             caption = "Assignment of Four Treatments to Six Blocks of Two Experimental
+Units. Disconnected Unbalanced Incomplete Block Example. [Adapted from Table 4.23 in Milliken and Johnson]")
+```
+

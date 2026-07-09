@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Day 24 Optimal designs II | STAT 720 - Design of Experiments</title>
+  <meta name="description" content="Day 24 Optimal designs II | STAT 720 - Design of Experiments" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Day 24 Optimal designs II | STAT 720 - Design of Experiments" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Day 24 Optimal designs II | STAT 720 - Design of Experiments" />
+  
+  
+  
+
+<meta name="author" content="Josefina Lacasa" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="analyzing-the-in-class-experiment.html"/>
+<link rel="next" href="semester-project.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">STAT 720</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome to STAT 720!</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#about-this-course"><i class="fa fa-check"></i><b>1.1</b> About this course:</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#logistics"><i class="fa fa-check"></i><b>1.1.1</b> Logistics</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#learning-goals"><i class="fa fa-check"></i><b>1.2</b> Learning goals</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#on-notation"><i class="fa fa-check"></i><b>1.3</b> On notation</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#why-do-designed-experiments-exist"><i class="fa fa-check"></i><b>1.4</b> Why do designed experiments exist?</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#example"><i class="fa fa-check"></i><b>1.4.1</b> Example</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#for-tomorrow"><i class="fa fa-check"></i><b>1.5</b> For tomorrow</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="basic-types-of-designed-experiments.html"><a href="basic-types-of-designed-experiments.html"><i class="fa fa-check"></i><b>2</b> Basic types of designed experiments</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="basic-types-of-designed-experiments.html"><a href="basic-types-of-designed-experiments.html#announcements"><i class="fa fa-check"></i><b>2.1</b> Announcements</a></li>
+<li class="chapter" data-level="2.2" data-path="basic-types-of-designed-experiments.html"><a href="basic-types-of-designed-experiments.html#the-golden-rules-of-designed-experiments"><i class="fa fa-check"></i><b>2.2</b> The golden rules of designed experiments</a></li>
+<li class="chapter" data-level="2.3" data-path="basic-types-of-designed-experiments.html"><a href="basic-types-of-designed-experiments.html#other-concepts-in-designed-experiments"><i class="fa fa-check"></i><b>2.3</b> Other concepts in designed experiments</a></li>
+<li class="chapter" data-level="2.4" data-path="basic-types-of-designed-experiments.html"><a href="basic-types-of-designed-experiments.html#types-of-designs---the-basics"><i class="fa fa-check"></i><b>2.4</b> Types of designs - the basics</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="basic-types-of-designed-experiments.html"><a href="basic-types-of-designed-experiments.html#completely-randomized-design-crd"><i class="fa fa-check"></i><b>2.4.1</b> Completely randomized design (CRD)</a></li>
+<li class="chapter" data-level="2.4.2" data-path="basic-types-of-designed-experiments.html"><a href="basic-types-of-designed-experiments.html#randomized-complete-block-design-rcbd"><i class="fa fa-check"></i><b>2.4.2</b> Randomized complete block design (RCBD)</a></li>
+<li class="chapter" data-level="2.4.3" data-path="basic-types-of-designed-experiments.html"><a href="basic-types-of-designed-experiments.html#incomplete-block-design-ibd"><i class="fa fa-check"></i><b>2.4.3</b> Incomplete block design (IBD)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="basic-types-of-designed-experiments.html"><a href="basic-types-of-designed-experiments.html#skeleton-anova-tables"><i class="fa fa-check"></i><b>2.5</b> Skeleton ANOVA tables</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="basic-types-of-designed-experiments.html"><a href="basic-types-of-designed-experiments.html#practice-examples"><i class="fa fa-check"></i><b>2.5.1</b> Practice examples</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="basic-types-of-designed-experiments.html"><a href="basic-types-of-designed-experiments.html#homeworks"><i class="fa fa-check"></i><b>2.6</b> Homeworks</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="basic-types-of-designed-experiments-1.html"><a href="basic-types-of-designed-experiments-1.html"><i class="fa fa-check"></i><b>3</b> Basic types of designed experiments</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="basic-types-of-designed-experiments-1.html"><a href="basic-types-of-designed-experiments-1.html#review"><i class="fa fa-check"></i><b>3.1</b> Review</a></li>
+<li class="chapter" data-level="3.2" data-path="basic-types-of-designed-experiments-1.html"><a href="basic-types-of-designed-experiments-1.html#types-of-designs"><i class="fa fa-check"></i><b>3.2</b> Types of designs</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="basic-types-of-designed-experiments-1.html"><a href="basic-types-of-designed-experiments-1.html#completely-randomized-design-crd-1"><i class="fa fa-check"></i><b>3.2.1</b> Completely randomized design (CRD)</a></li>
+<li class="chapter" data-level="3.2.2" data-path="basic-types-of-designed-experiments-1.html"><a href="basic-types-of-designed-experiments-1.html#randomized-complete-block-design-rcbd-1"><i class="fa fa-check"></i><b>3.2.2</b> Randomized complete block design (RCBD)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="basic-types-of-designed-experiments-1.html"><a href="basic-types-of-designed-experiments-1.html#building-an-anova-skeleton-using-design-aka-topographical-and-treatment-elements"><i class="fa fa-check"></i><b>3.3</b> Building an ANOVA skeleton using design (aka topographical) and treatment elements</a></li>
+<li class="chapter" data-level="3.4" data-path="basic-types-of-designed-experiments-1.html"><a href="basic-types-of-designed-experiments-1.html#linear-model-good-old-friend"><i class="fa fa-check"></i><b>3.4</b> Linear model good old friend</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="basic-types-of-designed-experiments-1.html"><a href="basic-types-of-designed-experiments-1.html#the-most-common-assumptions-behind-most-software"><i class="fa fa-check"></i><b>3.4.1</b> The most common assumptions behind most software</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="basic-types-of-designed-experiments-1.html"><a href="basic-types-of-designed-experiments-1.html#some-practice"><i class="fa fa-check"></i><b>3.5</b> Some Practice</a></li>
+<li class="chapter" data-level="3.6" data-path="basic-types-of-designed-experiments-1.html"><a href="basic-types-of-designed-experiments-1.html#to-do"><i class="fa fa-check"></i><b>3.6</b> To do</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="linear-models-anova-shells-applied-to-the-more-basic-experiment-designs.html"><a href="linear-models-anova-shells-applied-to-the-more-basic-experiment-designs.html"><i class="fa fa-check"></i><b>4</b> Linear models, ANOVA shells applied to the more basic experiment designs</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="linear-models-anova-shells-applied-to-the-more-basic-experiment-designs.html"><a href="linear-models-anova-shells-applied-to-the-more-basic-experiment-designs.html#announcements-1"><i class="fa fa-check"></i><b>4.1</b> Announcements</a></li>
+<li class="chapter" data-level="4.2" data-path="linear-models-anova-shells-applied-to-the-more-basic-experiment-designs.html"><a href="linear-models-anova-shells-applied-to-the-more-basic-experiment-designs.html#review-1"><i class="fa fa-check"></i><b>4.2</b> Review</a></li>
+<li class="chapter" data-level="4.3" data-path="linear-models-anova-shells-applied-to-the-more-basic-experiment-designs.html"><a href="linear-models-anova-shells-applied-to-the-more-basic-experiment-designs.html#linear-models"><i class="fa fa-check"></i><b>4.3</b> Linear models</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="linear-models-anova-shells-applied-to-the-more-basic-experiment-designs.html"><a href="linear-models-anova-shells-applied-to-the-more-basic-experiment-designs.html#the-most-common-model---assumptions"><i class="fa fa-check"></i><b>4.3.1</b> The most common model - Assumptions</a></li>
+<li class="chapter" data-level="4.3.2" data-path="linear-models-anova-shells-applied-to-the-more-basic-experiment-designs.html"><a href="linear-models-anova-shells-applied-to-the-more-basic-experiment-designs.html#connection-between-this-and-your-classical-anova-table"><i class="fa fa-check"></i><b>4.3.2</b> Connection between this and your classical ANOVA table</a></li>
+<li class="chapter" data-level="4.3.3" data-path="linear-models-anova-shells-applied-to-the-more-basic-experiment-designs.html"><a href="linear-models-anova-shells-applied-to-the-more-basic-experiment-designs.html#sorghum-example"><i class="fa fa-check"></i><b>4.3.3</b> Sorghum example</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="linear-models-anova-shells-applied-to-the-more-basic-experiment-designs.html"><a href="linear-models-anova-shells-applied-to-the-more-basic-experiment-designs.html#takehomes"><i class="fa fa-check"></i><b>4.4</b> Takehomes</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="linear-models-anova-shells-applied-to-the-more-basic-experiment-designs.html"><a href="linear-models-anova-shells-applied-to-the-more-basic-experiment-designs.html#if-you-dont-include-the-design-elements-blocks-their-portion-of-the-variance-goes-to-the-error"><i class="fa fa-check"></i><b>4.4.1</b> If you don’t include the design elements (blocks), their portion of the variance goes to the error</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="linear-models-anova-shells-applied-to-the-more-basic-experiment-designs.html"><a href="linear-models-anova-shells-applied-to-the-more-basic-experiment-designs.html#tomorrow"><i class="fa fa-check"></i><b>4.5</b> Tomorrow</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="review-organizing-data-and-other-helpful-tips.html"><a href="review-organizing-data-and-other-helpful-tips.html"><i class="fa fa-check"></i><b>5</b> Review, organizing data and other helpful tips</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="review-organizing-data-and-other-helpful-tips.html"><a href="review-organizing-data-and-other-helpful-tips.html#kahoot-as-review"><i class="fa fa-check"></i><b>5.1</b> Kahoot! as review</a></li>
+<li class="chapter" data-level="5.2" data-path="review-organizing-data-and-other-helpful-tips.html"><a href="review-organizing-data-and-other-helpful-tips.html#organizing-data"><i class="fa fa-check"></i><b>5.2</b> Organizing data</a></li>
+<li class="chapter" data-level="5.3" data-path="review-organizing-data-and-other-helpful-tips.html"><a href="review-organizing-data-and-other-helpful-tips.html#homework"><i class="fa fa-check"></i><b>5.3</b> Homework</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="the-treatment-structure.html"><a href="the-treatment-structure.html"><i class="fa fa-check"></i><b>6</b> The treatment structure</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="the-treatment-structure.html"><a href="the-treatment-structure.html#announcements-2"><i class="fa fa-check"></i><b>6.1</b> Announcements</a></li>
+<li class="chapter" data-level="6.2" data-path="the-treatment-structure.html"><a href="the-treatment-structure.html#review-2"><i class="fa fa-check"></i><b>6.2</b> Review</a></li>
+<li class="chapter" data-level="6.3" data-path="the-treatment-structure.html"><a href="the-treatment-structure.html#treatment-structure"><i class="fa fa-check"></i><b>6.3</b> Treatment structure</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="the-treatment-structure.html"><a href="the-treatment-structure.html#types-of-treatment-structures"><i class="fa fa-check"></i><b>6.3.1</b> Types of treatment structures</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="the-treatment-structure.html"><a href="the-treatment-structure.html#where-is-the-treatment-structure-connected-to-the-statistical-model"><i class="fa fa-check"></i><b>6.4</b> Where is the treatment structure connected to the statistical model?</a></li>
+<li class="chapter" data-level="6.5" data-path="the-treatment-structure.html"><a href="the-treatment-structure.html#tomorrow-1"><i class="fa fa-check"></i><b>6.5</b> Tomorrow:</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="what-you-ask-of-a-designed-experiment.html"><a href="what-you-ask-of-a-designed-experiment.html"><i class="fa fa-check"></i><b>7</b> What you ask of a designed experiment</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="what-you-ask-of-a-designed-experiment.html"><a href="what-you-ask-of-a-designed-experiment.html#announcements-3"><i class="fa fa-check"></i><b>7.1</b> Announcements</a></li>
+<li class="chapter" data-level="7.2" data-path="what-you-ask-of-a-designed-experiment.html"><a href="what-you-ask-of-a-designed-experiment.html#review-3"><i class="fa fa-check"></i><b>7.2</b> Review</a></li>
+<li class="chapter" data-level="7.3" data-path="what-you-ask-of-a-designed-experiment.html"><a href="what-you-ask-of-a-designed-experiment.html#anova"><i class="fa fa-check"></i><b>7.3</b> ANOVA</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="what-you-ask-of-a-designed-experiment.html"><a href="what-you-ask-of-a-designed-experiment.html#in-case-you-were-wondering-anova-and-types-of-sums-of-squares"><i class="fa fa-check"></i><b>7.3.1</b> In case you were wondering: ANOVA and types of sums of squares</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="what-you-ask-of-a-designed-experiment.html"><a href="what-you-ask-of-a-designed-experiment.html#setting-the-stage-estimated-marginal-means-aka-least-squares-means"><i class="fa fa-check"></i><b>7.4</b> Setting the stage: Estimated marginal means aka least squares means</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="what-you-ask-of-a-designed-experiment.html"><a href="what-you-ask-of-a-designed-experiment.html#example-1"><i class="fa fa-check"></i><b>7.4.1</b> Example:</a></li>
+<li class="chapter" data-level="7.4.2" data-path="what-you-ask-of-a-designed-experiment.html"><a href="what-you-ask-of-a-designed-experiment.html#discussion"><i class="fa fa-check"></i><b>7.4.2</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="what-you-ask-of-a-designed-experiment.html"><a href="what-you-ask-of-a-designed-experiment.html#tomorrow-2"><i class="fa fa-check"></i><b>7.5</b> Tomorrow</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="applied-examples.html"><a href="applied-examples.html"><i class="fa fa-check"></i><b>8</b> Applied examples</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="applied-examples.html"><a href="applied-examples.html#announcements-4"><i class="fa fa-check"></i><b>8.1</b> Announcements</a></li>
+<li class="chapter" data-level="8.2" data-path="applied-examples.html"><a href="applied-examples.html#applied-example-for-today"><i class="fa fa-check"></i><b>8.2</b> Applied example for today</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="applied-examples.html"><a href="applied-examples.html#discussion-1"><i class="fa fa-check"></i><b>8.2.1</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="applied-examples.html"><a href="applied-examples.html#some-topics-that-will-arise-today"><i class="fa fa-check"></i><b>8.3</b> Some topics that will arise today</a></li>
+<li class="chapter" data-level="8.4" data-path="applied-examples.html"><a href="applied-examples.html#tomorrow-friday"><i class="fa fa-check"></i><b>8.4</b> Tomorrow &amp; Friday</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="applied-linear-mixed-models-i.html"><a href="applied-linear-mixed-models-i.html"><i class="fa fa-check"></i><b>9</b> Applied Linear Mixed Models I</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="applied-linear-mixed-models-i.html"><a href="applied-linear-mixed-models-i.html#announcements-5"><i class="fa fa-check"></i><b>9.1</b> Announcements</a></li>
+<li class="chapter" data-level="9.2" data-path="applied-linear-mixed-models-i.html"><a href="applied-linear-mixed-models-i.html#applied-linear-mixed-models"><i class="fa fa-check"></i><b>9.2</b> Applied Linear Mixed Models</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="applied-linear-mixed-models-i.html"><a href="applied-linear-mixed-models-i.html#review-random-variables"><i class="fa fa-check"></i><b>9.2.1</b> Review: random variables</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="applied-linear-mixed-models-i.html"><a href="applied-linear-mixed-models-i.html#review-designs"><i class="fa fa-check"></i><b>9.3</b> Review: Designs</a></li>
+<li class="chapter" data-level="9.4" data-path="applied-linear-mixed-models-i.html"><a href="applied-linear-mixed-models-i.html#split-plot-designs"><i class="fa fa-check"></i><b>9.4</b> Split-plot designs</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="hierarchical-multilevel-designs.html"><a href="hierarchical-multilevel-designs.html"><i class="fa fa-check"></i><b>10</b> Hierarchical (Multilevel) Designs</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="hierarchical-multilevel-designs.html"><a href="hierarchical-multilevel-designs.html#announcements-6"><i class="fa fa-check"></i><b>10.1</b> Announcements</a></li>
+<li class="chapter" data-level="10.2" data-path="hierarchical-multilevel-designs.html"><a href="hierarchical-multilevel-designs.html#review-hierarchical-designs"><i class="fa fa-check"></i><b>10.2</b> Review: Hierarchical Designs</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="hierarchical-multilevel-designs.html"><a href="hierarchical-multilevel-designs.html#an-applied-example"><i class="fa fa-check"></i><b>10.2.1</b> An applied example:</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="hierarchical-multilevel-designs.html"><a href="hierarchical-multilevel-designs.html#building-the-anova-skeleton-using-design-aka-topographical-and-treatment-elements"><i class="fa fa-check"></i><b>10.3</b> Building the ANOVA skeleton using design (aka topographical) and treatment elements</a></li>
+<li class="chapter" data-level="10.4" data-path="hierarchical-multilevel-designs.html"><a href="hierarchical-multilevel-designs.html#blocks-fixed-of-random"><i class="fa fa-check"></i><b>10.4</b> Blocks: fixed of random?</a></li>
+<li class="chapter" data-level="10.5" data-path="hierarchical-multilevel-designs.html"><a href="hierarchical-multilevel-designs.html#reading"><i class="fa fa-check"></i><b>10.5</b> Reading</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="hierarchical-multilevel-designs-and-their-implementation-in-r.html"><a href="hierarchical-multilevel-designs-and-their-implementation-in-r.html"><i class="fa fa-check"></i><b>11</b> Hierarchical (Multilevel) Designs and their implementation in R</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="hierarchical-multilevel-designs-and-their-implementation-in-r.html"><a href="hierarchical-multilevel-designs-and-their-implementation-in-r.html#review-4"><i class="fa fa-check"></i><b>11.1</b> Review</a></li>
+<li class="chapter" data-level="11.2" data-path="hierarchical-multilevel-designs-and-their-implementation-in-r.html"><a href="hierarchical-multilevel-designs-and-their-implementation-in-r.html#split-plot-designs-1"><i class="fa fa-check"></i><b>11.2</b> Split-plot designs</a></li>
+<li class="chapter" data-level="11.3" data-path="hierarchical-multilevel-designs-and-their-implementation-in-r.html"><a href="hierarchical-multilevel-designs-and-their-implementation-in-r.html#general-advice-to-model-data-with-some-type-of-structure"><i class="fa fa-check"></i><b>11.3</b> General advice to model data with some type of structure</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="review-hierarchical-multilevel-models.html"><a href="review-hierarchical-multilevel-models.html"><i class="fa fa-check"></i><b>12</b> Review: hierarchical multilevel models</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="review-hierarchical-multilevel-models.html"><a href="review-hierarchical-multilevel-models.html#exercises"><i class="fa fa-check"></i><b>12.1</b> Exercises</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="review-hierarchical-multilevel-models.html"><a href="review-hierarchical-multilevel-models.html#data-structure"><i class="fa fa-check"></i><b>12.1.1</b> Data structure</a></li>
+<li class="chapter" data-level="12.1.2" data-path="review-hierarchical-multilevel-models.html"><a href="review-hierarchical-multilevel-models.html#designed-experiment"><i class="fa fa-check"></i><b>12.1.2</b> Designed experiment</a></li>
+<li class="chapter" data-level="12.1.3" data-path="review-hierarchical-multilevel-models.html"><a href="review-hierarchical-multilevel-models.html#stat-model"><i class="fa fa-check"></i><b>12.1.3</b> Stat model</a></li>
+<li class="chapter" data-level="12.1.4" data-path="review-hierarchical-multilevel-models.html"><a href="review-hierarchical-multilevel-models.html#bonus"><i class="fa fa-check"></i><b>12.1.4</b> Bonus</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="review-hierarchical-multilevel-models.html"><a href="review-hierarchical-multilevel-models.html#acknowledgements"><i class="fa fa-check"></i><b>12.2</b> Acknowledgements</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="review-hierarchical-multilevel-models-cont..html"><a href="review-hierarchical-multilevel-models-cont..html"><i class="fa fa-check"></i><b>13</b> Review: hierarchical multilevel models – cont.</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="review-hierarchical-multilevel-models-cont..html"><a href="review-hierarchical-multilevel-models-cont..html#announcements-7"><i class="fa fa-check"></i><b>13.1</b> Announcements</a></li>
+<li class="chapter" data-level="13.2" data-path="review-hierarchical-multilevel-models-cont..html"><a href="review-hierarchical-multilevel-models-cont..html#hierarchical-designs"><i class="fa fa-check"></i><b>13.2</b> Hierarchical designs</a></li>
+<li class="chapter" data-level="13.3" data-path="review-hierarchical-multilevel-models-cont..html"><a href="review-hierarchical-multilevel-models-cont..html#review-5"><i class="fa fa-check"></i><b>13.3</b> Review</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="review-hierarchical-multilevel-models-cont..html"><a href="review-hierarchical-multilevel-models-cont..html#treatment-structure-1"><i class="fa fa-check"></i><b>13.3.1</b> Treatment structure</a></li>
+<li class="chapter" data-level="13.3.2" data-path="review-hierarchical-multilevel-models-cont..html"><a href="review-hierarchical-multilevel-models-cont..html#design-structure"><i class="fa fa-check"></i><b>13.3.2</b> Design structure</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="review-hierarchical-multilevel-models-cont..html"><a href="review-hierarchical-multilevel-models-cont..html#exercises-1"><i class="fa fa-check"></i><b>13.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="statistical-inference-and-experiment-designs.html"><a href="statistical-inference-and-experiment-designs.html"><i class="fa fa-check"></i><b>14</b> Statistical inference and experiment designs</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="statistical-inference-and-experiment-designs.html"><a href="statistical-inference-and-experiment-designs.html#announcements-8"><i class="fa fa-check"></i><b>14.1</b> Announcements</a></li>
+<li class="chapter" data-level="14.2" data-path="statistical-inference-and-experiment-designs.html"><a href="statistical-inference-and-experiment-designs.html#why-do-we-care-about-standard-errors-and-degrees-of-freedom"><i class="fa fa-check"></i><b>14.2</b> Why do we care about standard errors and degrees of freedom?</a>
+<ul>
+<li class="chapter" data-level="14.2.1" data-path="statistical-inference-and-experiment-designs.html"><a href="statistical-inference-and-experiment-designs.html#the-hypothesis-test-explanation"><i class="fa fa-check"></i><b>14.2.1</b> The hypothesis test explanation</a></li>
+<li class="chapter" data-level="14.2.2" data-path="statistical-inference-and-experiment-designs.html"><a href="statistical-inference-and-experiment-designs.html#the-signal-noise-explanation"><i class="fa fa-check"></i><b>14.2.2</b> The signal &amp; noise explanation</a></li>
+<li class="chapter" data-level="14.2.3" data-path="statistical-inference-and-experiment-designs.html"><a href="statistical-inference-and-experiment-designs.html#applied-case-i-crd"><i class="fa fa-check"></i><b>14.2.3</b> Applied case I – CRD</a></li>
+<li class="chapter" data-level="14.2.4" data-path="statistical-inference-and-experiment-designs.html"><a href="statistical-inference-and-experiment-designs.html#biological-significance-and-others-matter-as-much-as-statistical-significance"><i class="fa fa-check"></i><b>14.2.4</b> Biological significance (and others) matter as much as statistical significance</a></li>
+<li class="chapter" data-level="14.2.5" data-path="statistical-inference-and-experiment-designs.html"><a href="statistical-inference-and-experiment-designs.html#applied-case-ii-rcbd"><i class="fa fa-check"></i><b>14.2.5</b> Applied case II – RCBD</a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="statistical-inference-and-experiment-designs.html"><a href="statistical-inference-and-experiment-designs.html#applied-case-iii-split-plot-design"><i class="fa fa-check"></i><b>14.3</b> Applied case III – split-plot design</a></li>
+<li class="chapter" data-level="14.4" data-path="statistical-inference-and-experiment-designs.html"><a href="statistical-inference-and-experiment-designs.html#tomorrow-3"><i class="fa fa-check"></i><b>14.4</b> Tomorrow</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="kahoot.html"><a href="kahoot.html"><i class="fa fa-check"></i><b>15</b> Kahoot!</a></li>
+<li class="chapter" data-level="16" data-path="review-rcbds-split-plot-designs-and-how-they-affect-standard-errors.html"><a href="review-rcbds-split-plot-designs-and-how-they-affect-standard-errors.html"><i class="fa fa-check"></i><b>16</b> Review: RCBDs, split-plot designs, and how they affect standard errors</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="review-rcbds-split-plot-designs-and-how-they-affect-standard-errors.html"><a href="review-rcbds-split-plot-designs-and-how-they-affect-standard-errors.html#announcements-9"><i class="fa fa-check"></i><b>16.1</b> Announcements</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="power-and-precision-analyses.html"><a href="power-and-precision-analyses.html"><i class="fa fa-check"></i><b>17</b> Power and precision analyses</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="power-and-precision-analyses.html"><a href="power-and-precision-analyses.html#announcements-10"><i class="fa fa-check"></i><b>17.1</b> Announcements</a></li>
+<li class="chapter" data-level="17.2" data-path="power-and-precision-analyses.html"><a href="power-and-precision-analyses.html#what-is-statistical-power"><i class="fa fa-check"></i><b>17.2</b> What is statistical power?</a></li>
+<li class="chapter" data-level="17.3" data-path="power-and-precision-analyses.html"><a href="power-and-precision-analyses.html#review-t-test"><i class="fa fa-check"></i><b>17.3</b> Review: t-test</a></li>
+<li class="chapter" data-level="17.4" data-path="power-and-precision-analyses.html"><a href="power-and-precision-analyses.html#power-calculations-analytic-approach"><i class="fa fa-check"></i><b>17.4</b> Power calculations – Analytic approach</a>
+<ul>
+<li class="chapter" data-level="17.4.1" data-path="power-and-precision-analyses.html"><a href="power-and-precision-analyses.html#sample-size-calculation"><i class="fa fa-check"></i><b>17.4.1</b> Sample size calculation</a></li>
+<li class="chapter" data-level="17.4.2" data-path="power-and-precision-analyses.html"><a href="power-and-precision-analyses.html#power-evaluation"><i class="fa fa-check"></i><b>17.4.2</b> Power evaluation</a></li>
+<li class="chapter" data-level="17.4.3" data-path="power-and-precision-analyses.html"><a href="power-and-precision-analyses.html#applied-case-i-from-last-week"><i class="fa fa-check"></i><b>17.4.3</b> Applied case I (from last week)</a></li>
+<li class="chapter" data-level="17.4.4" data-path="power-and-precision-analyses.html"><a href="power-and-precision-analyses.html#applied-case-ii"><i class="fa fa-check"></i><b>17.4.4</b> Applied case II</a></li>
+<li class="chapter" data-level="17.4.5" data-path="power-and-precision-analyses.html"><a href="power-and-precision-analyses.html#applied-case-iii"><i class="fa fa-check"></i><b>17.4.5</b> Applied case III</a></li>
+</ul></li>
+<li class="chapter" data-level="17.5" data-path="power-and-precision-analyses.html"><a href="power-and-precision-analyses.html#precision-analysis-as-an-alternative-to-power-analysis"><i class="fa fa-check"></i><b>17.5</b> Precision analysis as an alternative to power analysis</a></li>
+<li class="chapter" data-level="17.6" data-path="power-and-precision-analyses.html"><a href="power-and-precision-analyses.html#tomorrow-4"><i class="fa fa-check"></i><b>17.6</b> Tomorrow</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="power-and-precision-analyses-ii.html"><a href="power-and-precision-analyses-ii.html"><i class="fa fa-check"></i><b>18</b> Power and precision analyses II</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="power-and-precision-analyses-ii.html"><a href="power-and-precision-analyses-ii.html#announcements-11"><i class="fa fa-check"></i><b>18.1</b> Announcements</a></li>
+<li class="chapter" data-level="18.2" data-path="power-and-precision-analyses-ii.html"><a href="power-and-precision-analyses-ii.html#review-what-is-statistical-power"><i class="fa fa-check"></i><b>18.2</b> Review: what is statistical power?</a>
+<ul>
+<li class="chapter" data-level="18.2.1" data-path="power-and-precision-analyses-ii.html"><a href="power-and-precision-analyses-ii.html#approaches-to-power-computations"><i class="fa fa-check"></i><b>18.2.1</b> Approaches to power computations:</a></li>
+<li class="chapter" data-level="18.2.2" data-path="power-and-precision-analyses-ii.html"><a href="power-and-precision-analyses-ii.html#simulation-demo"><i class="fa fa-check"></i><b>18.2.2</b> Simulation demo</a></li>
+</ul></li>
+<li class="chapter" data-level="18.3" data-path="power-and-precision-analyses-ii.html"><a href="power-and-precision-analyses-ii.html#power-analysis-demonstration"><i class="fa fa-check"></i><b>18.3</b> Power analysis demonstration</a>
+<ul>
+<li class="chapter" data-level="18.3.1" data-path="power-and-precision-analyses-ii.html"><a href="power-and-precision-analyses-ii.html#crd---2-reps"><i class="fa fa-check"></i><b>18.3.1</b> CRD - 2 reps</a></li>
+<li class="chapter" data-level="18.3.2" data-path="power-and-precision-analyses-ii.html"><a href="power-and-precision-analyses-ii.html#crd---3-reps"><i class="fa fa-check"></i><b>18.3.2</b> CRD - 3 reps</a></li>
+<li class="chapter" data-level="18.3.3" data-path="power-and-precision-analyses-ii.html"><a href="power-and-precision-analyses-ii.html#split-plot---2-reps"><i class="fa fa-check"></i><b>18.3.3</b> Split-plot - 2 reps</a></li>
+<li class="chapter" data-level="18.3.4" data-path="power-and-precision-analyses-ii.html"><a href="power-and-precision-analyses-ii.html#split-plot---3-reps"><i class="fa fa-check"></i><b>18.3.4</b> Split-plot - 3 reps</a></li>
+<li class="chapter" data-level="18.3.5" data-path="power-and-precision-analyses-ii.html"><a href="power-and-precision-analyses-ii.html#split-plot---2-reps-subsampling"><i class="fa fa-check"></i><b>18.3.5</b> Split-plot - 2 reps + subsampling</a></li>
+<li class="chapter" data-level="18.3.6" data-path="power-and-precision-analyses-ii.html"><a href="power-and-precision-analyses-ii.html#split-plot---3-reps-subsampling"><i class="fa fa-check"></i><b>18.3.6</b> Split-plot - 3 reps + subsampling</a></li>
+</ul></li>
+<li class="chapter" data-level="18.4" data-path="power-and-precision-analyses-ii.html"><a href="power-and-precision-analyses-ii.html#applied-activity"><i class="fa fa-check"></i><b>18.4</b> Applied activity</a></li>
+<li class="chapter" data-level="18.5" data-path="power-and-precision-analyses-ii.html"><a href="power-and-precision-analyses-ii.html#tomorrow-5"><i class="fa fa-check"></i><b>18.5</b> Tomorrow</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="planning-an-experiment-i.html"><a href="planning-an-experiment-i.html"><i class="fa fa-check"></i><b>19</b> Planning an experiment I</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="planning-an-experiment-i.html"><a href="planning-an-experiment-i.html#announcements-12"><i class="fa fa-check"></i><b>19.1</b> Announcements</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="planning-an-experiment-ii.html"><a href="planning-an-experiment-ii.html"><i class="fa fa-check"></i><b>20</b> Planning an experiment II</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="planning-an-experiment-ii.html"><a href="planning-an-experiment-ii.html#announcements-13"><i class="fa fa-check"></i><b>20.1</b> Announcements</a></li>
+<li class="chapter" data-level="20.2" data-path="planning-an-experiment-ii.html"><a href="planning-an-experiment-ii.html#planning-an-experiment"><i class="fa fa-check"></i><b>20.2</b> Planning an experiment</a>
+<ul>
+<li class="chapter" data-level="20.2.1" data-path="planning-an-experiment-ii.html"><a href="planning-an-experiment-ii.html#research-question"><i class="fa fa-check"></i><b>20.2.1</b> Research question</a></li>
+<li class="chapter" data-level="20.2.2" data-path="planning-an-experiment-ii.html"><a href="planning-an-experiment-ii.html#experiment-design"><i class="fa fa-check"></i><b>20.2.2</b> Experiment design</a></li>
+<li class="chapter" data-level="20.2.3" data-path="planning-an-experiment-ii.html"><a href="planning-an-experiment-ii.html#rcbd-with-10-reps"><i class="fa fa-check"></i><b>20.2.3</b> RCBD with 10 reps</a></li>
+<li class="chapter" data-level="20.2.4" data-path="planning-an-experiment-ii.html"><a href="planning-an-experiment-ii.html#rcbd-with-10-reps-and-6-subsamples"><i class="fa fa-check"></i><b>20.2.4</b> RCBD with 10 reps and 6 subsamples</a></li>
+</ul></li>
+<li class="chapter" data-level="20.3" data-path="planning-an-experiment-ii.html"><a href="planning-an-experiment-ii.html#take-home-messages"><i class="fa fa-check"></i><b>20.3</b> Take-home messages</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="randomized-complete-block-designs.html"><a href="randomized-complete-block-designs.html"><i class="fa fa-check"></i><b>21</b> Randomized complete block designs</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="randomized-complete-block-designs.html"><a href="randomized-complete-block-designs.html#announcements-14"><i class="fa fa-check"></i><b>21.1</b> Announcements</a></li>
+<li class="chapter" data-level="21.2" data-path="randomized-complete-block-designs.html"><a href="randomized-complete-block-designs.html#rcbd-review"><i class="fa fa-check"></i><b>21.2</b> RCBD review</a></li>
+<li class="chapter" data-level="21.3" data-path="randomized-complete-block-designs.html"><a href="randomized-complete-block-designs.html#blocks---fixed-or-random"><i class="fa fa-check"></i><b>21.3</b> Blocks - fixed or random?</a></li>
+<li class="chapter" data-level="21.4" data-path="randomized-complete-block-designs.html"><a href="randomized-complete-block-designs.html#applied-design-and-analysis-of-an-rcbd"><i class="fa fa-check"></i><b>21.4</b> Applied design and analysis of an RCBD</a></li>
+<li class="chapter" data-level="21.5" data-path="randomized-complete-block-designs.html"><a href="randomized-complete-block-designs.html#planning-the-experiment-for-wednesday"><i class="fa fa-check"></i><b>21.5</b> Planning the experiment for Wednesday</a>
+<ul>
+<li class="chapter" data-level="21.5.1" data-path="randomized-complete-block-designs.html"><a href="randomized-complete-block-designs.html#recipe"><i class="fa fa-check"></i><b>21.5.1</b> Recipe</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="optimal-designs-i.html"><a href="optimal-designs-i.html"><i class="fa fa-check"></i><b>22</b> Optimal designs I</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="optimal-designs-i.html"><a href="optimal-designs-i.html#announcements-15"><i class="fa fa-check"></i><b>22.1</b> Announcements</a></li>
+<li class="chapter" data-level="22.2" data-path="optimal-designs-i.html"><a href="optimal-designs-i.html#precision-power-and-inference"><i class="fa fa-check"></i><b>22.2</b> Precision, power, and inference</a>
+<ul>
+<li class="chapter" data-level="22.2.1" data-path="optimal-designs-i.html"><a href="optimal-designs-i.html#inference"><i class="fa fa-check"></i><b>22.2.1</b> Inference</a></li>
+<li class="chapter" data-level="22.2.2" data-path="optimal-designs-i.html"><a href="optimal-designs-i.html#blocks"><i class="fa fa-check"></i><b>22.2.2</b> Blocks</a></li>
+</ul></li>
+<li class="chapter" data-level="22.3" data-path="optimal-designs-i.html"><a href="optimal-designs-i.html#optimal-designs"><i class="fa fa-check"></i><b>22.3</b> Optimal designs</a>
+<ul>
+<li class="chapter" data-level="22.3.1" data-path="optimal-designs-i.html"><a href="optimal-designs-i.html#some-optimality-criteria-with-emphasis-on-estimation"><i class="fa fa-check"></i><b>22.3.1</b> Some optimality criteria with emphasis on estimation</a></li>
+<li class="chapter" data-level="22.3.2" data-path="optimal-designs-i.html"><a href="optimal-designs-i.html#other-interesting-optimality-criteria-with-emphasis-on-prediction"><i class="fa fa-check"></i><b>22.3.2</b> Other interesting optimality criteria with emphasis on prediction</a></li>
+</ul></li>
+<li class="chapter" data-level="22.4" data-path="optimal-designs-i.html"><a href="optimal-designs-i.html#tomorrow-6"><i class="fa fa-check"></i><b>22.4</b> Tomorrow</a></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="analyzing-the-in-class-experiment.html"><a href="analyzing-the-in-class-experiment.html"><i class="fa fa-check"></i><b>23</b> Analyzing the in-class experiment</a>
+<ul>
+<li class="chapter" data-level="23.1" data-path="analyzing-the-in-class-experiment.html"><a href="analyzing-the-in-class-experiment.html#announcements-16"><i class="fa fa-check"></i><b>23.1</b> Announcements</a></li>
+<li class="chapter" data-level="23.2" data-path="analyzing-the-in-class-experiment.html"><a href="analyzing-the-in-class-experiment.html#our-designed-experiment"><i class="fa fa-check"></i><b>23.2</b> Our designed experiment</a></li>
+<li class="chapter" data-level="23.3" data-path="analyzing-the-in-class-experiment.html"><a href="analyzing-the-in-class-experiment.html#analyzing-the-data"><i class="fa fa-check"></i><b>23.3</b> Analyzing the data</a></li>
+<li class="chapter" data-level="23.4" data-path="analyzing-the-in-class-experiment.html"><a href="analyzing-the-in-class-experiment.html#a-few-extra-anticipated-comments"><i class="fa fa-check"></i><b>23.4</b> A few extra (anticipated) comments</a></li>
+<li class="chapter" data-level="23.5" data-path="analyzing-the-in-class-experiment.html"><a href="analyzing-the-in-class-experiment.html#tomorrow-7"><i class="fa fa-check"></i><b>23.5</b> Tomorrow</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="optimal-designs-ii.html"><a href="optimal-designs-ii.html"><i class="fa fa-check"></i><b>24</b> Optimal designs II</a>
+<ul>
+<li class="chapter" data-level="24.1" data-path="optimal-designs-ii.html"><a href="optimal-designs-ii.html#announcements-17"><i class="fa fa-check"></i><b>24.1</b> Announcements</a></li>
+<li class="chapter" data-level="24.2" data-path="optimal-designs-ii.html"><a href="optimal-designs-ii.html#optimal-designs-1"><i class="fa fa-check"></i><b>24.2</b> Optimal designs</a>
+<ul>
+<li class="chapter" data-level="24.2.1" data-path="optimal-designs-ii.html"><a href="optimal-designs-ii.html#case-study-incomplete-block-designs"><i class="fa fa-check"></i><b>24.2.1</b> Case study: incomplete block designs</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="25" data-path="semester-project.html"><a href="semester-project.html"><i class="fa fa-check"></i><b>25</b> Semester Project</a>
+<ul>
+<li class="chapter" data-level="25.1" data-path="semester-project.html"><a href="semester-project.html#learning-objectives"><i class="fa fa-check"></i><b>25.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="25.2" data-path="semester-project.html"><a href="semester-project.html#partial-deadlines"><i class="fa fa-check"></i><b>25.2</b> Partial deadlines</a>
+<ul>
+<li class="chapter" data-level="25.2.1" data-path="semester-project.html"><a href="semester-project.html#project-proposal---due-friday-june-12-at-2pm-ct"><i class="fa fa-check"></i><b>25.2.1</b> Project proposal - Due Friday June 12 at 2pm CT</a></li>
+<li class="chapter" data-level="25.2.2" data-path="semester-project.html"><a href="semester-project.html#written-report---due-sunday-july-12-at-2pm-ct-for-peer-review"><i class="fa fa-check"></i><b>25.2.2</b> Written report - Due Sunday July 12 at 2pm CT for peer review</a></li>
+<li class="chapter" data-level="25.2.3" data-path="semester-project.html"><a href="semester-project.html#oral-presentation---somewhere-between-july-8---july-14"><i class="fa fa-check"></i><b>25.2.3</b> Oral presentation - Somewhere between July 8 - July 14</a></li>
+<li class="chapter" data-level="25.2.4" data-path="semester-project.html"><a href="semester-project.html#final-written-report---due-wednesday-july-16-at-1159pm-ct"><i class="fa fa-check"></i><b>25.2.4</b> FINAL written report - Due Wednesday July 16 at 11:59pm CT</a></li>
+<li class="chapter" data-level="25.2.5" data-path="semester-project.html"><a href="semester-project.html#practical-reads"><i class="fa fa-check"></i><b>25.2.5</b> Practical reads</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">STAT 720 - Design of Experiments</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="optimal-designs-ii" class="section level1 hasAnchor" number="24">
+<h1><span class="header-section-number">Day 24</span> Optimal designs II<a href="optimal-designs-ii.html#optimal-designs-ii" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="announcements-17" class="section level2 hasAnchor" number="24.1">
+<h2><span class="header-section-number">24.1</span> Announcements<a href="optimal-designs-ii.html#announcements-17" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Tomorrow: In-person Kahoot!</li>
+</ul>
+</div>
+<div id="optimal-designs-1" class="section level2 hasAnchor" number="24.2">
+<h2><span class="header-section-number">24.2</span> Optimal designs<a href="optimal-designs-ii.html#optimal-designs-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="case-study-incomplete-block-designs" class="section level3 hasAnchor" number="24.2.1">
+<h3><span class="header-section-number">24.2.1</span> Case study: incomplete block designs<a href="optimal-designs-ii.html#case-study-incomplete-block-designs" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>We can know the treatment structure + design structure and still not know everything about the experiment design!</li>
+</ul>
+<p><strong>For example:</strong></p>
+<ul>
+<li><p>One-way treatment structure + incomplete block design</p></li>
+<li><p>There are multiple options to arrange the treatments in the incomplete blocks, leading to different advantages/disadvantages</p></li>
+<li><p>Case study: One-way treatment structure with 4 levels + incomplete block design with block size = 2.</p></li>
+</ul>
+<p><strong>Balanced incomplete block designs</strong></p>
+<ul>
+<li><span class="math inline">\(Var (T_i - T_{i&#39;})\)</span> is constant</li>
+<li>Each pair of treatments occur together (i.e., in the same block) <span class="math inline">\(\lambda\)</span> times</li>
+<li>Not all designs (i.e., combination of block size, #reps, and #treatments) can make this possible</li>
+</ul>
+<p>Assume:</p>
+<ul>
+<li><span class="math inline">\(t=\)</span> number of treatments,</li>
+<li><span class="math inline">\(b=\)</span> number of blocks,</li>
+<li><span class="math inline">\(k=\)</span> block size,</li>
+<li><span class="math inline">\(r=\)</span> number of repetitions,</li>
+<li>Thus, <span class="math inline">\(N=kb\)</span> (where <span class="math inline">\(N\)</span> is the number of total observations)</li>
+<li>To have balance (i.e., “each pair of treatments occur <span class="math inline">\(\lambda\)</span> times in the same block”):
+<ul>
+<li><span class="math inline">\(\lambda = \frac{r(k-1)}{t-1}\)</span></li>
+<li>BIBDs can be built with the <code>ibd</code> R package [<a href="https://cran.r-project.org/web/packages/ibd/index.html">link</a>]</li>
+</ul></li>
+</ul>
+<p>This is easy for this case with <span class="math inline">\(t=4, \ b=6, \ k =2, r =3\)</span>:</p>
+<ul>
+<li><span class="math inline">\(\lambda = \frac{3(2-1)}{4-1} = \frac{3}{3}=1\)</span>.</li>
+<li>See below.</li>
+</ul>
+<table>
+<caption><span id="tab:unnamed-chunk-155">Table 24.1: </span>Assignment of Four Treatments to Six Blocks of Two Experimental
+Units. Balanced Incomplete Block Example. [Adapted from Table 4.19 in Milliken and Johnson]</caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">Block 1</th>
+<th align="left">Block 2</th>
+<th align="left">Block 3</th>
+<th align="left">Block 4</th>
+<th align="left">Block 5</th>
+<th align="left">Block 6</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">A</td>
+<td align="left">X</td>
+<td align="left">X</td>
+<td align="left">X</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">B</td>
+<td align="left">X</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">X</td>
+<td align="left">X</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">C</td>
+<td align="left"></td>
+<td align="left">X</td>
+<td align="left"></td>
+<td align="left">X</td>
+<td align="left"></td>
+<td align="left">X</td>
+</tr>
+<tr class="even">
+<td align="left">D</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">X</td>
+<td align="left"></td>
+<td align="left">X</td>
+<td align="left">X</td>
+</tr>
+</tbody>
+</table>
+<p>The <span class="math inline">\(\mathbf{X}\)</span> matrix above minimizes <span class="math inline">\((\mathbf{X}^T\mathbf{X})^{-1}\)</span>:</p>
+<p><span class="math display">\[\mathbf{X} = \begin{bmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\
+1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\
+1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\
+0 &amp; 1 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\
+0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\
+0 &amp; 0 &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\
+\vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots \\
+0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1
+\end{bmatrix}\]</span></p>
+<p>With that, we minimize the variance to test <span class="math inline">\(\mu_A =\mu_B =\mu_C =\mu_D\)</span>.</p>
+<p><strong>Unbalanced incomplete block designs</strong></p>
+<ul>
+<li><span class="math inline">\(Var (T_i - T_{i&#39;})\)</span> is not constant</li>
+<li>Each pair of treatments do not occur together (i.e., in the same block) the same number of times</li>
+<li>Prioritize the comparisons of interest</li>
+</ul>
+<p>See below: D-optimal experiment to test if <span class="math inline">\(\mu_A = \mu_B, \mu_A = \mu_C, \mu_A = \mu_D\)</span>.</p>
+<table>
+<caption><span id="tab:unnamed-chunk-156">Table 24.2: </span>Assignment of Four Treatments to Six Blocks of Two Experimental
+Units. Unbalanced Incomplete Block Example. [Adapted from Table 4.22 in Milliken and Johnson]</caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">Block 1</th>
+<th align="left">Block 2</th>
+<th align="left">Block 3</th>
+<th align="left">Block 4</th>
+<th align="left">Block 5</th>
+<th align="left">Block 6</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">A</td>
+<td align="left">X</td>
+<td align="left">X</td>
+<td align="left">X</td>
+<td align="left">X</td>
+<td align="left">X</td>
+<td align="left">X</td>
+</tr>
+<tr class="even">
+<td align="left">B</td>
+<td align="left">X</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">X</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">C</td>
+<td align="left"></td>
+<td align="left">X</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">X</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">D</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">X</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">X</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Disconnected unbalanced incomplete block designs</strong></p>
+<ul>
+<li>See below. Neither Treatment A nor Treatment B occur in a block with either treatment C or D.</li>
+</ul>
+<table>
+<caption><span id="tab:unnamed-chunk-157">Table 24.3: </span>Assignment of Four Treatments to Six Blocks of Two Experimental
+Units. Disconnected Unbalanced Incomplete Block Example. [Adapted from Table 4.23 in Milliken and Johnson]</caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">Block 1</th>
+<th align="left">Block 2</th>
+<th align="left">Block 3</th>
+<th align="left">Block 4</th>
+<th align="left">Block 5</th>
+<th align="left">Block 6</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">A</td>
+<td align="left">X</td>
+<td align="left"></td>
+<td align="left">X</td>
+<td align="left"></td>
+<td align="left">X</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">B</td>
+<td align="left">X</td>
+<td align="left"></td>
+<td align="left">X</td>
+<td align="left"></td>
+<td align="left">X</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">C</td>
+<td align="left"></td>
+<td align="left">X</td>
+<td align="left"></td>
+<td align="left">X</td>
+<td align="left"></td>
+<td align="left">X</td>
+</tr>
+<tr class="even">
+<td align="left">D</td>
+<td align="left"></td>
+<td align="left">X</td>
+<td align="left"></td>
+<td align="left">X</td>
+<td align="left"></td>
+<td align="left">X</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="analyzing-the-in-class-experiment.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="semester-project.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/stat720/book2025/edit/main/25-optimal_designs_2.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": "https://github.com/stat720/book2025/blob/main/25-optimal_designs_2.Rmd",
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
