@@ -37,6 +37,7 @@ tab:unnamed-chunk-122
 tab:unnamed-chunk-129
 tab:unnamed-chunk-130
 tab:unnamed-chunk-131
+fig:unnamed-chunk-132
 welcome-to-stat-720
 about-this-course
 logistics
@@ -214,6 +215,10 @@ optimal-designs-1
 case-study-incomplete-block-designs
 kahoot-1
 announcements-18
+crossover-designs-i
+announcements-19
+crossover-designs
+variations-to-this-example
 semester-project
 learning-objectives
 partial-deadlines
