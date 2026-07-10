@@ -17,8 +17,8 @@ July 8
 
 July 9 
 : ((Online)) Optimal designs II  
-  : [](https://stat720.github.io/summer2026/notes/planning-a-multi-location-design.html)
+  : [html](https://stat720.github.io/summer2026/notes/optimal-designs-ii.html)
 
 July 10
 : Kahoot!   
-
+  : [html](https://stat720.github.io/summer2026/notes/kahoot-1.html)

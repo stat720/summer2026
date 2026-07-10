@@ -27,7 +27,8 @@ dat |>
 ```{r}
 dat |> 
   ggplot(aes(recipe, height_cm))+
-  geom_point(aes(color = factor(block)))
+  geom_point(aes(color = factor(block)))+
+  theme(aspect.ratio = .3)
 ```
 
 ```{r}
