@@ -38,6 +38,7 @@ tab:unnamed-chunk-129
 tab:unnamed-chunk-130
 tab:unnamed-chunk-131
 fig:unnamed-chunk-132
+fig:unnamed-chunk-137
 welcome-to-stat-720
 about-this-course
 logistics
@@ -219,6 +220,10 @@ crossover-designs-i
 announcements-19
 crossover-designs
 variations-to-this-example
+crossover-designs-ii
+crossover-designs-1
+applied-example
+tomorrow-8
 semester-project
 learning-objectives
 partial-deadlines
