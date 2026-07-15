@@ -32,6 +32,13 @@ Keep in mid that all the code to generate this website and the class notes can b
 
 ## Planning an experiment (week 5) 
 
-- Day 19 -- 06/30 [[get R code](scripts/06302026_inclass.Rmd)] 
-- Day 24 -- 07/08 [[get R code](scripts/07082026.Rmd)] 
+- Day 19 -- 06/30 | power, precision | [[get R code](scripts/06302026_inclass.Rmd)] 
 
+## Muffin example (week 6) 
+
+- Day 24 -- 07/08 | muffin example | [[get R code](scripts/07082026.Rmd)] 
+
+## Wrap-up (week 7) 
+
+- Day 28 -- 07/14 | crossover designs | [[get R code](scripts/07142026_inclass.Rmd)] 
+- Day 29 -- 07/15 | wrap-up | [[get R code](scripts/07152026.Rmd)] 
