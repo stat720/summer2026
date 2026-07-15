@@ -39,6 +39,8 @@ tab:unnamed-chunk-130
 tab:unnamed-chunk-131
 fig:unnamed-chunk-132
 fig:unnamed-chunk-137
+fig:unnamed-chunk-141
+tab:unnamed-chunk-142
 welcome-to-stat-720
 about-this-course
 logistics
@@ -224,6 +226,15 @@ crossover-designs-ii
 crossover-designs-1
 applied-example
 tomorrow-8
+wrap-up-i
+announcements-20
+principles-for-conducting-valid-and-efficient-experiments
+modeling-data-generated-by-designed-experiments
+from-anova-table-to-statistical-model
+what-happens-if-we-drop-blocks-split-plots-etc
+what-happens-if-we-drop-split-plots-or-fail-to-model-the-subsampling-structure
+differences-modeling-multi-location-designed-experiments
+tomorrow-9
 semester-project
 learning-objectives
 partial-deadlines

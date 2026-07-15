@@ -1,0 +1,101 @@
+---
+title: "Crossover designs -- in class"
+author: "J Lacasa"
+date: "2026-07-14"
+output: html_document
+---
+
+```{r warning=FALSE, message=FALSE}
+library(lme4)
+library(tidyverse)
+library(emmeans)
+```
+
+
+
+## Example 1 
+
+**Studying the effect of 2 treatments**
+
+This study was published in [Grizzle (1965)](https://www.jstor.org/stable/2528104?seq=1). 
+
+This study studied the effect of 2 drugs (A and B) on humans. 
+
+First, 14 persons were randomly assigned one of two drugs, and the trait of study was measured at the end of the treatment duration. 
+
+Then, all persons were given the other drug they hadn't taken yet. 
+
+The model can be described as 
+
+$$y_{ijkl} = \mu + T_i + P_j + S_k + u_{lk} + \varepsilon_{ijkl}$$
+
+```{r message=FALSE, warning=FALSE}
+df <- read.csv("https://raw.githubusercontent.com/stat720/summer2026/refs/heads/main/data/grizzle_messydata.csv")
+df$Period <- as.factor(df$Period)
+df$Person <- as.factor(df$Person)
+
+m <- lmer(Y ~ Seq + Trt + Period + (1|Seq:Person) , data = df)
+
+car::Anova(m, type = 3, test.statistic = "F")
+```
+
+```{r}
+emmeans(m, ~ Trt, contr = list(c(1, -1)))
+```
+
+```{r message=FALSE, warning=FALSE}
+plot(emmeans(m, ~ Trt, contr = list(c(1, -1))))
+```
+
+```{r}
+unique(df |> dplyr::select(Person, Seq))
+```
+
+## Example 2  
+
+**Studying the effect of 3 treatments**
+
+6 cows were used to test 3 different treatments in a crossover design.  
+
+- Repeated measures. Now we are assuming compound symmetry (a specific type of correlation function). 
+- How does carryover affect power? 
+
+
+```{r message=FALSE, warning=FALSE}
+url <- "https://raw.githubusercontent.com/stat720/summer2025/refs/heads/main/data/cow_prod_cox.csv"
+df <- read.csv(url)
+df
+unique(df$Sequence)
+```
+
+The model can be described as 
+
+$$y_{ijkl} = \mu + T_i + P_j + S_k + u_{lk} + \varepsilon_{ijkl}$$
+```{r message=FALSE, warning=FALSE}
+m_milk.nocarryover <- lmer(milk_production ~ Sequence + Period + Treatment + (1|Sequence:Cow),
+               data = df)
+emmeans(m_milk.nocarryover, ~ Treatment )
+emmeans(m_milk.nocarryover, ~ Treatment , 
+        contr = list(c(1, -1, 0), 
+                     c(1, 0, -1), 
+                     c(0, 1, -1)))
+```
+
+Another model can be described as 
+
+$$y_{ijklm} = \mu + T_i + P_j + S_k + C_m + u_{lk} + \varepsilon_{ijklm}$$
+
+
+```{r}
+m_milk.carryover <- lmer(milk_production ~ Sequence + Period + Treatment + Prior_trt + (1|Sequence:Cow),
+               data = df)
+
+emmeans(m_milk.carryover, ~ Treatment )
+
+emmeans(m_milk.carryover, ~ Treatment , 
+        contr = list(c(1, -1, 0), 
+                     c(1, 0, -1), 
+                     c(0, 1, -1)))
+
+```
+
