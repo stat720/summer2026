@@ -453,7 +453,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="30.2.1" data-path="semester-project.html"><a href="semester-project.html#project-proposal---due-friday-june-12-at-2pm-ct"><i class="fa fa-check"></i><b>30.2.1</b> Project proposal - Due Friday June 12 at 2pm CT</a></li>
 <li class="chapter" data-level="30.2.2" data-path="semester-project.html"><a href="semester-project.html#written-report---due-sunday-july-12-at-2pm-ct-for-peer-review"><i class="fa fa-check"></i><b>30.2.2</b> Written report - Due Sunday July 12 at 2pm CT for peer review</a></li>
 <li class="chapter" data-level="30.2.3" data-path="semester-project.html"><a href="semester-project.html#oral-presentation---somewhere-between-july-8---july-14"><i class="fa fa-check"></i><b>30.2.3</b> Oral presentation - Somewhere between July 8 - July 14</a></li>
-<li class="chapter" data-level="30.2.4" data-path="semester-project.html"><a href="semester-project.html#final-written-report---due-wednesday-july-16-at-1159pm-ct"><i class="fa fa-check"></i><b>30.2.4</b> FINAL written report - Due Wednesday July 16 at 11:59pm CT</a></li>
+<li class="chapter" data-level="30.2.4" data-path="semester-project.html"><a href="semester-project.html#final-written-report---due-wednesday-july-19-at-1159pm-ct"><i class="fa fa-check"></i><b>30.2.4</b> FINAL written report - Due Wednesday July 19 at 11:59pm CT</a></li>
 <li class="chapter" data-level="30.2.5" data-path="semester-project.html"><a href="semester-project.html#practical-reads"><i class="fa fa-check"></i><b>30.2.5</b> Practical reads</a></li>
 </ul></li>
 </ul></li>
@@ -582,7 +582,7 @@ Click to show code for the simulation
 <span id="cb249-35"><a href="wrap-up-ii.html#cb249-35" tabindex="-1"></a>    <span class="co"># all the rest is 0</span></span>
 <span id="cb249-36"><a href="wrap-up-ii.html#cb249-36" tabindex="-1"></a>    <span class="at">mu_T =</span> <span class="fu">ifelse</span>(trt_T <span class="sc">==</span> <span class="st">&quot;t3&quot;</span>, <span class="dv">5</span>, <span class="dv">0</span>),</span>
 <span id="cb249-37"><a href="wrap-up-ii.html#cb249-37" tabindex="-1"></a>    <span class="at">mu_P =</span> <span class="fu">ifelse</span>(trt_P <span class="sc">==</span> <span class="st">&quot;p2&quot;</span>, <span class="dv">5</span>, <span class="dv">0</span>),</span>
-<span id="cb249-38"><a href="wrap-up-ii.html#cb249-38" tabindex="-1"></a>    <span class="at">mu_TP =</span> <span class="fu">ifelse</span>(trt_T <span class="sc">==</span> <span class="st">&quot;t3&quot;</span> <span class="sc">&amp;</span> trt_P <span class="sc">==</span> <span class="st">&quot;p2&quot;</span>, <span class="fl">1.5</span>, <span class="dv">0</span>),</span>
+<span id="cb249-38"><a href="wrap-up-ii.html#cb249-38" tabindex="-1"></a>    <span class="at">mu_TP =</span> <span class="fu">ifelse</span>(trt_T <span class="sc">==</span> <span class="st">&quot;t3&quot;</span> <span class="sc">&amp;</span> trt_P <span class="sc">==</span> <span class="st">&quot;p2&quot;</span>, <span class="dv">5</span>, <span class="dv">0</span>),</span>
 <span id="cb249-39"><a href="wrap-up-ii.html#cb249-39" tabindex="-1"></a>    <span class="at">mu =</span> mu_T <span class="sc">+</span> mu_P <span class="sc">+</span> mu_TP</span>
 <span id="cb249-40"><a href="wrap-up-ii.html#cb249-40" tabindex="-1"></a>  )</span>
 <span id="cb249-41"><a href="wrap-up-ii.html#cb249-41" tabindex="-1"></a></span>
@@ -642,7 +642,7 @@ Click to show code for the simulation
 <span id="cb249-95"><a href="wrap-up-ii.html#cb249-95" tabindex="-1"></a>  pval_P_10diff[i] <span class="ot">&lt;-</span> contr_P<span class="sc">$</span>p.value[contr_P<span class="sc">$</span>contrast <span class="sc">==</span> <span class="st">&quot;p1 - p2&quot;</span>]  <span class="co"># True diff = 10</span></span>
 <span id="cb249-96"><a href="wrap-up-ii.html#cb249-96" tabindex="-1"></a>}</span></code></pre></div>
 </details>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-150-1.png" alt="" width="672" /><img src="bookdownproj_files/figure-html/unnamed-chunk-150-2.png" alt="" width="672" /><img src="bookdownproj_files/figure-html/unnamed-chunk-150-3.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-155-1.png" alt="" width="672" /><img src="bookdownproj_files/figure-html/unnamed-chunk-155-2.png" alt="" width="672" /><img src="bookdownproj_files/figure-html/unnamed-chunk-155-3.png" alt="" width="672" /></p>
 <div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="wrap-up-ii.html#cb250-1" tabindex="-1"></a><span class="fu">mean</span>(pval_T_main<span class="sc">&lt;</span><span class="fl">0.05</span>)</span></code></pre></div>
 <pre><code>## [1] 1</code></pre>
 <div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="wrap-up-ii.html#cb252-1" tabindex="-1"></a><span class="fu">mean</span>(pval_P_main<span class="sc">&lt;</span><span class="fl">0.05</span>)</span></code></pre></div>
@@ -750,7 +750,7 @@ Click to show code for the simulation
 <span id="cb254-94"><a href="wrap-up-ii.html#cb254-94" tabindex="-1"></a>  pval_P_10diff[i] <span class="ot">&lt;-</span> contr_P<span class="sc">$</span>p.value[contr_P<span class="sc">$</span>contrast <span class="sc">==</span> <span class="st">&quot;p1 - p2&quot;</span>]  <span class="co"># True diff = 10</span></span>
 <span id="cb254-95"><a href="wrap-up-ii.html#cb254-95" tabindex="-1"></a>}</span></code></pre></div>
 </details>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-154-1.png" alt="" width="672" /><img src="bookdownproj_files/figure-html/unnamed-chunk-154-2.png" alt="" width="672" /><img src="bookdownproj_files/figure-html/unnamed-chunk-154-3.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-159-1.png" alt="" width="672" /><img src="bookdownproj_files/figure-html/unnamed-chunk-159-2.png" alt="" width="672" /><img src="bookdownproj_files/figure-html/unnamed-chunk-159-3.png" alt="" width="672" /></p>
 <div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="wrap-up-ii.html#cb255-1" tabindex="-1"></a><span class="fu">mean</span>(pval_T_main<span class="sc">&lt;</span><span class="fl">0.05</span>)</span></code></pre></div>
 <pre><code>## [1] 0.66</code></pre>
 <div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="wrap-up-ii.html#cb257-1" tabindex="-1"></a><span class="fu">mean</span>(pval_P_main<span class="sc">&lt;</span><span class="fl">0.05</span>)</span></code></pre></div>

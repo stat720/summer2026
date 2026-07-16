@@ -103,7 +103,7 @@ df_me <- df_me %>%
     # all the rest is 0
     mu_T = ifelse(trt_T == "t3", 5, 0),
     mu_P = ifelse(trt_P == "p2", 5, 0),
-    mu_TP = ifelse(trt_T == "t3" & trt_P == "p2", 1.5, 0),
+    mu_TP = ifelse(trt_T == "t3" & trt_P == "p2", 5, 0),
     mu = mu_T + mu_P + mu_TP
   )
 
@@ -189,13 +189,13 @@ pval_P_main <- read_rds("../../rds/pval_P_main_10loc.rds")
 
 ```{r echo=FALSE}
 hist(pval_TP_int, 
-     main = "P-values testing the TxP interaction, in reality, is non-zero. 3 Locations", 
+     main = "P-values testing the TxP interaction, in reality, is non-zero. 10 Locations", 
      breaks = seq(0, 1, by = 0.05))
 hist(pval_P_main, 
-     main = "P-values testing the P main effect, in reality, is non-zero. 3 Locations", 
+     main = "P-values testing the P main effect, in reality, is non-zero. 10 Locations", 
      breaks = seq(0, 1, by = 0.05))
 hist(pval_T_main, 
-     main = "P-values testing the T main effect, in reality, is non-zero. 3 Locations", 
+     main = "P-values testing the T main effect, in reality, is non-zero. 10 Locations", 
      breaks = seq(0, 1, by = 0.05))
 ```
 

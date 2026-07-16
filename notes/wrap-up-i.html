@@ -453,7 +453,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="30.2.1" data-path="semester-project.html"><a href="semester-project.html#project-proposal---due-friday-june-12-at-2pm-ct"><i class="fa fa-check"></i><b>30.2.1</b> Project proposal - Due Friday June 12 at 2pm CT</a></li>
 <li class="chapter" data-level="30.2.2" data-path="semester-project.html"><a href="semester-project.html#written-report---due-sunday-july-12-at-2pm-ct-for-peer-review"><i class="fa fa-check"></i><b>30.2.2</b> Written report - Due Sunday July 12 at 2pm CT for peer review</a></li>
 <li class="chapter" data-level="30.2.3" data-path="semester-project.html"><a href="semester-project.html#oral-presentation---somewhere-between-july-8---july-14"><i class="fa fa-check"></i><b>30.2.3</b> Oral presentation - Somewhere between July 8 - July 14</a></li>
-<li class="chapter" data-level="30.2.4" data-path="semester-project.html"><a href="semester-project.html#final-written-report---due-wednesday-july-16-at-1159pm-ct"><i class="fa fa-check"></i><b>30.2.4</b> FINAL written report - Due Wednesday July 16 at 11:59pm CT</a></li>
+<li class="chapter" data-level="30.2.4" data-path="semester-project.html"><a href="semester-project.html#final-written-report---due-wednesday-july-19-at-1159pm-ct"><i class="fa fa-check"></i><b>30.2.4</b> FINAL written report - Due Wednesday July 19 at 11:59pm CT</a></li>
 <li class="chapter" data-level="30.2.5" data-path="semester-project.html"><a href="semester-project.html#practical-reads"><i class="fa fa-check"></i><b>30.2.5</b> Practical reads</a></li>
 </ul></li>
 </ul></li>
@@ -488,7 +488,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="principles-for-conducting-valid-and-efficient-experiments" class="section level2 hasAnchor" number="28.2">
 <h2><span class="header-section-number">28.2</span> Principles for conducting valid and efficient experiments<a href="wrap-up-i.html#principles-for-conducting-valid-and-efficient-experiments" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-141"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-146"></span>
 <img src="../figures/principles.jpg" alt="'Principles for conducting valid and efficient experiments'. From Box, Hunter and Hunter (2005)." width="60%" />
 <p class="caption">
 Figure 28.1: ‘Principles for conducting valid and efficient experiments’. From Box, Hunter and Hunter (2005).
@@ -525,13 +525,13 @@ Figure 28.1: ‘Principles for conducting valid and efficient experiments’. Fr
 <h3><span class="header-section-number">28.3.1</span> From ANOVA table to statistical model<a href="wrap-up-i.html#from-anova-table-to-statistical-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <table class="kable_wrapper">
 <caption>
-<span id="tab:unnamed-chunk-142">Table 28.1: </span>Example ANOVA for the muffin experiment example
+<span id="tab:unnamed-chunk-147">Table 28.1: </span>Example ANOVA for the muffin experiment example
 </caption>
 <tbody>
 <tr>
 <td>
 <table>
-<caption><span id="tab:unnamed-chunk-142">Table 28.1: </span>Design or Topographical Sources of Variability</caption>
+<caption><span id="tab:unnamed-chunk-147">Table 28.1: </span>Design or Topographical Sources of Variability</caption>
 <thead>
 <tr class="header">
 <th align="left">Source</th>
@@ -564,7 +564,7 @@ Figure 28.1: ‘Principles for conducting valid and efficient experiments’. Fr
 </td>
 <td>
 <table>
-<caption><span id="tab:unnamed-chunk-142">Table 28.1: </span>Treatment Sources of Variability</caption>
+<caption><span id="tab:unnamed-chunk-147">Table 28.1: </span>Treatment Sources of Variability</caption>
 <thead>
 <tr class="header">
 <th align="left">Source</th>
@@ -597,7 +597,7 @@ Figure 28.1: ‘Principles for conducting valid and efficient experiments’. Fr
 </td>
 <td>
 <table>
-<caption><span id="tab:unnamed-chunk-142">Table 28.1: </span>Combined Table of the Sources of Variability</caption>
+<caption><span id="tab:unnamed-chunk-147">Table 28.1: </span>Combined Table of the Sources of Variability</caption>
 <thead>
 <tr class="header">
 <th align="left">Source</th>
@@ -721,13 +721,13 @@ where:</p>
 <p>Now let’s take a look at the residual quantiles:</p>
 <div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="wrap-up-i.html#cb245-1" tabindex="-1"></a>simres1 <span class="ot">&lt;-</span> DHARMa<span class="sc">::</span><span class="fu">simulateResiduals</span>(m_fixed, <span class="at">plot =</span> F)</span>
 <span id="cb245-2"><a href="wrap-up-i.html#cb245-2" tabindex="-1"></a>DHARMa<span class="sc">::</span><span class="fu">plotQQunif</span>(simres1, <span class="at">main =</span> <span class="st">&quot;QQ plot residuals - fixed model&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-146-1.png" alt="" width="384" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-151-1.png" alt="" width="384" /></p>
 <div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="wrap-up-i.html#cb246-1" tabindex="-1"></a>simres2 <span class="ot">&lt;-</span> DHARMa<span class="sc">::</span><span class="fu">simulateResiduals</span>(m_random, <span class="at">use.u =</span> F)</span>
 <span id="cb246-2"><a href="wrap-up-i.html#cb246-2" tabindex="-1"></a>DHARMa<span class="sc">::</span><span class="fu">plotQQunif</span>(simres2, <span class="at">main =</span> <span class="st">&quot;QQ plot residuals - mixed model w/o RE&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-146-2.png" alt="" width="384" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-151-2.png" alt="" width="384" /></p>
 <div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="wrap-up-i.html#cb247-1" tabindex="-1"></a>simres3 <span class="ot">&lt;-</span> DHARMa<span class="sc">::</span><span class="fu">simulateResiduals</span>(m_random, <span class="at">use.u =</span> T)</span>
 <span id="cb247-2"><a href="wrap-up-i.html#cb247-2" tabindex="-1"></a>DHARMa<span class="sc">::</span><span class="fu">plotQQunif</span>(simres3, <span class="at">main =</span> <span class="st">&quot;QQ plot residuals - mixed model&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-146-3.png" alt="" width="384" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-151-3.png" alt="" width="384" /></p>
 <p>What is happening??</p>
 </div>
 </div>

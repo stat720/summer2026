@@ -33,7 +33,7 @@ Presentations should include at least:
 - Methods, including a clear and complete description of the statistical model and code
 - Discussion of strengths and weaknesses
 
-### FINAL written report - Due Wednesday July 16 at 11:59pm CT  
+### FINAL written report - Due Wednesday July 19 at 11:59pm CT  
 Submit your reviewed manuscript on CANVAS, including your peer's and the instructor's feedback.
 
 ### Practical reads  
