@@ -235,6 +235,11 @@ what-happens-if-we-drop-blocks-split-plots-etc
 what-happens-if-we-drop-split-plots-or-fail-to-model-the-subsampling-structure
 differences-modeling-multi-location-designed-experiments
 tomorrow-9
+wrap-up-ii
+announcements-21
+planning-a-multi-location-trial
+what-do-the-results-for-different-multi-location-trials-look-like
+some-comments-for-inference
 semester-project
 learning-objectives
 partial-deadlines

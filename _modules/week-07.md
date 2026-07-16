@@ -16,7 +16,7 @@ July 16
 
 July 17 
 : Wrap-up II (TBD)   
-  : [](#)
+  : [html](https://stat720.github.io/summer2026/notes/wrap-up-ii.html)
 
 July 18
 : No class
